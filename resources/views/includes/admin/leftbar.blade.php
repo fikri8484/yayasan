@@ -7,12 +7,6 @@
             <img src="{{ url('backend/dist/assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail avatar-lg">
             <div class="dropdown">
                 <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">Admin</a>
-                <div class="dropdown-menu user-pro-dropdown">
-
-                    <!-- item-->
-
-
-                </div>
             </div>
         </div>
 
