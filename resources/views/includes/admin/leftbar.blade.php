@@ -15,7 +15,7 @@
 
             <ul class="metismenu" id="side-menu">
 
-                <li class="menu-title">Navigation</li>
+                <li class="menu-title">Menu</li>
 
                 <li>
                     <a href="index.html">
