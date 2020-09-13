@@ -6,7 +6,7 @@
         <div class="user-box text-center">
             <img src="{{ url('backend/dist/assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail avatar-lg">
             <div class="dropdown">
-                <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">Admin</a>
+                <a href="{{ route('dashboard') }}" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">Admin</a>
             </div>
         </div>
 
@@ -18,14 +18,14 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('dashboard') }}">
                         <i class="mdi mdi-view-dashboard"></i>
                         <span> Dashboard </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('gallery.index') }}">
                         <i class="mdi mdi-google-photos"></i>
                         <span> Gallery </span>
                     </a>

@@ -14,4 +14,9 @@ class GalleryCategory extends Model
     ];
 
     protected $hidden = [];
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'gallery_categories_id', 'id');
+    }
 }
