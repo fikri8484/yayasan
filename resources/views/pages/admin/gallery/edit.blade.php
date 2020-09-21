@@ -35,10 +35,14 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="title">Judul</label>
+                    <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $item->title }}">
+                </div>
 
                 <div class="form-group">
                     <label for="image">Image</label>
-                    <input type="file" class="form-control" name="image" placeholder="Image" class="form-control">
+                    <input type="file" class="form-control" name="image" placeholder="Image" value="{{ Storage::url($item->image) }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">

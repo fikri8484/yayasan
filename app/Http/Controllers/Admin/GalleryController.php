@@ -8,6 +8,7 @@ use App\Gallery;
 use App\GalleryCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Alert;
 
 class GalleryController extends Controller
 {
@@ -18,7 +19,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $items = Gallery::with(['gallery_category'])->get();
+        $items = Gallery::with(['gallery_category'])->latest()->paginate(7);
 
         return view('pages.admin.gallery.index', [
             'items' => $items
@@ -53,6 +54,7 @@ class GalleryController extends Controller
         );
 
         Gallery::create($data);
+        Alert::success('Success', 'Data Berhasil Ditambah');
         return redirect()->route('gallery.index');
     }
 
@@ -101,6 +103,7 @@ class GalleryController extends Controller
 
         $item = Gallery::findOrFail($id);
         $item->update($data);
+        Alert::success('Success', 'Data Berhasil diedit');
         return redirect()->route('gallery.index');
     }
 
@@ -114,7 +117,7 @@ class GalleryController extends Controller
     {
         $item = Gallery::findOrFail($id);
         $item->delete();
-
+        Alert::success('Success', 'Data Berhasil dihapus');
         return redirect()->route('gallery.index');
     }
 }

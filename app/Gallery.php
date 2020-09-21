@@ -10,7 +10,7 @@ class Gallery extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'gallery_categories_id', 'image'
+        'gallery_categories_id', 'image', 'title'
     ];
 
     protected $hidden = [];

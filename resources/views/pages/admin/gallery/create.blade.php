@@ -40,6 +40,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="title">Judul</label>
+                    <input type="text" class="form-control" name="title" placeholder="title" class="form-control">
+                </div>
+
+                <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" class="form-control" name="image" placeholder="Image" class="form-control">
                 </div>

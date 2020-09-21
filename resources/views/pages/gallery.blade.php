@@ -23,55 +23,33 @@
 
     <div class="container py-2">
         <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+
             <li class="nav-item active" data-option-value="*">
-                <a class="nav-link text-1 text-uppercase active" href="#">Show All</a>
+                <a class="nav-link text-1 text-uppercase active" href="#">Semua</a>
             </li>
-            <li class="nav-item" data-option-value=".websites">
-                <a class="nav-link text-1 text-uppercase" href="#">Websites</a>
+            @foreach ($category as $c)
+            <li class="nav-item" data-option-value=".{{ $c->category }}">
+                <a class="nav-link text-1 text-uppercase" href="#">{{ $c->category }}</a>
             </li>
-            <li class="nav-item" data-option-value=".logos">
-                <a class="nav-link text-1 text-uppercase" href="#">Logos</a>
-            </li>
-            <li class="nav-item" data-option-value=".brands">
-                <a class="nav-link text-1 text-uppercase" href="#">Brands</a>
-            </li>
-            <li class="nav-item" data-option-value=".medias">
-                <a class="nav-link text-1 text-uppercase" href="#">Medias</a>
-            </li>
+            @endforeach
         </ul>
 
         <div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
             <div class="row portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
-                <div class="col-md-6 col-lg-3 isotope-item brands">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/masjid.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Perluasan Tanah Belakang Pesantern</span>
-                                    <span class="thumb-info-type">Brand</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/masjid.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
 
-                <div class="col-md-6 col-lg-3 isotope-item medias">
+                @foreach($category as $c)
+                @foreach($c->galleries as $g)
+                <div class="col-md-6 col-lg-3 isotope-item {{ $c->category }}">
                     <div class="portfolio-item">
                         <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
                             <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/masjid2.jpg" class="img-fluid border-radius-0" alt="" />
+                                <img src="{{ Storage::url($g->image) }}" class="img-fluid border-radius-0" alt="" />
                                 <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Porto Watch</span>
-                                    <span class="thumb-info-type">Media</span>
+                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">{{ $g->title }}</span>
+                                    <span class="thumb-info-type"></span>
                                 </span>
                                 <span class="thumb-info-action">
-                                    <a href="img/masjid2.jpg" class="lightbox-portfolio">
+                                    <a href="{{ Storage::url($g->image) }}" class="lightbox-portfolio">
                                         <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
                                     </a>
                                 </span>
@@ -79,196 +57,11 @@
                         </span>
                     </div>
                 </div>
+                @endforeach
+                @endforeach
 
-                <div class="col-md-6 col-lg-3 isotope-item logos">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/masjid.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Identity</span>
-                                    <span class="thumb-info-type">Logo</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/masjid.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
 
-                <div class="col-md-6 col-lg-3 isotope-item websites">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/masjid2.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Porto Screens</span>
-                                    <span class="thumb-info-type">Website</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/masjid2.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
 
-                <div class="col-md-6 col-lg-3 isotope-item logos">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-4.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Three Bottles</span>
-                                    <span class="thumb-info-type">Logo</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-4.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item brands">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-5.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Company T-Shirt</span>
-                                    <span class="thumb-info-type">Brand</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-5.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item websites">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-6.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Mobile Mockup</span>
-                                    <span class="thumb-info-type">Website</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-6.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item medias">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-7.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Porto Label</span>
-                                    <span class="thumb-info-type">Media</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-7.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item logos">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-23.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Business Folders</span>
-                                    <span class="thumb-info-type">Logo</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-23.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item websites">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-24.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Tablet Screen</span>
-                                    <span class="thumb-info-type">Website</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-24.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item medias">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-25.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Black Watch</span>
-                                    <span class="thumb-info-type">Media</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-25.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item websites">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-26.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Monitor Mockup</span>
-                                    <span class="thumb-info-type">Website</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-26.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

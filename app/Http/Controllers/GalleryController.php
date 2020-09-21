@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
+use App\GalleryCategory;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('pages.gallery');
+
+        $category = GalleryCategory::all();
+        return view('pages.gallery', ['category' => $category]);
     }
 }

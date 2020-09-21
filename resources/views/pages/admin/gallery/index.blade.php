@@ -14,29 +14,33 @@
             </a>
         </div>
 
-
         <div class="row">
-            <div class="card-body">
-
-                <div class="table-responsive">
-                    <table class="table table-bordered" width="100%" cellspacing="0">
+            <div class="col-12">
+                <div class="card-box">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Kategori</th>
                                 <th>Gambar</th>
+                                <th>Judul</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
+                            <?php
+                            $i = 1;
+
+                            ?>
                             @forelse ($items as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $item->gallery_category->category }}</td>
                                 <td>
                                     <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
                                 </td>
+                                <td>{{ $item->title }}</td>
                                 <td>
                                     <a href="{{ route('gallery.edit', $item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
@@ -59,6 +63,8 @@
                             @endforelse
                         </tbody>
                     </table>
+
+                    {!! $items->links() !!}
                 </div>
             </div>
         </div>

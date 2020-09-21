@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-3 order-lg-2">
                 <aside class="sidebar">
-                    <h5 class="font-weight-bold pt-4">Categories</h5>
+                    <h5 class="font-weight-bold pt-4">Tags</h5>
                     <ul class="nav nav-list flex-column mb-5">
                         <li class="nav-item">
                             <a class="nav-link" href="#">Design (2)</a>

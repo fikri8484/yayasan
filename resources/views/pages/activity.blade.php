@@ -25,23 +25,16 @@
         <div class="row">
             <div class="col-lg-3 order-lg-2">
                 <aside class="sidebar">
-                    <h5 class="font-weight-bold pt-2">Categories</h5>
+                    <h5 class="font-weight-bold pt-2">Kategori</h5>
                     <ul class="nav nav-list flex-column mb-5">
+
+                        @foreach($activity as $a)
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Design (2)</a>
+                            <a class="nav-link" href="#">{{ $a->activity_tag->tag }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Photos (4)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Videos (3)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Lifestyle (2)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Technology (1)</a>
-                        </li>
+
+                        @endforeach
                     </ul>
                 </aside>
             </div>
@@ -49,23 +42,25 @@
                 <div class="blog-posts">
 
                     <div class="row px-3">
-
+                        @foreach($activity as $a)
                         <div class="col-sm-6">
                             <article class="post post-medium border-0 pb-0 mb-5">
                                 <div class="post-image">
                                     <a href="/kegiatandetail">
-                                        <img src="img/projects/project-short.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+
+                                        <img src="{{ $a->activity_gallery->count() ? Storage::url($a->activity_gallery->first()->image) : '' }}" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+
                                     </a>
                                 </div>
 
                                 <div class="post-content">
 
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="/kegiatandetail">Amazing Mountain</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="/kegiatandetail">{{ $a->title }}</a></h2>
+                                    <p>{{ str_limit($a->description, $limit = 100 ) }}</p>
 
                                     <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">Bob Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
+                                        <span><i class="far fa-user"></i> Admin </span>
+                                        <span><i class="far fa-folder"></i> <a href="#">{{ $a->activity_tag->tag }}</a> </span>
 
                                         <span class="d-block mt-2"><a href="/kegiatandetail" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
                                     </div>
@@ -73,189 +68,15 @@
                                 </div>
                             </article>
                         </div>
+                        @endforeach
 
-                        <div class="col-sm-6">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-2.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">Creative Business</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-3.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">Unlimited Ways</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-4.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">Developer Life</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">Jessica Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-5.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">The Blue Sky</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">Robert Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-6.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">Night Life</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">Robert Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-7.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">Another World Perspective</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-8.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">The Creative Team</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">Robert Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <ul class="pagination float-right">
-                                <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
-                            </ul>
-                        </div>
-                    </div>
+
 
                 </div>
+
+                {!! $activity->links() !!}
             </div>
         </div>
     </div>

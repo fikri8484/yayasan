@@ -28,6 +28,7 @@
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
         <div class="content-page">
+            @include('sweetalert::alert')
             @yield('content')
 
             <!-- Footer Start -->
@@ -48,8 +49,10 @@
 
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
-
+    @stack('prepend-script')
     @include('includes.admin.script')
+    @stack('addon-script')
+
 
 </body>
 

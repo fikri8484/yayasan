@@ -33,10 +33,23 @@ Route::get('/donasi', 'DonationController@index')
 
 Route::prefix('admin')
     ->namespace('Admin')
+    ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', 'DashboardController@index')
             ->name('dashboard');
+        Route::get('/hello', 'ActivityController@hello');
 
         Route::resource('category', 'GalleryCategoryController');
         Route::resource('gallery', 'GalleryController');
+        Route::resource('activity', 'ActivityController');
+        Route::resource('activity-tag', 'ActivityTagController');
+        Route::resource('activity-gallery', 'ActivityGalleryController');
+        Route::resource('program', 'ProgramController');
+        Route::resource('categoryprogram', 'CategoryController');
     });
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
+
+Auth::routes(['verify' => true]);

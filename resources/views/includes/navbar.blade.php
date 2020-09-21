@@ -50,11 +50,26 @@
                                                 Tentang
                                             </a>
                                         </li>
+
+                                        @guest
                                         <li>
-                                            <a class="dropdown {{ request()->is('login') ? 'active' : '' }}" href="/login"> <i class="far fa-user mr-1" href="/login"></i>
+                                            <a class="dropdown {{ request()->is('login') ? 'active' : '' }}" href="/login"> <i class="far fa-user mr-1" href="/login" type="button" onclick="event.preventDefault(); location.href='{{ url('login') }}';"></i>
                                                 Login/Register
                                             </a>
                                         </li>
+                                        @endguest
+
+
+                                        @auth
+
+                                        <li>
+                                            <a class="dropdown {{ request()->is('login') ? 'active' : '' }}" href="{{ url('yayasandashboard.html') }}"> <i class="far fa-user mr-1" action="{{ url('yayasandashboard.html') }}" type="submit"></i>
+                                                Bambang
+                                            </a>
+                                        </li>
+
+                                        @endauth
+
 
                                     </ul>
                                 </nav>

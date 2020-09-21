@@ -32,14 +32,14 @@
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('activity.index') }}">
                         <i class="mdi mdi-view-list"></i>
                         <span> Kegiatan </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('program.index') }}">
                         <i class="mdi mdi-heart"></i>
                         <span> Donasi </span>
                     </a>

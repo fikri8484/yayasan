@@ -15,10 +15,16 @@
                 <!-- item-->
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="fe-log-out"></i>
-                    <span>Logout</span>
-                </a>
+
+                <form action="{{ url('logout') }}" method="POST">
+                    @csrf
+                    <a href="{{ url('logout') }}" class="dropdown-item notify-item">
+                        <button class="btn btn-primary" type="submit"><i class="fe-log-out">Logout</button></i>
+                        <!-- <span>Logout</span> -->
+
+                    </a>
+                </form>
+
 
             </div>
         </li>
