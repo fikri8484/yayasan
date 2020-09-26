@@ -61,10 +61,9 @@
 
 
                                         @auth
-
                                         <li>
-                                            <a class="dropdown {{ request()->is('login') ? 'active' : '' }}" href="{{ url('yayasandashboard.html') }}"> <i class="far fa-user mr-1" action="{{ url('yayasandashboard.html') }}" type="submit"></i>
-                                                Bambang
+                                            <a class="dropdown {{ request()->is('dashboard') ? 'active' : '' }}" href="/dashboard"> <i class="far fa-user mr-1" href="/dashboard" type="button" onclick="event.preventDefault(); location.href='{{ url('dashboard') }}';"></i>
+                                                Dashboard
                                             </a>
                                         </li>
 

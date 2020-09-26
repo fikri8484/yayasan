@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShelterAccountRequest extends FormRequest
+class DevelomentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class ShelterAccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'bank' => 'required|max:255',
-            'account_number' => 'required|max:255',
-            'on_name' => 'required|max:255'
+            'programs_id' => 'required|integer|exists:programs,id',
+            'title' => 'required|max:255',
+            'time' => 'required|date',
+            'description' => 'required'
         ];
     }
 }

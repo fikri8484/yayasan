@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use Illuminate\Http\Request;
 
 class ActivitydetailController extends Controller
 {
-    public function index(Request $request)
+
+    public function index(Request $request, $slug)
     {
-        return view('pages.activitydetail');
+        $activity = Activity::with(['activity_gallery'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return view('pages.activitydetail', [
+            'activity' => $activity
+        ]);
     }
 }

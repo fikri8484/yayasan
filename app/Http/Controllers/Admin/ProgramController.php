@@ -45,7 +45,9 @@ class ProgramController extends Controller
      */
     public function store(ProgramRequest $request)
     {
+
         $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
         $data['image'] = $request->file('image')->store(
             'assets/program',
             'public'
@@ -66,6 +68,7 @@ class ProgramController extends Controller
      */
     public function show($id)
     {
+
         $item = Program::find($id);
         return view('pages.admin.program.show', ['item' => $item]);
     }

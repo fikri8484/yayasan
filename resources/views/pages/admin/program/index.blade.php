@@ -54,8 +54,8 @@
                                 <td>{{ $p->category->category_name }}</td>
                                 <td>{{ $p->brief_explanation }}</td>
                                 <td>{!!$p->description!!}</td>
-                                <td>{{ $p->donation_target }}</td>
-                                <td>{{ $p->donation_collected }}</td>
+                                <td>@currency($p->donation_target)</td>
+                                <td>@currency($p->donation_collected)</td>
                                 <td>{{ $p->time_is_up }}</td>
                                 <td>
                                     <a href="{{ route('program.show', $p->id) }}" class="btn btn-info">

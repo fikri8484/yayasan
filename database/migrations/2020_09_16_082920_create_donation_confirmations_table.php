@@ -18,12 +18,14 @@ class CreateDonationConfirmationsTable extends Migration
             $table->integer('programs_id');
             $table->integer('users_id');
             $table->integer('shelter_accounts_id');
-            $table->string('id_transaction');
+            $table->integer('id_transaction');
             $table->string('donor_name');
             $table->string('email');
+            $table->integer('nominal_input');
             $table->integer('nominal_donation');
             $table->text('support');
             $table->text('proof_payment');
+            $table->string('donation_status');
             $table->softDeletes();
             $table->timestamps();
         });

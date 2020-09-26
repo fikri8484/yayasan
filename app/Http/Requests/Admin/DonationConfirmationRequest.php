@@ -25,12 +25,12 @@ class DonationConfirmationRequest extends FormRequest
     {
         return [
             'programs_id' => 'required|integer|exists:programs,id',
-            'users_id' => 'required|integer|exists:users,id',
             'shelter_accounts_id' => 'required|integer|exists:shelter_accounts,id',
-            'donor_name' => 'required|max:255',
-            'email' => 'required|max:255',
             'nominal_donation' => 'required|integer',
-            'support' => 'required'
+            'donation_status' => 'required|string|in:SUKSES,BELUM_TRANSFER,BELUM_KONFIRM,SUDAH_KONFIRM,DITOLAK',
+            'proof_payment' => 'required|image'
         ];
     }
 }
+
+// 'users_id' => 'required|integer|exists:users,id',

@@ -5,18 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ShelterAccount extends Model
+class Development extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'bank', 'account_number', 'on_name'
+        'programs_id', 'title', 'description', 'time'
     ];
 
     protected $hidden = [];
 
-    public function donation_confirmation()
+
+    public function program()
     {
-        return $this->hasMany(DonationConfirmation::class, 'shelter_accounts_id', 'id');
+        return $this->belongsTo(Program::class, 'programs_id', 'id');
     }
 }

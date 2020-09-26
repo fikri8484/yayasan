@@ -17,6 +17,7 @@ class CreateShelterAccountsTable extends Migration
             $table->bigIncrements('id');
             $table->string('bank');
             $table->string('account_number');
+            $table->string('on_name');
             $table->softDeletes();
             $table->timestamps();
         });

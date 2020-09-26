@@ -22,14 +22,32 @@ Route::get('/galeri', 'GalleryController@index')
 Route::get('/kegiatan', 'ActivityController@index')
     ->name('activity');
 
-Route::get('/kegiatandetail', 'ActivitydetailController@index')
-    ->name('activity-detail');
+Route::get('/kegiatan/{slug}', 'ActivitydetailController@index')
+    ->name('detail-kegiatan');
 
 Route::get('/tentang', 'AboutController@index')
     ->name('about');
 
+Route::get('/dashboard', 'DashboardController@donasi')
+    ->name('dashboard')
+    ->middleware(['auth', 'verified']);
+
+
+// BAGIAN DONASI
+
 Route::get('/donasi', 'DonationController@index')
     ->name('donation');
+
+Route::get('/donasi/{slug}', 'DonationController@donasi')
+    ->name('detail-donation');
+
+Route::get('/donasi/{slug}/form', 'DonationController@donasicreate');
+Route::post('/donasi/{slug}/form/store', 'DonationController@donasistore');
+Route::get('/confirmdonation/{id}', 'DonationController@confirmdonation')->name('confirmdonation');
+Route::post('/confirmdonation/store/{id}', 'DonationController@donasiconfirmstore');
+
+
+// ADMIN
 
 Route::prefix('admin')
     ->namespace('Admin')
@@ -46,6 +64,8 @@ Route::prefix('admin')
         Route::resource('activity-gallery', 'ActivityGalleryController');
         Route::resource('program', 'ProgramController');
         Route::resource('categoryprogram', 'CategoryController');
+        Route::resource('development', 'DevelopmentController');
+        Route::resource('donatur', 'DonaturController');
     });
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

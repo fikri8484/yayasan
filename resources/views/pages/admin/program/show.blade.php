@@ -44,11 +44,11 @@
                 </tr>
                 <tr>
                     <th>Target Donasi</th>
-                    <td>{{ $item->donation_target }}</td>
+                    <td>@currency($item->donation_target)</td>
                 </tr>
                 <tr>
                     <th>Donasi Terkumpul</th>
-                    <td>{{ $item->donation_collected }}</td>
+                    <td>@currency($item->donation_collected)</td>
                 </tr>
 
                 <tr>
@@ -59,6 +59,18 @@
                     <th>Foto</th>
                     <td>
                         <img src="{{ Storage::url($item->image) }}" alt="" style="width: 250px" class="img-thumbnail"></td>
+                </tr>
+                <tr>
+                    <?php
+                    $a = 1; ?>
+                    <th>Berita</th>
+                    <td>@foreach($item->developments as $d)
+                        <b>Berita {{ $a++}} :</b> {{ $d->title }} <br>
+                        <b>Waktu :</b> {{ $d->time }} <br>
+                        <b>Deskripsi :</b> {{ $d->description }} <br>
+                        <b> --------------------------------------------------------------------------------------------------- </b><br>
+                        @endforeach
+                    </td>
                 </tr>
             </table>
         </div>

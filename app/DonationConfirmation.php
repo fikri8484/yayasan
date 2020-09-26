@@ -10,7 +10,7 @@ class DonationConfirmation extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'programs_id', 'users_id', 'shelter_accounts_id', 'id_transaction', 'donor_name', 'email', 'nominal_donation', 'support', 'proof_payment'
+        'programs_id', 'users_id', 'shelter_accounts_id', 'id_transaction', 'donor_name', 'email', 'nominal_input', 'nominal_donation', 'support', 'proof_payment', 'donation_status'
     ];
 
     protected $hidden = [];
@@ -26,13 +26,13 @@ class DonationConfirmation extends Model
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
-    public function ShelterAccount()
+    public function shelter_account()
     {
         return $this->belongsTo(ShelterAccount::class, 'shelter_accounts_id', 'id');
     }
 
     public function getFoto()
     {
-        return asset('images/bukti_pembayaran/' . $this->bukti_pembayaran);
+        return asset('images/proof_payment/' . $this->proof_payment);
     }
 }

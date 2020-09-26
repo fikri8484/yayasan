@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProgramsTable extends Migration
+class CreateDevelopmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,12 @@ class CreateProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('developments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('users_id');
-            $table->integer('categories_id');
+            $table->integer('programs_id');
             $table->string('title');
-            $table->string('slug');
-            $table->text('image');
-            $table->text('brief_explanation');
-            $table->integer('donation_target');
-            $table->date('time_is_up');
-            $table->integer('donation_collected');
             $table->text('description');
+            $table->date('time');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -37,6 +31,6 @@ class CreateProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('developments');
     }
 }

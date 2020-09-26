@@ -56,13 +56,10 @@ class ActivityController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
-
         $myData = Activity::create($data);
 
         if ($files = $request->file('images')) {
             foreach ($files as $file) {
-                // $name = $file->getClientOriginalName();
-                // $file->move('assets/activity-gallery', $name);
                 $dataGallery['activities_id'] = $myData->id;
                 $dataGallery['image'] = $file->store(
                     'assets/activity-gallery',
@@ -139,7 +136,6 @@ class ActivityController extends Controller
         $myData->title = $request->get('title');
         $myData->description = $request->get('description');
         $myData->time = $request->get('time');
-
 
 
 
