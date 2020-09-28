@@ -3,6 +3,7 @@
 @section('title', 'Form-Donasi')
 
 @section('content')
+
 <div role="main" class="main">
     <section class="page-header page-header-modern bg-color-secondary page-header-sm">
         <div class="container">
@@ -99,7 +100,6 @@
                                 <label for="support">Dukungan / Doa (Boleh Kosong)</label>
                                 <input type="textarea" class="form-control" name="support" placeholder="Semoga Menjadi Amal Jariyah" value="{{ old('support') }}">
                             </div>
-
                             <button type="submit" class="btn btn-primary btn-block" style="height: 80px; font-size:large;">
                                 Lanjutkan Donasi
                             </button>
@@ -112,3 +112,16 @@
     </div>
 </div>
 @endsection
+@push('addon-script')
+<!-- <script type="text/javascript">
+    $('#refresh').click(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'refreshcaptcha',
+            success: function(data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script> -->
+@endpush

@@ -10,7 +10,7 @@ class ActivityController extends Controller
     public function index(Request $request)
     {
 
-        $activity = Activity::with(['activity_gallery'])->get();
+        $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->get();
         return view('pages.activity', [
             'activity' => $activity
         ]);

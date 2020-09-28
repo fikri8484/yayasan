@@ -67,9 +67,10 @@ Route::prefix('admin')
         Route::resource('development', 'DevelopmentController');
         Route::resource('donatur', 'DonaturController');
     });
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
 
+Route::post('Ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.upload');
+Route::get('createcaptcha', 'CaptchaController@create');
+Route::post('captcha', 'CaptchaController@captchaValidate');
+Route::get('refreshcaptcha', 'CaptchaController@refreshCaptcha');
 
 Auth::routes(['verify' => true]);

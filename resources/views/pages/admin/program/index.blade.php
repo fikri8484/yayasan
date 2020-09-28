@@ -26,7 +26,6 @@
                                 <th style="max-width: 50px;">Gambar</th>
                                 <th style="max-width: 70px;">Kategori</th>
                                 <th style="max-width: 70px;">Kalimat Ajakan</th>
-                                <th style="max-width: 150px;">Deskripsi</th>
                                 <th style="max-width: 50px;">Target Donasi(Rp)</th>
                                 <th style="max-width: 50px;">Donasi Terkumpul(Rp)</th>
                                 <th style="max-width: 70px;">Tgl Terakhir Donasi</th>
@@ -53,17 +52,19 @@
 
                                 <td>{{ $p->category->category_name }}</td>
                                 <td>{{ $p->brief_explanation }}</td>
-                                <td>{!!$p->description!!}</td>
+
+
+
                                 <td>@currency($p->donation_target)</td>
                                 <td>@currency($p->donation_collected)</td>
                                 <td>{{ $p->time_is_up }}</td>
                                 <td>
                                     <a href="{{ route('program.show', $p->id) }}" class="btn btn-info">
                                         <i class="fa fa-eye"></i>
-                                    </a><br><br>
+                                    </a>
                                     <a href="{{ route('program.edit', $p->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
-                                    </a><br><br>
+                                    </a>
                                     <form action="{{ route('program.destroy', $p->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')

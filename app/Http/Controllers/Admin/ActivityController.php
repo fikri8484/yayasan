@@ -27,7 +27,7 @@ class ActivityController extends Controller
         //     'items' => $items
         // ]);
 
-        $activity = Activity::all();
+        $activity = Activity::orderBy('id', 'DESC')->get();
         return view('pages.admin.activity.index', ['activity' => $activity]);
     }
 

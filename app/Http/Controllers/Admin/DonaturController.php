@@ -22,7 +22,7 @@ class DonaturController extends Controller
     {
         $items = DonationConfirmation::with([
             'program', 'shelter_account', 'user'
-        ])->get();
+        ])->orderBy('id', 'DESC')->get();
 
         return view('pages.admin.donatur.index', [
             'items' => $items

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-// use App\Http\Requests\Admin\DonationConfirmationRequest;
+use App\Http\Requests\Admin\DonationConfirmationRequest;
 use App\Category;
 use App\Program;
 use App\DonationConfirmation;
@@ -13,6 +13,7 @@ use App\ShelterAccount;
 use App\Development;
 use App\User;
 use Alert;
+use Carbon\Carbon;
 
 class DonationController extends Controller
 {
@@ -30,7 +31,10 @@ class DonationController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        return view('pages.donationdetail', compact('program'));
+        $create = $program->created_at->isoFormat('dddd, D MMMM Y');
+        // $ubah = Carbon::createFromFormat('date', 'time_is_up')->toDateTimeString();
+
+        return view('pages.donationdetail', compact('program', 'create'));
     }
 
     public function donasicreate(Request $request, $slug)
@@ -53,7 +57,6 @@ class DonationController extends Controller
 
     public function donasistore(Request $request)
     {
-
         $donatur = new DonationConfirmation;
         $id_donatur_terakhir = $donatur->latest()->first()->id_transaction;
 
@@ -151,16 +154,7 @@ class DonationController extends Controller
 
         $item->update($data);
 
-        return redirect()->route('donation');
+        // return redirect()->route('donation');
+        return view('pages.thanks');
     }
 }
-
-// $data = $request->all();
-// $data['image'] = $request->file('image')->store(
-//     'assets/gallery',
-//     'public'
-// );
-
-// $item = Gallery::findOrFail($id);
-
-// $item->update($data);

@@ -22,8 +22,9 @@
                         <thead>
                             <tr>
                                 <th style="max-width: 10px;">No</th>
-                                <th>Program</th>
-                                <th style="max-width: 70px;">Judul</th>
+                                <th style="max-width: 70px;">Nama Program Donasi</th>
+                                <th>Judul Perkembangan</th>
+
                                 <th style="max-width: 250px;">Deskripsi</th>
 
                                 <th style="max-width: 70px;">tgl Berita</th>
@@ -44,12 +45,14 @@
 
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $d->title }}</td>
                                 <td>{{ $d->program->title }}</td>
-                                <td>{{ $d->description }}</td>
+                                <td>{{ $d->title }}</td>
+
+                                <td>{{ str_limit($d->description, $limit = 100 ) }}</td>
 
                                 <td>{{ $d->time }}</td>
                                 <td>
+
                                     <a href="{{ route('development.edit', $d->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>

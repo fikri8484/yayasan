@@ -6,7 +6,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Donasi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Detail Donasi {{ $item->title }}</h1>
     </div>
 
     @if ($errors->any())
@@ -67,7 +67,7 @@
                     <td>@foreach($item->developments as $d)
                         <b>Berita {{ $a++}} :</b> {{ $d->title }} <br>
                         <b>Waktu :</b> {{ $d->time }} <br>
-                        <b>Deskripsi :</b> {{ $d->description }} <br>
+                        <b>Deskripsi :</b> {!! $d->description !!} <br>
                         <b> --------------------------------------------------------------------------------------------------- </b><br>
                         @endforeach
                     </td>

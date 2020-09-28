@@ -19,7 +19,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $program = Program::all();
+        $program = Program::orderBy('id', 'DESC')->get();
         return view('pages.admin.program.index', ['program' => $program]);
     }
 
@@ -53,6 +53,15 @@ class ProgramController extends Controller
             'public'
         );
 
+        //CKEDITOR
+
+
+
+
+
+
+
+
         Program::create($data);
 
         Alert::success('Success', 'Data Berhasil Ditambah');
@@ -82,9 +91,10 @@ class ProgramController extends Controller
     public function edit($id)
     {
         $item = Program::findOrFail($id);
-
+        $categories = Category::all();
         return view('pages.admin.program.edit', [
-            'item' => $item
+            'item' => $item,
+            'categories' => $categories
         ]);
     }
 
@@ -99,11 +109,14 @@ class ProgramController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
-
+        $data['image'] = $request->file('image')->store(
+            'assets/program',
+            'public'
+        );
         $item = Program::findOrFail($id);
 
         $item->update($data);
-
+        Alert::success('Success', 'Data Berhasil Diubah');
         return redirect()->route('program.index');
     }
 

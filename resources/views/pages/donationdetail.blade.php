@@ -29,7 +29,7 @@
                                 <strong class="font-weight-extra-bold">{{ $program->title }}</strong>
                             </h2>
                             <h6><i class="text-color-grey">{{ $program->brief_explanation }}</i></h6>
-                            <h4 style="text-align: center;"> <strong class="text-color-secondary">14</strong> Hari lagi /
+                            <h4 style="text-align: center;"> <strong class="text-color-secondary">{{$program->created_at->diffForHumans()}}</strong> Hari lagi /
                                 <strong class="text-color-secondary" style="text-align: right;"> @currency($program->donation_collected)</strong> Terkumpul dari @currency($program->donation_target)</h4>
                         </div>
                     </div>
@@ -43,15 +43,25 @@
                     ?>
                     <div class="progress mb-2">
                         <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{$bar}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
-
                         </div>
                     </div>
+                    @if ($program->donation_collected >= $program->donation_target)
+                    <button class="btn mb-4" style="width: 100%; height: 100%; background-color:#7f8c8d;">
 
+                        <h4 style="color: whitesmoke" class="pt-2">
+                            ~ Donasi Ditutup ~
+                        </h4>
+
+                    </button>
+
+                    @else
                     <a href="/donasi/{{$program->slug}}/form" class="btn btn-secondary mb-4" style="width: 100%; height: 100%;">
                         <h4 style="color: whitesmoke" class="pt-2">
                             Donasi Sekarang
                         </h4>
                     </a>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -99,7 +109,7 @@
                                         <li>
                                             <i class="fas fa-caret-right left-10"></i>
                                             <strong class="text-color-primary">Open Donation:</strong>
-                                            January 2020
+                                            {{ $create }}
                                         </li>
                                         <li>
                                             <i class="fas fa-caret-right left-10"></i>
@@ -128,7 +138,7 @@
                             @foreach($program->donation_confirmation->where('donation_status','SUKSES') as $donatur)
                             <blockquote class="with-borders">
                                 <div class="sample-icon">
-                                    <a><i class="icon-user icons"></i><span class="name"> {{ $donatur->donor_name }}</span> ~ <i>26 Menit yg lalu</i></a>
+                                    <a><i class="icon-user icons"></i><span class="name"> {{ $donatur->donor_name }}</span> ~ <i>{{$donatur->created_at->diffForHumans()}}</i></a>
                                 </div>
                                 <p>
                                     Berdonasi Sebesar <strong>@currency($donatur->nominal_donation)</strong> <br />
@@ -173,7 +183,7 @@
                                             <div class="process-step-content">
                                                 <h4 class="mb-1 text-4 font-weight-bold">{{$dev->title}}</h4>
                                                 <p><i>{{$dev->time}}</i></p>
-                                                <p class="mb-0">{{ $dev->description }}</p>
+                                                <p class="mb-0">{!! $dev->description !!}</p>
                                             </div>
 
                                         </div>

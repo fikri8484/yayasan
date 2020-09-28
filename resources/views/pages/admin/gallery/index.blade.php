@@ -48,7 +48,7 @@
                                     <form action="{{ route('gallery.destroy', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger">
+                                        <button class="btn btn-danger" onclick="confirmDelete('datatable')">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
@@ -75,3 +75,24 @@
 </div> <!-- content -->
 
 @endsection
+
+@push('addon-script')
+<script>
+    function confirmDelete(item_id) {
+        swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover it!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $('#' + item_id).submit();
+                } else {
+                    swal("Cancelled Successfully");
+                }
+            });
+    }
+</script>
+@endpush

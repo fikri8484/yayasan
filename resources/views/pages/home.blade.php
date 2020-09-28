@@ -18,7 +18,7 @@
                         maka sesungguhnya Allah Maha Mengetahui
                     </div>
 
-                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold" data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-hash data-hash-offset="85" href="yayasancauses.html" data-x="center" data-hoffset="0" data-y="center" data-voffset="['65','65','65','105']" data-whitespace="nowrap" data-fontsize="['15','15','15','33']" data-paddingtop="['15','15','15','40']" data-paddingright="['45','45','45','110']" data-paddingbottom="['15','15','15','40']" data-paddingleft="['45','45','45','110']">Donasi Sekarang</a>
+                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold" data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-hash data-hash-offset="85" href="{{ route('donation') }}" data-x="center" data-hoffset="0" data-y="center" data-voffset="['65','65','65','105']" data-whitespace="nowrap" data-fontsize="['15','15','15','33']" data-paddingtop="['15','15','15','40']" data-paddingright="['45','45','45','110']" data-paddingbottom="['15','15','15','40']" data-paddingleft="['45','45','45','110']">Donasi Sekarang</a>
                 </li>
                 <li data-transition="fade" class="slide-overlay slide-overlay-level-8">
                     <img src="img/slides/masjid.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" />
@@ -35,7 +35,7 @@
                         (QS. Ali-‘Imran : 92)
                     </div>
 
-                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold" data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-hash data-hash-offset="85" href="yayasancauses.html" data-x="center" data-hoffset="0" data-y="center" data-voffset="['65','65','65','105']" data-whitespace="nowrap" data-fontsize="['15','15','15','33']" data-paddingtop="['15','15','15','40']" data-paddingright="['45','45','45','110']" data-paddingbottom="['15','15','15','40']" data-paddingleft="['45','45','45','110']">Donasi Sekarang</a>
+                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold" data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-hash data-hash-offset="85" href="{{ route('donation') }}" data-x="center" data-hoffset="0" data-y="center" data-voffset="['65','65','65','105']" data-whitespace="nowrap" data-fontsize="['15','15','15','33']" data-paddingtop="['15','15','15','40']" data-paddingright="['45','45','45','110']" data-paddingbottom="['15','15','15','40']" data-paddingleft="['45','45','45','110']">Donasi Sekarang</a>
                 </li>
             </ul>
         </div>
@@ -74,7 +74,7 @@
                     Phasellus blandit massa enim. Nullam id varius nunc. Vivamus
                     bibendum magna ex, et faucibus lacus venenatis eget
                 </p>
-                <a href="yayasanabout.html" class="btn btn-secondary font-weight-semibold btn-px-4 btn-py-2 text-2">Lihat Selengkapnya</a>
+                <a href="{{ route('about') }}" class="btn btn-secondary font-weight-semibold btn-px-4 btn-py-2 text-2">Lihat Selengkapnya</a>
             </div>
             <div class="col-sm-8 col-md-6 col-lg-4 offset-sm-4 offset-md-4 offset-lg-2 mt-sm-5" style="top: 1.7rem">
                 <img src="img/generic/generic-corporate-3-1.jpg" class="img-fluid position-absolute d-none d-sm-block appear-animation" data-appear-animation="expandIn" data-appear-animation-delay="300" style="top: 10%; left: -50%" alt="" />
@@ -90,35 +90,55 @@
                 <hr class="my-5 bg-color-secondary size=" 50" style="height: 4px" />
             </div>
         </div>
+
+
         <div class="row">
-            <div class="col-md-5 order-md-2 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInLeftShorter">
-                <img src="img/slides/masjid.jpg" class="img-fluid" alt="" />
+            <div class="col-lg-12 text-center">
+                <h2 class="font-weight-normal text-6 mb-5 text-color-dark">
+                    <strong class="font-weight-extra-bold">Donasi</strong> Pilihan
+                </h2>
             </div>
-            <div class="col-md-7 order-2">
-                <div class="overflow-hidden">
-                    <h2 class="text-color-dark font-weight-bold text-8 mb-0 pt-0 mt-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="300">
-                        Donasi Cepat
-                    </h2>
-                </div>
-                <div class="overflow-hidden mb-3">
-                    <p class="font-weight-bold text-primary text-uppercase mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="500">
-                        Pembangunan Tahap 1 Tiang Masjid
-                    </p>
-                </div>
-                <p class="lead appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                    <a href="#">vehicula</a> sit amet enim ac sagittis. Curabitur
-                    eget leo varius, elementum mauris eget, egestas quam. Donec ante
-                    risus, dapibus sed lectus non, lacinia vestibulum nisi. Morbi
-                    vitae augue quam. Nullam ac laoreet libero.
-                </p>
-                <div class="row align-items-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
-                    <div class="col-lg-6">
-                        <a href="causedetails.html" class="btn btn-primary mt-3">Donasi Sekarang</a>
-                        <br />
-                        <a href="yayasancauses.html" class="btn btn-secondary mt-3">Lihat Semua Donasi</a>
+
+            @foreach($program as $program)
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <a href="{{ route('detail-donation', $program->slug) }}">
+                        <img class="card-img-top" src="{{ Storage::url($program->image) }}" alt="Card Image"> </a>
+                    <div class="card-body">
+                        @if ($program->donation_collected >= $program->donation_target)
+                        <div class="badge badge-success">Terdanai <i class="fa fa-check"></i></div>
+                        @endif
+                        <a href="{{ route('detail-donation', $program->slug) }}" class="text-decoration-none">
+                            <h4>{{ str_limit($program->brief_explanation, $limit = 62 ) }}</h4>
+                        </a> <a><i class="icon-check icons"></i><span class="name"> {{ $program->category->category_name }}</span></a>
+                        <div class="progress progress-xs">
+
+                            <?php
+                            $a = $program->donation_collected;
+                            $b = $program->donation_target;
+                            $c = 10;
+                            $bar = $a . $c / $b;
+                            ?>
+
+                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <p style="text-align: center;"> <strong class="text-color-secondary">14</strong> Hari lagi / Terkumpul <strong class="text-color-secondary" style="text-align: right;"> @if ($program->donation_collected == 0)Rp 0
+                                    @else
+                                    @currency($program->donation_collected)
+                                    @endif</strong> </p>
+                        </div>
                     </div>
                 </div>
+            </div>
+            @endforeach
+
+        </div>
+        <div class="row align-items-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
+            <div class="col-lg-12 text-center">
+                <a href="{{ route('donation') }}" class="btn btn-secondary mt-3">Lihat Semua Donasi </a>
             </div>
         </div>
     </div>
@@ -134,17 +154,18 @@
             </div>
 
             <div class="row portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
+                @foreach($gallery as $gallery)
                 <div class="col-md-6 col-lg-3 isotope-item brands">
                     <div class="portfolio-item">
                         <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
                             <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project.jpg" class="img-fluid border-radius-0" alt="" />
+                                <img src="{{ Storage::url($gallery->image) }}" class="img-fluid border-radius-0" alt="" />
                                 <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Perluasan Tanah Belakang Pesantern</span>
-                                    <span class="thumb-info-type">Brand</span>
+                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">{{ $gallery->title }}</span>
+                                    <span class="thumb-info-type">{{ $gallery->gallery_category->category }}</span>
                                 </span>
                                 <span class="thumb-info-action">
-                                    <a href="img/projects/project.jpg" class="lightbox-portfolio">
+                                    <a href="{{ Storage::url($gallery->image) }}" class="lightbox-portfolio">
                                         <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
                                     </a>
                                 </span>
@@ -152,145 +173,13 @@
                         </span>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item medias">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-1.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Porto Watch</span>
-                                    <span class="thumb-info-type">Media</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-1.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item logos">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-2.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Identity</span>
-                                    <span class="thumb-info-type">Logo</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-2.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item websites">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-27.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Porto Screens</span>
-                                    <span class="thumb-info-type">Website</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-27.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item logos">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-4.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Three Bottles</span>
-                                    <span class="thumb-info-type">Logo</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-4.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item brands">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-5.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Company T-Shirt</span>
-                                    <span class="thumb-info-type">Brand</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-5.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item websites">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-6.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Mobile Mockup</span>
-                                    <span class="thumb-info-type">Website</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-6.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 isotope-item medias">
-                    <div class="portfolio-item">
-                        <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
-                            <span class="thumb-info-wrapper border-radius-0">
-                                <img src="img/projects/project-7.jpg" class="img-fluid border-radius-0" alt="" />
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">Porto Label</span>
-                                    <span class="thumb-info-type">Media</span>
-                                </span>
-                                <span class="thumb-info-action">
-                                    <a href="img/projects/project-7.jpg" class="lightbox-portfolio">
-                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-search text-dark"></i></span>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="yayasangallery.html" class="btn btn-secondary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Galeri</a>
+                <a href="{{ route('gallery') }}" class="btn btn-secondary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Galeri</a>
             </div>
         </div>
     </section>
@@ -308,78 +197,31 @@
                 <div class="blog-posts">
 
                     <div class="row">
-
+                        @foreach($activity as $activity)
                         <div class="col-md-4">
                             <article class="post post-medium border-0 pb-0 mb-5">
                                 <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-1.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                                    <a href="{{ route('detail-kegiatan', $activity->slug) }}">
+                                        <img src="{{ $activity->activity_gallery->count() ? Storage::url($activity->activity_gallery->first()->image) : '' }}" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
                                     </a>
                                 </div>
 
                                 <div class="post-content">
 
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">Amazing Mountain</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="{{ route('detail-kegiatan', $activity->slug) }}">{{ $activity->title }}</a></h2>
+                                    <p>{{ str_limit($activity->description, $limit = 100 ) }}</p>
 
                                     <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">Bob Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
+                                        <span><i class="far fa-user"></i> By Admin </span>
+                                        <span><i class="far fa-folder"></i> <a href="#">{{ $activity->activity_tag->tag }}</a></span>
 
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                                        <span class="d-block mt-2"><a href="{{ route('detail-kegiatan', $activity->slug) }}" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
                                     </div>
 
                                 </div>
                             </article>
                         </div>
-
-                        <div class="col-md-4">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-2.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">Creative Business</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-md-4">
-                            <article class="post post-medium border-0 pb-0 mb-5">
-                                <div class="post-image">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/medium/blog-3.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                                    </a>
-                                </div>
-
-                                <div class="post-content">
-
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">Unlimited Ways</a></h2>
-                                    <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                                    <div class="post-meta">
-                                        <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-
-                                        <span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -387,7 +229,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="yayasankegiatan.html" class="btn btn-secondary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Kegiatan</a>
+                <a href="{{ route('activity') }}" class="btn btn-secondary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Kegiatan</a>
             </div>
         </div>
     </div>

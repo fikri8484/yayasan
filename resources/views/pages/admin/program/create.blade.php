@@ -68,8 +68,8 @@
 
 
                 <div class="form-group">
-                    <label for="" class="label">Deskripsi</label>
-                    <textarea name="description" id="editor" cols="30" rows="10" class="ckeditor form-control"></textarea>
+                    <label for="description" class="label">Deskripsi</label>
+                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
                 </div>
 
 
@@ -88,18 +88,13 @@
 @endsection
 
 @push('addon-script')
-<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('editor', options);
+    CKEDITOR.replace('description', {
+        filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
 </script>
 
-<script>
-    var options = {
-        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-    };
-</script>
 
 @endpush

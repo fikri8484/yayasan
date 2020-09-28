@@ -41,13 +41,14 @@
                     <input type="text" class="form-control" name="title" placeholder="Title" value="{{ old('title') }}">
                 </div>
                 <div class="form-group">
-                    <label for="description">About</label>
-                    <textarea name="description" rows="10" class="d-block w-100 form-control">{{ old('description') }}</textarea>
-                </div>
-                <div class="form-group">
                     <label for="time">Tanggal Buat</label>
                     <input type="date" class="form-control" name="time" placeholder="time" value="{{ old('time') }}">
                 </div>
+                <div class="form-group">
+                    <label for="description" class="label">Deskripsi</label>
+                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                </div>
+
 
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan Data
@@ -60,3 +61,15 @@
 </div>
 <!-- /.container-fluid -->
 @endsection
+
+@push('addon-script')
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('description', {
+        filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+</script>
+
+
+@endpush
