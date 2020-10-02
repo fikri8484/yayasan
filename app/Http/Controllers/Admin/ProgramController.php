@@ -54,14 +54,6 @@ class ProgramController extends Controller
         );
 
         //CKEDITOR
-
-
-
-
-
-
-
-
         Program::create($data);
 
         Alert::success('Success', 'Data Berhasil Ditambah');

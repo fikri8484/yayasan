@@ -28,10 +28,10 @@
                     <h5 class="font-weight-bold pt-2">Kategori</h5>
                     <ul class="nav nav-list flex-column mb-5">
 
-                        @foreach($activity as $a)
+                        @foreach($tag as $tag)
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ $a->activity_tag->tag }}</a>
+                            <a class="nav-link" href="#">{{ $tag->tag }}</a>
                         </li>
 
                         @endforeach
@@ -71,7 +71,7 @@
                         @endforeach
 
                     </div>
-
+                    {!! $activity->links() !!}
 
 
                 </div>

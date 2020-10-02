@@ -37,16 +37,15 @@
         <div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
             <div class="row portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
 
-                @foreach($category as $c)
-                @foreach($c->galleries as $g)
-                <div class="col-md-6 col-lg-3 isotope-item {{ $c->category }}">
+                @foreach($gallery as $g)
+                <div class="col-md-6 col-lg-3 isotope-item {{ $g->gallery_category->category }}">
                     <div class="portfolio-item">
                         <span class="thumb-info thumb-info-lighten thumb-info-no-borders thumb-info-bottom-info thumb-info-centered-icons border-radius-0">
                             <span class="thumb-info-wrapper border-radius-0">
                                 <img src="{{ Storage::url($g->image) }}" class="img-fluid border-radius-0" alt="" />
                                 <span class="thumb-info-title">
                                     <span class="thumb-info-inner line-height-1 font-weight-bold text-dark position-relative top-3">{{ $g->title }}</span>
-                                    <span class="thumb-info-type"></span>
+                                    <span class="thumb-info-type">{{ $g->gallery_category->category }}</span>
                                 </span>
                                 <span class="thumb-info-action">
                                     <a href="{{ Storage::url($g->image) }}" class="lightbox-portfolio">
@@ -58,9 +57,8 @@
                     </div>
                 </div>
                 @endforeach
-                @endforeach
 
-
+                {!! $gallery->links() !!}
 
             </div>
         </div>

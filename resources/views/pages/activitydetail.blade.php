@@ -11,11 +11,11 @@
                     <h5 class="font-weight-bold pt-4">Kategori</h5>
                     <ul class="nav nav-list flex-column mb-5">
 
-
+                        @foreach ($tag as $tag)
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ $activity->activity_tag->tag }}</a>
+                            <a class="nav-link" href="#">{{ $tag->tag }}</a>
                         </li>
-
+                        @endforeach
 
                     </ul>
                 </aside>
@@ -72,7 +72,7 @@
                                 <!-- AddThis Button BEGIN -->
                                 <div class="addthis_toolbox addthis_default_style">
                                     <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                                    <a class="addthis_button_tweet"></a>
+                                    <!-- <a class="addthis_button_tweet"></a> -->
                                     <a class="addthis_button_pinterest_pinit"></a>
                                     <a class="addthis_counter addthis_pill_style"></a>
                                 </div>

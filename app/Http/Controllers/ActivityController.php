@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\ActivityTag;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
     public function index(Request $request)
     {
-
-        $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->get();
-        return view('pages.activity', [
-            'activity' => $activity
-        ]);
+        $tag = ActivityTag::all();
+        $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->paginate(6);
+        return view('pages.activity', compact('tag', 'activity'));
     }
 }
 

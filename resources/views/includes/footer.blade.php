@@ -18,56 +18,37 @@
             <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
                 <h5 class="text-3 mb-3">Kegiatan Terakhir</h5>
                 <ul class="list-unstyled mb-0">
+
                     <li class="media mb-3 pb-1">
                         <a href="#">
-                            <img class="mr-3 rounded-circle" src="{{ url('img/office/our-office-4-square.jpg') }}" alt="" style="max-width: 70px" />
+                            <img class="mr-3 rounded-circle" src="" alt="" style="max-width: 70px" />
                         </a>
                         <div class="media-body">
                             <a href="#">
                                 <p class="text-3 text-color-light opacity-8 mb-1">
-                                    Lorem ipsum dolor sit, consectetur adipiscing elit.
+
                                 </p>
-                                <p class="text-2 mb-0">12:53 AM Dec 19th</p>
+                                <p class="text-2 mb-0"></p>
                             </a>
                         </div>
                     </li>
-                    <li class="media">
-                        <a href="#">
-                            <img class="mr-3 rounded-circle" src="{{ url('img/office/our-office-5-square.jpg') }}" alt="" style="max-width: 70px" />
-                        </a>
-                        <div class="media-body">
-                            <a href="#">
-                                <p class="text-3 text-color-light opacity-8 mb-1">
-                                    Lorem ipsum dolor sit, consectetur adipiscing elit.
-                                </p>
-                                <p class="text-2 mb-0">12:53 AM Dec 19th</p>
-                            </a>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
             <div class="col-md-6 col-lg-3 mb-5 mb-md-0">
-                <h5 class="text-3 mb-3">Donasi Terakhir</h5>
+                <h5 class="text-3 mb-3">Donasi Pilihan</h5>
                 <ul class="list-unstyled mb-0">
+
                     <li class="mb-3 pb-1">
                         <a href="#">
                             <p class="text-3 text-color-light opacity-8 mb-1">
-                                <i class="fas fa-angle-right text-color"></i><strong class="ml-2">Donasi</strong> Tahap 1 Tiang Masjid
-                                <strong class="text-color">lorem ipsum dolor sit amet.</strong>
+                                <i class="fas fa-angle-right text-color"></i><strong class="ml-2">Donasi</strong>
+                                <strong class="text-color"></strong>
                             </p>
-                            <p class="text-2 mb-0">12:55 AM Dec 19th</p>
+                            <p class="text-2 mb-0"></p>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <p class="text-3 text-color-light opacity-8 mb-1">
-                                <i class="fas fa-angle-right text-color"></i><strong class="ml-2">Donasi</strong> Perluasan halaman
-                                yayasan
-                                <strong class="text-color">lorem ipsum dolor sit amet.</strong>
-                            </p>
-                            <p class="text-2 mb-0">12:55 AM Dec 19th</p>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
             <div class="col-md-6 col-lg-2">

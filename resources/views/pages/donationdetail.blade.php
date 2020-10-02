@@ -29,7 +29,7 @@
                                 <strong class="font-weight-extra-bold">{{ $program->title }}</strong>
                             </h2>
                             <h6><i class="text-color-grey">{{ $program->brief_explanation }}</i></h6>
-                            <h4 style="text-align: center;"> <strong class="text-color-secondary">{{$program->created_at->diffForHumans()}}</strong> Hari lagi /
+                            <h4 style="text-align: center;"> <strong class="text-color-secondary">{{$different_days}}</strong> Hari lagi /
                                 <strong class="text-color-secondary" style="text-align: right;"> @currency($program->donation_collected)</strong> Terkumpul dari @currency($program->donation_target)</h4>
                         </div>
                     </div>
@@ -104,7 +104,14 @@
                                         <li>
                                             <i class="fas fa-caret-right left-10"></i>
                                             <strong class="text-color-primary">Jumlah Donatur yang Telah Berdonasi:</strong>
-                                            <strong class="text-color-secondary">1340</strong>
+                                            <strong class="text-color-secondary">
+                                                <?php
+                                                $total = $program->donation_confirmation->where('donation_status', 'SUKSES')->count()
+                                                ?>
+                                                {{$total}}
+
+
+                                            </strong>
                                         </li>
                                         <li>
                                             <i class="fas fa-caret-right left-10"></i>
@@ -114,7 +121,7 @@
                                         <li>
                                             <i class="fas fa-caret-right left-10"></i>
                                             <strong class="text-color-primary">Close Donation:</strong>
-                                            {{ $program->time_is_up }}
+                                            {{ $time_is_up }}
                                         </li>
 
                                     </ul>
@@ -135,10 +142,10 @@
                         </div>
                         <div id="donatur" class="tab-pane">
 
-                            @foreach($program->donation_confirmation->where('donation_status','SUKSES') as $donatur)
+                            @foreach($program->donation_confirmation->where('donation_status','SUKSES')->sortByDesc('id') as $donatur)
                             <blockquote class="with-borders">
                                 <div class="sample-icon">
-                                    <a><i class="icon-user icons"></i><span class="name"> {{ $donatur->donor_name }}</span> ~ <i>{{$donatur->created_at->diffForHumans()}}</i></a>
+                                    <a><i class="icon-user icons"></i><span class="name"> {{ $donatur->donor_name }}</span> ~ <i>{{$donatur->updated_at->diffForHumans()}}</i></a>
                                 </div>
                                 <p>
                                     Berdonasi Sebesar <strong>@currency($donatur->nominal_donation)</strong> <br />
@@ -172,12 +179,15 @@
                             <div class="row">
                                 <div class="col">
                                     <h4 class="mb-2">Berita Perkembangan Donasi</h4>
-                                    <?php $i = 1; ?>
+                                    <?php
+                                    $totalDev = $program->developments->count();
+                                    $i = $totalDev;
+                                    ?>
                                     <div class="process process-vertical py-4">
-                                        @foreach($program->developments as $dev)
+                                        @foreach($program->developments->sortByDesc('id') as $dev)
                                         <div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                                             <div class="process-step-circle">
-                                                <strong class="process-step-circle-content">{{$i++}}</strong>
+                                                <strong class="process-step-circle-content">{{$i--}}</strong>
                                             </div>
 
                                             <div class="process-step-content">

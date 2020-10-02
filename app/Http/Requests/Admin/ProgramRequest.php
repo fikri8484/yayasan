@@ -29,7 +29,7 @@ class ProgramRequest extends FormRequest
             'image' => 'required|image',
             'brief_explanation' => 'required',
             'donation_target' => 'required|integer',
-            'time_is_up' => 'required',
+            'time_is_up' => 'required|date',
             'description' => 'required'
         ];
     }

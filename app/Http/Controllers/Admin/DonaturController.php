@@ -103,16 +103,27 @@ class DonaturController extends Controller
 
         $item->update($data);
 
+        // $myData = $item->donation_status;
+        // if ($myData == 'SUKSES') {
+        //     $konfirmasi = DonationConfirmation::findOrFail($id);
+        //     $collected = DonationConfirmation::where('programs_id', $konfirmasi->programs_id)->sum('nominal_donation');
+        //     $program = Program::where('id', $konfirmasi->programs_id)->first();
+        //     $program->update(['donation_collected' => $collected]);
+        // }
         $myData = $item->donation_status;
         if ($myData == 'SUKSES') {
-            $konfirmasi = DonationConfirmation::find($id);
-            $collected = DonationConfirmation::where('programs_id', $konfirmasi->programs_id)->sum('nominal_donation');
-            $program = Program::where('id', $konfirmasi->programs_id)->first();
-            $program->update(['donation_collected' => $collected]);
+            $konfirmasi = DonationConfirmation::findOrFail($id);
+            $collected = DonationConfirmation::where('id', $id)->sum('nominal_donation');
+
+
+            $program = Program::where('id', $konfirmasi->programs_id)->sum('donation_collected');
+            // $tambah = $collected->sum($program);
+
+            $tambah = $collected + $program;
+
+            $programs = Program::where('id', $konfirmasi->programs_id)->first();
+            $programs->update(['donation_collected' => $tambah]);
         }
-
-
-
 
 
         Alert::success('Success', 'Data Berhasil diubah');

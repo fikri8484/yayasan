@@ -19,9 +19,9 @@ class DonationController extends Controller
 {
     public function index()
     {
-        $programs = Program::all()->where('is_selected', 1);
+        $programs = Program::where('is_selected', 1)->orderBy('id', 'DESC')->paginate(6);
         $programsNew = Program::orderBy('id', 'DESC')->where('is_selected', 0)->paginate(9);
-        // dd($programsNew);
+
         return view('pages.donation', compact('programs', 'programsNew'));
     }
 
@@ -30,11 +30,18 @@ class DonationController extends Controller
         $program = Program::with(['donation_confirmation', 'developments'])
             ->where('slug', $slug)
             ->firstOrFail();
+        // $create = $program->created_at->isoFormat('dddd, D MMMM Y');
+        $create = $program->created_at->isoFormat('D-MM-Y');
+        $time_is_up = \Carbon\Carbon::parse($program->time_is_up)->format('d-m-Y');
 
-        $create = $program->created_at->isoFormat('dddd, D MMMM Y');
-        // $ubah = Carbon::createFromFormat('date', 'time_is_up')->toDateTimeString();
+        // $tomorrow = \Carbon\Carbon::tomorrow('Asia/Jakarta');
 
-        return view('pages.donationdetail', compact('program', 'create'));
+        $akhir = \Carbon\Carbon::parse($program->time_is_up)->format('Y-m-d');
+        $start_date = \Carbon\Carbon::now('Asia/Jakarta');
+        $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir);
+        $different_days = $start_date->diffInDays($end_date);
+
+        return view('pages.donationdetail', compact('program', 'create', 'different_days', 'time_is_up'));
     }
 
     public function donasicreate(Request $request, $slug)
@@ -57,6 +64,13 @@ class DonationController extends Controller
 
     public function donasistore(Request $request)
     {
+
+        request()->validate([
+            'donor_name' => 'required|string',
+            'nominal_donation' => 'required|integer',
+            'shelter_accounts_id' => 'required|integer'
+
+        ]);
         $donatur = new DonationConfirmation;
         $id_donatur_terakhir = $donatur->latest()->first()->id_transaction;
 
@@ -77,7 +91,7 @@ class DonationController extends Controller
         $donatur->nominal_donation = $nominal_donation;
         $donatur->email = $request->email;
         $donatur->support = $request->support;
-        $bukti = 'a';
+        $bukti = 'null';
         $blmtf = 'BELUM_TRANSFER';
         $donatur->proof_payment = $bukti;
         $donatur->donation_status = $blmtf;
@@ -120,7 +134,10 @@ class DonationController extends Controller
         $donatur = DonationConfirmation::with(['shelter_account'])->findOrFail($id);
         $program = Program::where('id', $donatur->programs_id)->first();
 
-        return view('pages.confirmdonation', compact('donatur', 'program'));
+        $now = Carbon::now('Asia/Jakarta');
+        $tomorrow = $now->add('1 day')->format('H:i\ , d M Y'); //Besok 13:20, 02 Oct 2020
+
+        return view('pages.confirmdonation', compact('donatur', 'program', 'tomorrow'));
     }
 
     public function donasiconfirmstore(Request $request, $id)
@@ -142,6 +159,9 @@ class DonationController extends Controller
         // dd($donatur);
         // $program->update(['donation_collected' => $collected]);
         $data = $request->all();
+        request()->validate([
+            'proof_payment' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         $data['proof_payment'] = $request->file('proof_payment')->store(
             'assets/proof_payment',
             'public'

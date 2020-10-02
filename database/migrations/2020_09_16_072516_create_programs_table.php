@@ -22,7 +22,7 @@ class CreateProgramsTable extends Migration
             $table->text('image');
             $table->text('brief_explanation');
             $table->integer('donation_target');
-            $table->timestamp('time_is_up');
+            $table->date('time_is_up');
             $table->integer('donation_collected');
             $table->text('description');
             $table->softDeletes();

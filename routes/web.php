@@ -66,6 +66,7 @@ Route::prefix('admin')
         Route::resource('categoryprogram', 'CategoryController');
         Route::resource('development', 'DevelopmentController');
         Route::resource('donatur', 'DonaturController');
+        Route::resource('bank', 'ShelterAccountController');
     });
 
 Route::post('Ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.upload');

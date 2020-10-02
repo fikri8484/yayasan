@@ -47,7 +47,7 @@
 
                 <li>
                     <a href="{{ route('development.index') }}">
-                        <i class="mdi mdi-circle"></i>
+                        <i class="mdi mdi-newspaper"></i>
                         <span> Berita Donasi </span>
                     </a>
                 </li>
@@ -56,6 +56,12 @@
                     <a href="{{ route('donatur.index') }}">
                         <i class="mdi mdi-face"></i>
                         <span> Donatur </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('bank.index') }}">
+                        <i class="mdi mdi-bank"></i>
+                        <span> Rekening Bank </span>
                     </a>
                 </li>
 

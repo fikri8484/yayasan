@@ -31,6 +31,15 @@
                     <td>{{ $item->title }}</td>
                 </tr>
                 <tr>
+                    <th>Program Donasi Pilihan?</th>
+
+                    <td> @if ($item->is_selected == 1)
+                        <b>Ya</b>
+                        @else
+                        <b>Tidak</b>
+                        @endif</td>
+                </tr>
+                <tr>
                     <th>Kalimat Ajakan</th>
                     <td>{{ $item->brief_explanation }}</td>
                 </tr>

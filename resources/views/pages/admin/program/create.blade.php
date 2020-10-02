@@ -55,6 +55,13 @@
                     <label for="donation_target">Target Donasi (Rp)</label>
                     <input type="number" class="form-control" name="donation_target" placeholder="Target Donasi" value="{{ old('donation_target') }}">
                 </div>
+                <div class="form-group">
+                    <label for="is_selected">Program Donasi Pilihan?</label>
+                    <select name="is_selected" required class="form-control">
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <label for="time_is_up">Tanggal Tutup Donasi</label>

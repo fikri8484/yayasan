@@ -35,7 +35,7 @@
 
                     <div class="widget-box-2">
                         <div class="widget-detail-2 text-right">
-                            <span class="badge badge-success badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
+                            <span class="badge badge-success badge-pill float-left mt-3">Up <i class="mdi mdi-trending-up"></i> </span>
                             <h2 class="font-weight-normal mb-1"> {{ $donatur_success }} </h2>
                             <p class="text-muted mb-3">Donatur</p>
                         </div>

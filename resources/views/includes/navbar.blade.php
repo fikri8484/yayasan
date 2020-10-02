@@ -11,16 +11,16 @@
                         </div>
 
                         <div class="header-nav-features header-nav-features-no-border w-75 w-auto-mobile d-none d-sm-flex">
-                            <form role="search" class="d-flex w-100" action="page-search-results.html" method="get">
-                                <div class="simple-search input-group w-100">
-                                    <input class="form-control border-0" id="headerSearch" name="q" type="search" value="" placeholder="Cari Donasi..." />
-                                    <span class="input-group-append bg-light border-0">
-                                        <button class="btn" type="submit">
-                                            <i class="fa fa-search header-nav-top-icon"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
+                            <!-- <form role="search" class="d-flex w-100" action="page-search-results.html" method="get"> -->
+                            <div class="simple-search input-group w-100">
+                                <input class="form-control border-0" id="donation" name="donation" type="search" value="" placeholder="Cari Donasi..." />
+                                <span class="input-group-append bg-light border-0">
+                                    <button class="btn" type="submit">
+                                        <i class="fa fa-search header-nav-top-icon"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>

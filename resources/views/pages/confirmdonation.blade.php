@@ -28,7 +28,7 @@
             <div class="col-md-8">
                 <p style="text-align: center">
                     <i class="icon-clock icons"></i> Selesaikan pembayaran donasi
-                    sebelum besok jam 09:36, 23 Sep 2020
+                    sebelum <b>besok</b> jam <b>{{$tomorrow}}</b>
                 </p>
                 <div class="card">
                     <div class="card-body">
@@ -40,6 +40,7 @@
                             <strong>Penting</strong>
                             Mohon transfer tepat sampai 3 angka terakhir agar donasi
                             Anda dapat diproses secara otomatis.
+                            <strong> Jika Perlu Silahkan Screenshot Halaman Ini</strong>
                         </div>
                         <div style="text-align: center">
 
@@ -70,6 +71,11 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
+                        @if (count($errors)>0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> Bukti Transfer Harus Dikirim dgn format jpeg/png/jpg/gif/svg
+                        </div>
+                        @endif
                         <form action="/confirmdonation/store/{{$donatur->id}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">

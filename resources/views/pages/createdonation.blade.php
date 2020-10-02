@@ -34,6 +34,11 @@
                             <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
                             <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
                         </div>
+                        @if (count($errors)>0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> Silahkan isi Nama, Nominal Donasi, dan Tujuan Transfer Bank
+                        </div>
+                        @endif
                         <form action="/donasi/{{$program->slug}}/form/store" method="POST" enctype="multipart/form-data">
                             @csrf
                             @if (Auth::check())
@@ -72,7 +77,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">Email <i>(Optional/Boleh kosong)</i></label>
                                 <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                             </div>
                             @endif
@@ -97,7 +102,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="support">Dukungan / Doa (Boleh Kosong)</label>
+                                <label for="support">Dukungan / Doa <i>(Optional/Boleh kosong)</i></label>
                                 <input type="textarea" class="form-control" name="support" placeholder="Semoga Menjadi Amal Jariyah" value="{{ old('support') }}">
                             </div>
                             <button type="submit" class="btn btn-primary btn-block" style="height: 80px; font-size:large;">

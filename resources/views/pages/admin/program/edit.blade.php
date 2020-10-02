@@ -58,6 +58,14 @@
                     <input type="date" class="form-control" name="time_is_up" placeholder="Tanggal" value="{{ $item->time_is_up }}">
                 </div>
                 <div class="form-group">
+                    <label for="is_selected">Program Donasi Pilihan?</label>
+                    <select name="is_selected" required class="form-control">
+                        <option value="{{ $item->is_selected }}">Silahkan Ubah</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="description">Deskripsi</label>
                     <textarea name="description" id="description" rows="10">{{ $item->description }}</textarea>
                 </div>
