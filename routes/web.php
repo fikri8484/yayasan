@@ -38,6 +38,8 @@ Route::get('/dashboard', 'DashboardController@donasi')
 Route::get('/donasi', 'DonationController@index')
     ->name('donation');
 
+Route::get('/donasi/cari', 'DonationController@cari');
+
 Route::get('/donasi/{slug}', 'DonationController@donasi')
     ->name('detail-donation');
 

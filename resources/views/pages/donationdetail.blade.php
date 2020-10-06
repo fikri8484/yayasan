@@ -29,8 +29,8 @@
                                 <strong class="font-weight-extra-bold">{{ $program->title }}</strong>
                             </h2>
                             <h6><i class="text-color-grey">{{ $program->brief_explanation }}</i></h6>
-                            <h4 style="text-align: center;"> <strong class="text-color-secondary">{{$different_days}}</strong> Hari lagi /
-                                <strong class="text-color-secondary" style="text-align: right;"> @currency($program->donation_collected)</strong> Terkumpul dari @currency($program->donation_target)</h4>
+                            <h4 style="text-align: center;"> <strong class="text-color-primary">{{$different_days}}</strong> Hari lagi /
+                                <strong class="text-color-primary" style="text-align: right;"> @currency($program->donation_collected)</strong> Terkumpul dari @currency($program->donation_target)</h4>
                         </div>
                     </div>
 
@@ -39,10 +39,10 @@
                     $a = $program->donation_collected;
                     $b = $program->donation_target;
                     $c = 10;
-                    $bar = $a . $c / $b;
+                    $bar = $a * $c / $b;
                     ?>
                     <div class="progress mb-2">
-                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{$bar}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
+                        <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
                         </div>
                     </div>
                     @if ($program->donation_collected >= $program->donation_target)
@@ -55,7 +55,7 @@
                     </button>
 
                     @else
-                    <a href="/donasi/{{$program->slug}}/form" class="btn btn-secondary mb-4" style="width: 100%; height: 100%;">
+                    <a href="/donasi/{{$program->slug}}/form" class="btn btn-primary mb-4" style="width: 100%; height: 100%;">
                         <h4 style="color: whitesmoke" class="pt-2">
                             Donasi Sekarang
                         </h4>
@@ -192,7 +192,7 @@
 
                                             <div class="process-step-content">
                                                 <h4 class="mb-1 text-4 font-weight-bold">{{$dev->title}}</h4>
-                                                <p><i>{{$dev->time}}</i></p>
+                                                <p><i>{{ \Carbon\Carbon::parse($dev->time)->format('d, M-Y') }}</i></p>
                                                 <p class="mb-0">{!! $dev->description !!}</p>
                                             </div>
 

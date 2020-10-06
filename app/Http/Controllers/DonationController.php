@@ -14,6 +14,7 @@ use App\Development;
 use App\User;
 use Alert;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DonationController extends Controller
 {
@@ -40,6 +41,9 @@ class DonationController extends Controller
         $start_date = \Carbon\Carbon::now('Asia/Jakarta');
         $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir);
         $different_days = $start_date->diffInDays($end_date);
+
+        // $tomorrow = \Carbon\Carbon::now('Asia/Jakarta')->add('1 day');
+
 
         return view('pages.donationdetail', compact('program', 'create', 'different_days', 'time_is_up'));
     }
@@ -69,14 +73,34 @@ class DonationController extends Controller
             'donor_name' => 'required|string',
             'nominal_donation' => 'required|integer',
             'shelter_accounts_id' => 'required|integer'
-
         ]);
+
         $donatur = new DonationConfirmation;
         $id_donatur_terakhir = $donatur->latest()->first()->id_transaction;
 
-        if ($id_donatur_terakhir >= 399) {
+        if ($id_donatur_terakhir >= 950) {
             $id_donatur_terakhir = 0;
         }
+
+        // $donatur = new DonationConfirmation;
+        // $id_donatur_terakhir = $donatur->where('nominal_input', $request->nominal_donation)->where('shelter_accounts_id', $request->shelter_accounts_id)->latest()->first()->id_transaction;
+
+
+        // $id_donatur_terakhir = $donatur->max('id');
+
+        // $cek = DonationConfirmation::where('id', $id_donatur_terakhir)->first()->id_transaction;
+        // dd($cek);
+
+        // $id_donatur_terakhir = DonationConfirmation::max('id');
+
+        // for ($x = 1; $x < $id_donatur_terakhir; $x++) {
+        //     if ($data = DonationConfirmation::where('id', $x)->get('donation_status') == 'SUKSES') {
+        //         $unique = DonationConfirmation::where('id', $x)->get('id_transaction');
+        //         break;
+        //     }
+        // }
+
+        // dd($unique);
 
         $i = 1;
         $id_transaction = $id_donatur_terakhir + $i;
@@ -100,35 +124,6 @@ class DonationController extends Controller
         return redirect()->route('confirmdonation', ['id' => $donatur->id]);
     }
 
-    // public function confirmdonation($id)
-    // {
-
-    //     // $item = Transaction::with(['details', 'travel_package', 'user'])->findOrFail($id);
-    //     // return view('pages.checkout', [
-    //     //     'item' => $item
-    //     // ]);
-
-    //     // $donatur = DonationConfirmation::find($id);
-    //     $donatur = DonationConfirmation::with(['shelter_account'])->findOrFail($id);
-    //     $program = Program::where('id', $donatur->programs_id)->first();
-    //     // $bank = ShelterAccount::where('id', $donatur->);
-    //     return view('pages.confirmdonation', compact('donatur', 'program'));
-    // }
-
-    // public function donasistore2(Request $request)
-    // {
-    //     $donatur = new DonationConfirmation;
-
-    //     $proof_payment['proof_payment'] = $request->file('iamge')->store(
-    //         'assets/confirm-donation',
-    //         'public'
-    //     );
-    //     dd($donatur);
-
-    //     DonationConfirmation::create($donatur);
-    //     return redirect()->route('/donasi');
-    // }
-
     public function confirmdonation(Request $request, $id)
     {
         $donatur = DonationConfirmation::with(['shelter_account'])->findOrFail($id);
@@ -142,22 +137,6 @@ class DonationController extends Controller
 
     public function donasiconfirmstore(Request $request, $id)
     {
-        // $program = $request->all();
-
-        // $donatur = DonationConfirmation::where('id', $id)->first();
-        // $collected = DonationConfirmation::where('programs_id', $donatur->programs_id)->sum('nominal_donation');
-        // $program = Program::where('id', $donatur->programs_id)->first();
-
-
-        // if ($request->file('proof_payment')) {
-        //     $file       = $request->file('proof_payment');
-        //     $fileName   = $file->getClientOriginalName();
-        //     $request->file('proof_payment')->move("images/proof_payment/", $fileName);
-        //     $bukti = $donatur->proof_payment = $fileName;
-        //     $donatur->update(['donation_status' => 'SUDAH_KONFIRM', 'proof_payment' => $bukti]);
-        // }
-        // dd($donatur);
-        // $program->update(['donation_collected' => $collected]);
         $data = $request->all();
         request()->validate([
             'proof_payment' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -169,12 +148,25 @@ class DonationController extends Controller
 
 
 
-
         $item = DonationConfirmation::findOrFail($id);
 
         $item->update($data);
 
         // return redirect()->route('donation');
         return view('pages.thanks');
+    }
+
+    public function cari(Request $request)
+    {
+        // menangkap data pencarian
+        $cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $pegawai = Program::where('title', 'like', "%" . $cari . "%")->paginate();
+
+        $programs = Program::where('is_selected', 1)->orderBy('id', 'DESC')->paginate(6);
+        $programsNew = Program::orderBy('id', 'DESC')->where('is_selected', 0)->paginate(9);
+
+        return view('pages.donation', compact('programs', 'programsNew', 'pegawai'));
     }
 }

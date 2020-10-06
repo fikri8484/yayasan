@@ -36,7 +36,7 @@
                             Syukron Jazaakumullahu Khayran (Semoga Allah Membalas
                             Kebaikan yang Banyak bagi Kalian Semua)
                         </h4>
-                        <a href="/donasi" class="btn btn-secondary btn-block">
+                        <a href="/donasi" class="btn btn-primary btn-block">
                             <h4 style="color: antiquewhite" class="mt-2">
                                 Lihat Program Lainnya
                             </h4>

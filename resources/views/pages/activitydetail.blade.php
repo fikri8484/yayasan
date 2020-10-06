@@ -42,8 +42,8 @@
                         </div>
 
                         <div class="post-date ml-0">
-                            <span class="day bg-color-grey"></span>
-                            <span class="month">{{ $activity->time }}</span>
+                            <span class="day bg-color-grey">{{ \Carbon\Carbon::parse($activity->time)->format('d') }}</span>
+                            <span class="month">{{ \Carbon\Carbon::parse($activity->time)->format('M-y') }}</span>
 
                         </div>
 
@@ -56,7 +56,7 @@
                                 <span><i class="far fa-user"></i>Admin
                                 </span>
                                 <span><i class="far fa-folder"></i>
-                                    <a href="#">{{ $activity->activity_tag->tag }}</a>
+                                    {{ $activity->activity_tag->tag }}
                                 </span>
                             </div>
 

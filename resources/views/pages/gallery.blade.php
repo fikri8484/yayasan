@@ -14,7 +14,7 @@
                 <div class="col-md-4 order-1 order-md-2 align-self-center">
                     <ul class="breadcrumb d-block text-md-right">
                         <li><a href="#">Home</a></li>
-                        <li class="active" style="color: #f26506">Galeri</li>
+                        <li class="active">Galeri</li>
                     </ul>
                 </div>
             </div>

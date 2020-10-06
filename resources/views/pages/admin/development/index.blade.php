@@ -50,7 +50,7 @@
 
                                 <td>{{ str_limit($d->description, $limit = 100 ) }}</td>
 
-                                <td>{{ $d->time }}</td>
+                                <td>{{ \Carbon\Carbon::parse($d->time)->format('d, M-Y') }}</td>
                                 <td>
 
                                     <a href="{{ route('development.edit', $d->id) }}" class="btn btn-info">

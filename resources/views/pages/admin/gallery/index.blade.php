@@ -20,7 +20,7 @@
                     <table id="datatable" class="table table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Kategori</th>
                                 <th>Gambar</th>
                                 <th>Judul</th>
@@ -45,10 +45,10 @@
                                     <a href="{{ route('gallery.edit', $item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{ route('gallery.destroy', $item->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('gallery.destroy', $item->id) }}" method="POST" class="button delete-confirm">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger" onclick="confirmDelete('datatable')">
+                                        <button class="btn btn-danger delete-confirm">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
@@ -77,22 +77,20 @@
 @endsection
 
 @push('addon-script')
-<script>
-    function confirmDelete(item_id) {
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
+    $('.delete-confirm').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
         swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover it!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    $('#' + item_id).submit();
-                } else {
-                    swal("Cancelled Successfully");
-                }
-            });
-    }
+            title: 'Are you sure?',
+            text: 'This record and it`s details will be permanantly deleted!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
 </script>
 @endpush

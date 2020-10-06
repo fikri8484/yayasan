@@ -5,7 +5,7 @@
 @section('content')
 <div role="main" class="main">
     <div id="dashboard">
-        @foreach($donasi as $d)
+
         <div class="container pb-5">
             <div class="row pt-5">
                 <div class="col-md-12">
@@ -18,7 +18,7 @@
                                 <a class="nav-link" href="#overview" data-toggle="tab">Overview</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#donasisaya" data-toggle="tab">Donasi Saya <i>({{ $d->user->name }})</i></a>
+                                <a class="nav-link" href="#donasisaya" data-toggle="tab">Donasi Saya <i></i></a>
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link bg-color-secondary" href="/logout" style="color: white">Keluar</a>
@@ -89,24 +89,29 @@
                                     <tbody>
 
                                         <tr>
+                                            @foreach($donasi->sortByDesc('id') as $d)
+
                                             <td>
                                                 {{ $d->program->title }}
-                                                <a href="/donasi">
+                                                <a href="{{ route('detail-donation', $d->program->slug) }}">
                                                     <i class="fa fa-eye"></i></a>
                                             </td>
                                             <td> @currency($d->nominal_donation)</td>
-                                            <td>{{ $d->created_at }}</td>
+                                            <td>{{ $d->created_at->format('d-M-Y') }}</td>
+                                            @if($d->donation_status == 'SUKSES'){
+                                            <td class="btn btn-secondary">{{ $d->donation_status }}
+                                            </td>
+                                            }@else{
                                             <td class="btn btn-primary">{{ $d->donation_status }}
                                             </td>
-
-
-
-
+                                            }
+                                            @endif
                                         </tr>
                                         @endforeach
+
                                     </tbody>
                                 </table>
-
+                                {!! $donasi->links() !!}
                                 <div class="btn btn-secondary">
                                     <a href="/donasi" style="color: white">Donasi Program Lain</a>
                                 </div>

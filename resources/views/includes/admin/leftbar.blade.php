@@ -41,7 +41,7 @@
                 <li>
                     <a href="{{ route('program.index') }}">
                         <i class="mdi mdi-heart"></i>
-                        <span> Donasi </span>
+                        <span>Program Donasi </span>
                     </a>
                 </li>
 

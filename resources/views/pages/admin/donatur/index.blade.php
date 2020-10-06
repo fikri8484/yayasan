@@ -21,7 +21,7 @@
                                 <th>No</th>
                                 <th>Donasi</th>
                                 <th>Donatur</th>
-                                <th>Bukti Pembayaran</th>
+                                <th>Tgl Limit Donasi</th>
                                 <th>Nominal Donasi</th>
                                 <th>Bank</th>
                                 <th>Status</th>
@@ -42,8 +42,7 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $item->program->title }}</td>
                                 <td>{{ $item->donor_name }}</td>
-                                <td>
-                                    <img src="{{ Storage::url($item->proof_payment) }}" alt="" style="width: 50px" class="img-thumbnail"></td>
+                                <td>{{ $item->created_at->add('1 day')->format('H:i\ , d M Y') }}</td>
 
                                 <td>@currency($item->nominal_donation)</td>
                                 <td>{{ $item->shelter_account->bank }} <br> ({{ $item->shelter_account->account_number }})</td>

@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <th>tgl buat</th>
-                    <td>{{ $item->time }}</td>
+                    <td>{{ \Carbon\Carbon::parse($item->time)->format('d, M-Y') }}</td>
                 </tr>
                 <tr>
                     <th>Foto</th>

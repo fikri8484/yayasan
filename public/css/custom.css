@@ -1,4 +1,4 @@
-html.sticky-header-active #header .header-body {
+/*html.sticky-header-active #header .header-body {
     border-bottom-color: transparent;
     webkit-box-shadow: none;
     box-shadow: none;
@@ -14,12 +14,12 @@ html.sticky-header-active #header .header-body {
     clear: both;
 }
 
-#header .header-nav.header-nav-line nav > ul:not(:hover) li > a.active {
+/* #header .header-nav.header-nav-line nav > ul:not(:hover) li > a.active {
     color: white;
-}
+}*/
 /* utk putih tulisan di navbar saat active*/
 
-#header .header-nav.header-nav-line nav > ul:not(:hover) li > a.active:before {
+/*#header .header-nav.header-nav-line nav > ul:not(:hover) li > a.active:before {
     background: #26456e;
 } /*utk atur warna saat active di navbar */
 
@@ -43,7 +43,7 @@ section.section {
 }
 
 html section.section-quaternary {
-    background-color: #023d67 !important;
+    background-color: #019444 !important;
     border-color: #f97304 !important;
 }
 

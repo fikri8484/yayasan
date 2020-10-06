@@ -21,10 +21,10 @@
                     <table id="datatable" class="table table-bordered dt-responsive" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th style="max-width: 10px;">ID</th>
+                                <th style="max-width: 10px;">No</th>
                                 <th style="max-width: 70px;">Judul</th>
                                 <th style="max-width: 250px;">Deskripsi</th>
-                                <th>Tag</th>
+                                <th>Kategori</th>
                                 <th style="max-width: 70px;">tgl Pembuatan</th>
                                 <th>Foto</th>
                                 <th style="max-width: 150px;">Aksi</th>
@@ -46,7 +46,7 @@
                                 <td>{{ $a->title }}</td>
                                 <td>{{ str_limit($a->description, $limit = 150 ) }}</td>
                                 <td>{{ $a->activity_tag->tag }}</td>
-                                <td>{{ $a->time }}</td>
+                                <td>{{ \Carbon\Carbon::parse($a->time)->format('d, M-y') }}</td>
                                 <td>@foreach($a->activity_gallery as $g)
                                     <img src="{{ Storage::url($g->image) }}" alt="" style="width: 50px" class="img-thumbnail"> <br>@endforeach</td>
                                 <td>

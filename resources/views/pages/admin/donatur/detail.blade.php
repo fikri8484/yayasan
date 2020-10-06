@@ -39,6 +39,14 @@
                     <td>@currency($item->nominal_donation)</td>
                 </tr>
                 <tr>
+                    <th>Waktu Pembuatan form donasi</th>
+                    <td>{{ $item->created_at->format('H:i\ , d M Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Waktu akhir limit donasi</th>
+                    <td>{{ $item->created_at->add('1 day')->format('H:i\ , d M Y') }}</td>
+                </tr>
+                <tr>
                     <th>Bank</th>
                     <td>{{ $item->shelter_account->bank }}
                         <br> {{ $item->shelter_account->account_number }}

@@ -50,7 +50,7 @@
 
                         </div>
                         <p>Rincian :</p>
-                        <div class="d-sm-flex align-items-center justify-content-between bg-color-secondary px-3">
+                        <div class="d-sm-flex align-items-center justify-content-between bg-color-primary px-3">
                             <h4 class="mt-2" style="color: antiquewhite">
                                 Jumlah Donasi
                             </h4>
@@ -73,7 +73,7 @@
                     <div class="card-body">
                         @if (count($errors)>0)
                         <div class="alert alert-danger">
-                            <strong>Whoops!</strong> Bukti Transfer Harus Dikirim dgn format jpeg/png/jpg/gif/svg
+                            <strong>Whoops!</strong> Bukti Transfer Harus Dikirim dgn format jpeg/png/jpg/gif/svg max: 2mb
                         </div>
                         @endif
                         <form action="/confirmdonation/store/{{$donatur->id}}" method="POST" enctype="multipart/form-data">

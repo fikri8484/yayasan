@@ -17,7 +17,7 @@ class DashboardController extends Controller
         $info = DonationConfirmation::where('users_id', Auth::user()->id)->count();
         $totalDonation = DonationConfirmation::where('users_id', Auth::user()->id)->where('donation_status', 'SUKSES')->sum('nominal_donation');
         // $konfirCount = DonationConfirmation::where('users_id', Auth::user()->id)->where('isVerified', 0)->count();
-        $donasi = DonationConfirmation::where('users_id', Auth::user()->id)->get();
+        $donasi = DonationConfirmation::where('users_id', Auth::user()->id)->paginate(5);
 
 
         return view('pages.dashboard', compact('donasi', 'info', 'totalDonation'));

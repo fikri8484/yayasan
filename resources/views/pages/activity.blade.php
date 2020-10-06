@@ -14,7 +14,7 @@
                 <div class="col-md-4 order-1 order-md-2 align-self-center">
                     <ul class="breadcrumb d-block text-md-right">
                         <li><a href="#">Home</a></li>
-                        <li class="active" style="color: #f26506">Kegiatan</li>
+                        <li class="active">Kegiatan</li>
                     </ul>
                 </div>
             </div>
@@ -55,12 +55,12 @@
 
                                 <div class="post-content">
 
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="{{ route('detail-kegiatan', $a->slug) }}">{{ $a->title }}</a></h2>
+                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="{{ route('detail-kegiatan', $a->slug) }}" style="color:black">{{ $a->title }}</a></h2>
                                     <p>{{ str_limit($a->description, $limit = 100 ) }}</p>
 
                                     <div class="post-meta">
                                         <span><i class="far fa-user"></i> Admin </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">{{ $a->activity_tag->tag }}</a> </span>
+                                        <span><i class="far fa-folder"></i>{{ $a->activity_tag->tag }}</a> </span>
 
                                         <span class="d-block mt-2"><a href="{{ route('detail-kegiatan', $a->slug) }}" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
                                     </div>

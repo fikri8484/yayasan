@@ -61,8 +61,8 @@
                 </tr>
 
                 <tr>
-                    <th>Waktu Akhir Donasi</th>
-                    <td>{{ $item->time_is_up }}</td>
+                    <th>Tanggal Penutupan Donasi</th>
+                    <td>{{ \Carbon\Carbon::parse($item->time_is_up)->format('d, M-Y') }}</td>
                 </tr>
                 <tr>
                     <th>Foto</th>

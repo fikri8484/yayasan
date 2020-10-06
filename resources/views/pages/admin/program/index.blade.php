@@ -28,14 +28,10 @@
                                 <th style="max-width: 70px;">Kalimat Ajakan</th>
                                 <th style="max-width: 50px;">Target Donasi(Rp)</th>
                                 <th style="max-width: 50px;">Donasi Terkumpul(Rp)</th>
-                                <th style="max-width: 70px;">Tgl Terakhir Donasi</th>
-                                <th>Aksi</th>
+                                <th style="max-width: 70px;">Tgl Penutupan Donasi</th>
+                                <th style="max-width: 100px;">Aksi</th>
                             </tr>
                         </thead>
-
-
-
-
 
                         <tbody>
                             <?php
@@ -48,7 +44,8 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $p->title }}</td>
                                 <td>
-                                    <img src="{{ Storage::url($p->image) }}" alt="" style="width: 50px" class="img-thumbnail"></td>
+                                    <img src=" {{ Storage::url($p->image) }}" alt="" style="width: 50px" class="img-thumbnail">
+                                </td>
 
                                 <td>{{ $p->category->category_name }}</td>
                                 <td>{{ $p->brief_explanation }}</td>
@@ -57,7 +54,7 @@
 
                                 <td>@currency($p->donation_target)</td>
                                 <td>@currency($p->donation_collected)</td>
-                                <td>{{ $p->time_is_up }}</td>
+                                <td>{{ \Carbon\Carbon::parse($p->time_is_up)->format('d, M-Y') }}</td>
                                 <td>
                                     <a href="{{ route('program.show', $p->id) }}" class="btn btn-info">
                                         <i class="fa fa-eye"></i>

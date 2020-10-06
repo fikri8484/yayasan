@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <section class="section section-quaternary mb-5">
+    <!-- <section class="section section-quaternary mb-5">
         <div class="container">
             <div class="row text-center">
                 <div class="col">
@@ -54,11 +54,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
-
-    <div class="container">
+    <!-- <br><br><br> -->
+    <div class="container pt-5">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
                 <h2 class="text-color-dark font-weight-normal text-6 mb-2">
@@ -74,7 +74,7 @@
                     Phasellus blandit massa enim. Nullam id varius nunc. Vivamus
                     bibendum magna ex, et faucibus lacus venenatis eget
                 </p>
-                <a href="{{ route('about') }}" class="btn btn-secondary font-weight-semibold btn-px-4 btn-py-2 text-2">Lihat Selengkapnya</a>
+                <a href="{{ route('about') }}" class="btn btn-primary font-weight-semibold btn-px-4 btn-py-2 text-2">Lihat Selengkapnya</a>
             </div>
             <div class="col-sm-8 col-md-6 col-lg-4 offset-sm-4 offset-md-4 offset-lg-2 mt-sm-5" style="top: 1.7rem">
                 <img src="img/generic/generic-corporate-3-1.jpg" class="img-fluid position-absolute d-none d-sm-block appear-animation" data-appear-animation="expandIn" data-appear-animation-delay="300" style="top: 10%; left: -50%" alt="" />
@@ -84,10 +84,10 @@
         </div>
     </div>
 
-    <div class="container py-4">
+    <div class="container py-3">
         <div class="row">
             <div class="col">
-                <hr class="my-5 bg-color-secondary size=" 50" style="height: 4px" />
+                <hr class="my-5 bg-color-grey size=" 50" style="height: 4px" />
             </div>
         </div>
 
@@ -120,12 +120,12 @@
                             $bar = $a . $c / $b;
                             ?>
 
-                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
+                            <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
 
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <p style="text-align: center;"> <strong class="text-color-secondary">14</strong> Hari lagi / Terkumpul <strong class="text-color-secondary" style="text-align: right;"> @if ($program->donation_collected == 0)Rp 0
+                            <p style="text-align: center;"> <strong class="text-color-primary">14</strong> Hari lagi / Terkumpul <strong class="text-color-primary" style="text-align: right;"> @if ($program->donation_collected == 0)Rp 0
                                     @else
                                     @currency($program->donation_collected)
                                     @endif</strong> </p>
@@ -136,18 +136,25 @@
             @endforeach
 
         </div>
-        <div class="row align-items-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
+        <!-- <div class="row align-items-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
             <div class="col-lg-12 text-center">
-                <a href="{{ route('donation') }}" class="btn btn-secondary mt-3">Lihat Semua Donasi </a>
+                <a href="{{ route('donation') }}" class="btn btn-primary mt-3">Lihat Semua Donasi </a>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="{{ route('donation') }}" class="btn btn-primary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Donasi</a>
             </div>
         </div>
+
+
     </div>
     <br /><br />
-    <section class="section section-height-3 bg-color-primary section-no-border m-0">
+    <section class="section section-no-border m-0">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="font-weight-normal text-6 mb-5 text-color-light">
+                    <h2 class="font-weight-normal text-6 mb-5 text-color-dark">
                         <strong class="font-weight-extra-bold">Galleri</strong> Kami
                     </h2>
                 </div>
@@ -179,7 +186,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="{{ route('gallery') }}" class="btn btn-secondary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Galeri</a>
+                <a href="{{ route('gallery') }}" class="btn btn-primary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Galeri</a>
             </div>
         </div>
     </section>
@@ -208,12 +215,12 @@
 
                                 <div class="post-content">
 
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="{{ route('detail-kegiatan', $activity->slug) }}">{{ $activity->title }}</a></h2>
+                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="{{ route('detail-kegiatan', $activity->slug) }}" style="color: black;">{{ $activity->title }}</a></h2>
                                     <p>{{ str_limit($activity->description, $limit = 100 ) }}</p>
 
                                     <div class="post-meta">
                                         <span><i class="far fa-user"></i> By Admin </span>
-                                        <span><i class="far fa-folder"></i> <a href="#">{{ $activity->activity_tag->tag }}</a></span>
+                                        <span><i class="far fa-folder"></i>{{ $activity->activity_tag->tag }}</a></span>
 
                                         <span class="d-block mt-2"><a href="{{ route('detail-kegiatan', $activity->slug) }}" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
                                     </div>
@@ -227,9 +234,9 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row pb-5">
             <div class="col-lg-12 text-center">
-                <a href="{{ route('activity') }}" class="btn btn-secondary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Kegiatan</a>
+                <a href="{{ route('activity') }}" class="btn btn-primary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Kegiatan</a>
             </div>
         </div>
     </div>
