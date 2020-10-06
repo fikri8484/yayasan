@@ -135,6 +135,7 @@
             </div>
             @endforeach
 
+
         </div>
         <!-- <div class="row align-items-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
             <div class="col-lg-12 text-center">
