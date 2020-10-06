@@ -43,6 +43,7 @@
                     <label for="title">Title</label>
                     <input type="text" class="form-control" name="title" placeholder="Title" value="{{ old('title') }}">
                 </div>
+                <input type="hidden" name="donation_collected" value="0">
                 <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" class="form-control" name="image" placeholder="Image" class="form-control">

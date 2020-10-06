@@ -48,7 +48,7 @@
                     <input type="date" class="form-control" name="time" placeholder="time" value="{{ $item->time }}">
                 </div>
                 <div class="form-group">
-                    <label for="image">Image</label>
+                    <label for="image">Image (Bisa input lebih dari 1 foto)</label>
                     <input type="file" class="form-control" name="images[]" placeholder="Image" multiple class="form-control">
                 </div>
 

@@ -25,7 +25,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="category">Kategori</label>
-                    <input type="text" class="form-control" name="category" placeholder="Kategori" value="{{ old('category') }}">
+                    <input type="text" class="form-control" name="category" placeholder="tanpa spasi (cth: Puasa_2020 , puasa2020)" value="{{ old('category') }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">

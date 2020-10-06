@@ -48,12 +48,12 @@
                     <textarea name="description" rows="10" class="d-block w-100 form-control">{{ old('description') }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="time">Tanggal Buat</label>
+                    <label for="time">Tanggal Berlangsung Kegiatan</label>
                     <input type="date" class="form-control" name="time" placeholder="time" value="{{ old('time') }}">
                 </div>
 
                 <div class="form-group">
-                    <label for="image">Image</label>
+                    <label for="image">Image (Bisa lebih dari 1 foto)</label>
                     <input type="file" class="form-control" name="images[]" placeholder="Image" multiple class="form-control">
                 </div>
 

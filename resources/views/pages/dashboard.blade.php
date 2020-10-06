@@ -98,13 +98,13 @@
                                             </td>
                                             <td> @currency($d->nominal_donation)</td>
                                             <td>{{ $d->created_at->format('d-M-Y') }}</td>
-                                            @if($d->donation_status == 'SUKSES'){
+                                            @if($d->donation_status == 'SUKSES')
                                             <td class="btn btn-secondary">{{ $d->donation_status }}
                                             </td>
-                                            }@else{
-                                            <td class="btn btn-primary">{{ $d->donation_status }}
+                                            @else
+                                            <td class="btn btn-danger">{{ $d->donation_status }}
                                             </td>
-                                            }
+
                                             @endif
                                         </tr>
                                         @endforeach
@@ -112,7 +112,7 @@
                                     </tbody>
                                 </table>
                                 {!! $donasi->links() !!}
-                                <div class="btn btn-secondary">
+                                <div class="btn btn-primary">
                                     <a href="/donasi" style="color: white">Donasi Program Lain</a>
                                 </div>
                             </div>

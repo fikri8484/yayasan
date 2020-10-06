@@ -134,12 +134,14 @@ class ActivityController extends Controller
         }
         $myData->activity_tags_id = $request->get('activity_tags_id');
         $myData->title = $request->get('title');
+        $myData['slug'] = Str::slug($request->title);
         $myData->description = $request->get('description');
         $myData->time = $request->get('time');
 
 
 
         $myData->update();
+        Alert::success('Success', 'Data Berhasil Diubah');
 
         return redirect()->route('activity.index');
     }
