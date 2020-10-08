@@ -15,7 +15,7 @@ class DashboardController extends Controller
     {
         return view('pages.admin.dashboard', [
             'activity' => Activity::count(),
-            'program' => Program::count(),
+            'program' => Program::where('is_published', 1)->count(),
             'donatur_pending' => DonationConfirmation::where('donation_status', 'SUDAH_KONFIRM')->count(),
             'donatur_pendinga' => DonationConfirmation::where('donation_status', 'BELUM_TRANSFER')->count(),
             'donatur_success' => DonationConfirmation::where('donation_status', 'SUKSES')->count()

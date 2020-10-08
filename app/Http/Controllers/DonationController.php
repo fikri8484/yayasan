@@ -20,8 +20,8 @@ class DonationController extends Controller
 {
     public function index()
     {
-        $programs = Program::where('is_selected', 1)->orderBy('id', 'DESC')->paginate(6);
-        $programsNew = Program::orderBy('id', 'DESC')->where('is_selected', 0)->paginate(9);
+        $programs = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(6);
+        $programsNew = Program::orderBy('id', 'DESC')->where('is_selected', 0)->where('is_published', 1)->paginate(9);
 
         return view('pages.donation', compact('programs', 'programsNew'));
     }
@@ -68,13 +68,6 @@ class DonationController extends Controller
 
     public function donasistore(Request $request)
     {
-
-        request()->validate([
-            'donor_name' => 'required|string',
-            'nominal_donation' => 'required|integer',
-            'shelter_accounts_id' => 'required|integer'
-        ]);
-
         $donatur = new DonationConfirmation;
         $id_donatur_terakhir = $donatur->latest()->first()->id_transaction;
 
@@ -121,6 +114,7 @@ class DonationController extends Controller
         $donatur->donation_status = $blmtf;
         $donatur->save();
 
+
         return redirect()->route('confirmdonation', ['id' => $donatur->id]);
     }
 
@@ -161,12 +155,14 @@ class DonationController extends Controller
         // menangkap data pencarian
         $cari = $request->cari;
 
-        // mengambil data dari table pegawai sesuai pencarian data
-        $pegawai = Program::where('title', 'like', "%" . $cari . "%")->paginate();
+        // mengambil data dari table program sesuai pencarian data
 
-        $programs = Program::where('is_selected', 1)->orderBy('id', 'DESC')->paginate(6);
-        $programsNew = Program::orderBy('id', 'DESC')->where('is_selected', 0)->paginate(9);
+        $programs = Program::where('is_published', 1)->where([
 
-        return view('pages.donation', compact('programs', 'programsNew', 'pegawai'));
+            ['brief_explanation', 'like', "%" . $cari . "%"], ['title', 'like', "%" . $cari . "%"]
+        ])->orderBy('id', 'DESC')->paginate(9);
+
+        // mengirim data donasi ke view index
+        return view('pages.donationn', ['programs' => $programs]);
     }
 }

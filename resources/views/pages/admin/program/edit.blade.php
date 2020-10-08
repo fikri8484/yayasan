@@ -65,6 +65,15 @@
                         <option value="0">Tidak</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="is_published">Tampilkan Program Donasi ini di Publik?</label>
+                    <select name="is_published" required class="form-control">
+                        <option value="{{ $item->is_published }}">Silahkan Ubah</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="description">Deskripsi</label>
                     <textarea name="description" id="description" rows="10">{{ $item->description }}</textarea>

@@ -10,7 +10,7 @@ class Program extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'categories_id', 'title', 'slug', 'image', 'brief_explanation', 'donation_target', 'time_is_up', 'donation_collected', 'description', 'is_selected'
+        'categories_id', 'title', 'slug', 'image', 'brief_explanation', 'donation_target', 'time_is_up', 'donation_collected', 'description', 'is_selected', 'is_published'
     ];
 
     protected $hidden = [];

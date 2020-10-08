@@ -105,6 +105,7 @@
                                 <label for="support">Dukungan / Doa <i>(Optional/Boleh kosong)</i></label>
                                 <input type="textarea" class="form-control" name="support" placeholder="Semoga Menjadi Amal Jariyah" value="{{ old('support') }}">
                             </div>
+
                             <button type="submit" class="btn btn-primary btn-block" style="height: 80px; font-size:large;">
                                 Lanjutkan Donasi
                             </button>
@@ -118,15 +119,5 @@
 </div>
 @endsection
 @push('addon-script')
-<!-- <script type="text/javascript">
-    $('#refresh').click(function() {
-        $.ajax({
-            type: 'GET',
-            url: 'refreshcaptcha',
-            success: function(data) {
-                $(".captcha span").html(data.captcha);
-            }
-        });
-    });
-</script> -->
+
 @endpush

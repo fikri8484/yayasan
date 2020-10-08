@@ -88,10 +88,6 @@
                         <div id="keterangan" class="tab-pane active">
                             <div class="row">
                                 <div class="col-md-7 mb-4 mb-md-0">
-                                    <h2 class="text-color-dark font-weight-normal text-5 mb-2">
-
-                                        <strong class="font-weight-extra-bold">{{ $program->brief_explanation }}</strong>
-                                    </h2>
 
                                     <p>
                                         {!! $program->description !!}
@@ -141,7 +137,7 @@
                             </div>
                         </div>
                         <div id="donatur" class="tab-pane">
-
+                            {!! $program->donation_confirmation->where('donation_status' , 'SUKSES')->count() ? '' : 'Belum ada Donatur, <b>Ayo Jadi Donatur yang Pertama!</b> '!!}
                             @foreach($program->donation_confirmation->where('donation_status','SUKSES')->sortByDesc('id') as $donatur)
                             <blockquote class="with-borders">
                                 <div class="sample-icon">
@@ -166,7 +162,7 @@
                                         2. Silahkan isi identitas diri atau bisa Login terlebih dahulu <br>
 
                                         3. Pilih nominal donasi dan Bank yang akan menjadi tujuan transferan donasi anda, lalu klik tombol <b>"LANJUTKAN DONASI"</b> <br>
-                                        4. Silahkan Transfer donasi sesuai arahan (dengan kode unik yang diberikan) <br>
+                                        4. Silahkan Transfer donasi sesuai arahan (sesuai dengan kode unik yang diberikan) <br>
                                         5. Silahkan kirim foto atau screenshot bukti donasi anda <br>
 
                                         Terimakasih atas doa, dukungan dan bantuannya, semoga Allah membalas semua kebaikan teman-teman.
@@ -182,8 +178,11 @@
                                     <?php
                                     $totalDev = $program->developments->count();
                                     $i = $totalDev;
+                                    $awal = 1;
                                     ?>
                                     <div class="process process-vertical py-4">
+                                        {{ $program->developments->count() ? '' : 'Belum ada Berita Perkembangan Donasi'}}
+
                                         @foreach($program->developments->sortByDesc('id') as $dev)
                                         <div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                                             <div class="process-step-circle">

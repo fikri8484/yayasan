@@ -65,6 +65,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="is_published">Tampilkan Program Donasi ini di Publik?</label>
+                    <select name="is_published" required class="form-control">
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="time_is_up">Tanggal Tutup Donasi</label>
                     <input type="date" class="form-control" name="time_is_up" placeholder="Tanggal" value="{{ old('time_is_up') }}">
                 </div>
@@ -79,8 +87,6 @@
                     <label for="description" class="label">Deskripsi</label>
                     <textarea name="description" id="description" cols="30" rows="10"></textarea>
                 </div>
-
-
 
                 <br><br>
                 <button type="submit" class="btn btn-primary btn-block">

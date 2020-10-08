@@ -22,14 +22,14 @@
                         <thead>
                             <tr>
                                 <th style="max-width: 10px;">No</th>
-                                <th style="max-width: 70px;">Judul</th>
+                                <th style="max-width: 30px;">Judul</th>
                                 <th style="max-width: 50px;">Gambar</th>
-                                <th style="max-width: 70px;">Kategori</th>
-                                <th style="max-width: 70px;">Kalimat Ajakan</th>
-                                <th style="max-width: 50px;">Target Donasi(Rp)</th>
-                                <th style="max-width: 50px;">Donasi Terkumpul(Rp)</th>
-                                <th style="max-width: 70px;">Tgl Penutupan Donasi</th>
-                                <th style="max-width: 100px;">Aksi</th>
+                                <th style="max-width: 50px;">Kalimat Ajakan</th>
+                                <th style="max-width: 50px;">Target Donasi</th>
+                                <th style="max-width: 50px;">Donasi Terkumpul</th>
+                                <th style="max-width: 50px;">Tgl Penutupan Donasi</th>
+                                <th style="max-width: 30px;">Program TerPublish?</th>
+                                <th style="min-width: 100px;">Aksi</th>
                             </tr>
                         </thead>
 
@@ -46,15 +46,18 @@
                                 <td>
                                     <img src=" {{ Storage::url($p->image) }}" alt="" style="width: 50px" class="img-thumbnail">
                                 </td>
-
-                                <td>{{ $p->category->category_name }}</td>
-                                <td>{{ $p->brief_explanation }}</td>
+                                <td>{{ str_limit($p->brief_explanation, $limit = 20 ) }}</td>
 
 
 
                                 <td>@currency($p->donation_target)</td>
                                 <td>@currency($p->donation_collected)</td>
                                 <td>{{ \Carbon\Carbon::parse($p->time_is_up)->format('d, M-Y') }}</td>
+                                <td> @if ($p->is_published == 1)
+                                    <b>Ya</b>
+                                    @else
+                                    <b>Tidak</b>
+                                    @endif</td>
                                 <td>
                                     <a href="{{ route('program.show', $p->id) }}" class="btn btn-info">
                                         <i class="fa fa-eye"></i>

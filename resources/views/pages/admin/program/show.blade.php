@@ -31,21 +31,13 @@
                     <td>{{ $item->title }}</td>
                 </tr>
                 <tr>
-                    <th>Program Donasi Pilihan?</th>
-
-                    <td> @if ($item->is_selected == 1)
-                        <b>Ya</b>
-                        @else
-                        <b>Tidak</b>
-                        @endif</td>
+                    <th>Foto</th>
+                    <td>
+                        <img src="{{ Storage::url($item->image) }}" alt="" style="width: 250px" class="img-thumbnail"></td>
                 </tr>
                 <tr>
                     <th>Kalimat Ajakan</th>
                     <td>{{ $item->brief_explanation }}</td>
-                </tr>
-                <tr>
-                    <th>Deskripsi</th>
-                    <td>{!! $item->description !!}</td>
                 </tr>
                 <tr>
                     <th>Kategori</th>
@@ -62,13 +54,30 @@
 
                 <tr>
                     <th>Tanggal Penutupan Donasi</th>
-                    <td>{{ \Carbon\Carbon::parse($item->time_is_up)->format('d, M-Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($item->time_is_up)->format('d-M-Y') }}</td>
                 </tr>
                 <tr>
-                    <th>Foto</th>
-                    <td>
-                        <img src="{{ Storage::url($item->image) }}" alt="" style="width: 250px" class="img-thumbnail"></td>
+                    <th>Program Donasi Pilihan?</th>
+                    <td> @if ($item->is_selected == 1)
+                        <b>Ya</b>
+                        @else
+                        <b>Tidak</b>
+                        @endif</td>
                 </tr>
+                <tr>
+                    <th>Program Donasi TerPublish?</th>
+                    <td> @if ($item->is_published == 1)
+                        <b>Ya</b>
+                        @else
+                        <b>Tidak</b>
+                        @endif</td>
+                </tr>
+                <tr>
+                    <th>Deskripsi</th>
+                    <td>{!! $item->description !!}</td>
+                </tr>
+
+
                 <tr>
                     <?php
                     $a = 1; ?>

@@ -15,7 +15,6 @@ class CreateProgramsTable extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->integer('users_id');
             $table->integer('categories_id');
             $table->string('title');
             $table->string('slug');
@@ -25,6 +24,7 @@ class CreateProgramsTable extends Migration
             $table->date('time_is_up');
             $table->integer('donation_collected');
             $table->text('description');
+            $table->tinyInteger('is_published')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });

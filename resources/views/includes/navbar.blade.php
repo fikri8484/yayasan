@@ -10,8 +10,8 @@
                             </a>
                         </div>
 
-                        <div class="header-nav-features header-nav-features-no-border w-75 w-auto-mobile d-none d-sm-flex">
-                            <!-- <form role="search" class="d-flex w-100" action="page-search-results.html" method="get"> -->
+                        <!-- <div class="header-nav-features header-nav-features-no-border w-75 w-auto-mobile d-none d-sm-flex">
+                          
                             <div class="simple-search input-group w-100">
                                 <input class="form-control border-2 bg-light" id="donation" name="donation" type="search" value="" placeholder="Cari Donasi..." />
                                 <span class="input-group-append bg-color-primary border-2">
@@ -20,8 +20,8 @@
                                     </button>
                                 </span>
                             </div>
-                            <!-- </form> -->
-                        </div>
+                           
+                        </div> -->
                     </div>
                 </div>
                 <div class="header-column justify-content-end">
