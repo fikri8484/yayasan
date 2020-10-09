@@ -45,10 +45,10 @@
                                     <a href="{{ route('gallery.edit', $item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{ route('gallery.destroy', $item->id) }}" method="POST" class="button delete-confirm">
+                                    <form action="{{ route('gallery.destroy', $item->id) }}" method="POST" onclick="return confirm('Yakin ingin menghapus?');">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger delete-confirm">
+                                        <button class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
@@ -77,20 +77,5 @@
 @endsection
 
 @push('addon-script')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
-    $('.delete-confirm').on('click', function(event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be permanantly deleted!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-</script>
+
 @endpush

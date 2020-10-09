@@ -65,7 +65,7 @@
                                     <a href="{{ route('program.edit', $p->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{ route('program.destroy', $p->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('program.destroy', $p->id) }}" method="POST" class="d-inline" onclick="return confirm('Yakin ingin menghapus?');">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">

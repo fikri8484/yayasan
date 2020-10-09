@@ -56,7 +56,7 @@
                                     <a href="{{ route('activity.edit', $a->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{ route('activity.destroy', $a->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('activity.destroy', $a->id) }}" method="POST" class="d-inline" onclick="return confirm('Yakin ingin menghapus?');">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">

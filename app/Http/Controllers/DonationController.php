@@ -68,6 +68,13 @@ class DonationController extends Controller
 
     public function donasistore(Request $request)
     {
+
+        request()->validate([
+            'donor_name' => 'required|string',
+            'nominal_donation' => 'required|integer',
+            'shelter_accounts_id' => 'required|integer'
+        ]);
+
         $donatur = new DonationConfirmation;
         $id_donatur_terakhir = $donatur->latest()->first()->id_transaction;
 
@@ -114,8 +121,28 @@ class DonationController extends Controller
         $donatur->donation_status = $blmtf;
         $donatur->save();
 
-
-        return redirect()->route('confirmdonation', ['id' => $donatur->id]);
+        $vars = array(
+            'secret' => env('G_RECAPTCHA_SECRET_KEY'),
+            "response" => $request->input('recaptcha_v3')
+        );
+        $url = "https://www.google.com/recaptcha/api/siteverify";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
+        $encoded_response = curl_exec($ch);
+        $response = json_decode($encoded_response, true);
+        curl_close($ch);
+        if ($response['success'] && $response['action'] == 'donation' && $response['score'] > 0.5) {
+            //continue basic login logic
+            return redirect()->route('confirmdonation', ['id' => $donatur->id]);
+        } else {
+            //then probably this is a bot
+            //you can do your logic here pass it or deny or do something special
+            //score check value of 0.5 you can set which you want form 0 to 1
+            //score 1 is probably human score 0 is probably bot
+            return back()->withErrors(['captcha' => 'ReCaptcha Error']);
+        }
     }
 
     public function confirmdonation(Request $request, $id)

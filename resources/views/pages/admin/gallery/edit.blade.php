@@ -42,7 +42,7 @@
 
                 <div class="form-group">
                     <label for="image">Image</label>
-                    <input type="file" class="form-control" name="image" placeholder="Image" value="{{ Storage::url($item->image) }}">
+                    <input type="file" class="form-control" name="image" placeholder="Image">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">
