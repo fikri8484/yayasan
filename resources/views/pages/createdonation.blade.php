@@ -94,6 +94,7 @@
                                     <input type="number" class="form-control" name="nominal_donation" placeholder="Donasi" value="{{ old('nominal_donation') }}" required autocomplete="off" required>
                                 </div>
 
+
                             </div>
 
                             <div class="form-group">
