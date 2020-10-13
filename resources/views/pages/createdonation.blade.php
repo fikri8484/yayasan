@@ -70,7 +70,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="donor_name">Nama</label>
-                                <input type="text" class="form-control" name="donor_name" placeholder="Nama" value="{{ old('donor_name') }}">
+                                <input type="text" class="form-control" name="donor_name" placeholder="Nama" value="{{ old('donor_name') }}" required autocomplete="off">
                                 <div class="form-check">
                                     <input id="check" type="checkbox" name="donor_name" class="form-check-input" value="Hamba Allah">
                                     <label for="check" class="form-check-label">Sembunyikan Nama Saya (Hamba Allah)</label>
@@ -84,8 +84,16 @@
                             <input type="hidden" name="programs_id" value="{{$program->id}}">
 
                             <div class="form-group">
-                                <label for="nominal_donation">Nominal Donasi (Rp) </label>
-                                <input type="number" class="form-control" name="nominal_donation" placeholder="Donasi" value="{{ old('nominal_donation') }}">
+                                <label for="nominal_donation">Nominal Donasi</label>
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            Rp
+                                        </span>
+                                    </span>
+                                    <input type="number" class="form-control" name="nominal_donation" placeholder="Donasi" value="{{ old('nominal_donation') }}" required autocomplete="off" required>
+                                </div>
+
                             </div>
 
                             <div class="form-group">

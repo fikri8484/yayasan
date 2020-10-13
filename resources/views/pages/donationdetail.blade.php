@@ -31,6 +31,13 @@
                             <h6><i class="text-color-grey">{{ $program->brief_explanation }}</i></h6>
                             <h4 style="text-align: center;"> <strong class="text-color-primary">{{$different_days}}</strong> Hari lagi /
                                 <strong class="text-color-primary" style="text-align: right;"> @currency($program->donation_collected)</strong> Terkumpul dari @currency($program->donation_target)</h4>
+
+
+                            <!-- <div class="d-sm-flex align-items-center justify-content-between px-3">
+                                <h4><strong class="text-color-primary">{{$different_days}}</strong> Hari lagi</h4>
+                                <h4><strong class="text-color-primary"> @currency($program->donation_collected)</strong> Terkumpul <br> dari @currency($program->donation_target)</h4>
+                                </a>
+                            </div> -->
                         </div>
                     </div>
 
