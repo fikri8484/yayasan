@@ -45,11 +45,11 @@
                     <?php
                     $a = $program->donation_collected;
                     $b = $program->donation_target;
-                    $c = 10;
+                    $c = 100;
                     $bar = $a * $c / $b;
                     ?>
                     <div class="progress mb-2">
-                        <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
+                        <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="{{$bar}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$bar}}%">
                         </div>
                     </div>
                     @if ($program->donation_collected >= $program->donation_target)
@@ -128,8 +128,8 @@
                                         </li>
 
                                     </ul>
-                                    <strong class="text-uppercase text-1 mr-3 text-dark float-left position-relative top-2">Share</strong>
-                                    <ul class="social-icons">
+                                    <!-- <strong class="text-uppercase text-1 mr-3 text-dark float-left position-relative top-2">Share</strong> -->
+                                    <!-- <ul class="social-icons">
                                         <li class="social-icons-facebook">
                                             <a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                                         </li>
@@ -139,7 +139,20 @@
                                         <li class="social-icons-linkedin">
                                             <a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
                                         </li>
-                                    </ul>
+                                    </ul> -->
+                                    <div class="post-block mt-0 post-share">
+                                        <h4 class="mb-3">Bagikan Program Donasi Ini</h4>
+
+                                        <!-- AddThis Button BEGIN -->
+                                        <div class="addthis_toolbox addthis_default_style">
+                                            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                            <!-- <a class="addthis_button_tweet"></a> -->
+                                            <a class="addthis_button_pinterest_pinit"></a>
+                                            <a class="addthis_counter addthis_pill_style"></a>
+                                        </div>
+                                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-50faf75173aadc53"></script>
+                                        <!-- AddThis Button END -->
+                                    </div>
                                 </div>
                             </div>
                         </div>

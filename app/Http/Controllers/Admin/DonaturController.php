@@ -123,6 +123,18 @@ class DonaturController extends Controller
 
             $programs = Program::where('id', $konfirmasi->programs_id)->first();
             $programs->update(['donation_collected' => $tambah]);
+        } else if ($myData == 'DITOLAK') {
+            $konfirmasi = DonationConfirmation::findOrFail($id);
+            $collected = DonationConfirmation::where('id', $id)->sum('nominal_donation');
+
+
+            $program = Program::where('id', $konfirmasi->programs_id)->sum('donation_collected');
+            // $tambah = $collected->sum($program);
+
+            $tambah = $program - $collected;
+
+            $programs = Program::where('id', $konfirmasi->programs_id)->first();
+            $programs->update(['donation_collected' => $tambah]);
         }
 
 

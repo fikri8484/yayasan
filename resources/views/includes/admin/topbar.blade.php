@@ -3,7 +3,7 @@
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{{ url('backend/dist/assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
+                <!-- <img src="{{ url('backend/dist/assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle"> -->
                 <span class="pro-user-name ml-1">
                     Admin <i class="mdi mdi-chevron-down"></i>
                 </span>
@@ -32,10 +32,10 @@
     </ul>
 
     <!-- LOGO -->
-    <div class="logo-box">
-        <a href="index.html" class="logo text-center">
+    <div class="logo-box pt-2">
+        <a href="/admin" class="logo text-center">
             <span class="logo-lg">
-                <img src="{{ url('backend/dist/assets/images/logo-dark.png') }}" alt="" height="16">
+                <img src="{{ url('img/logo11.png') }}" alt="" height="35">
                 <!-- <span class="logo-lg-text-light">Xeria</span> -->
             </span>
             <span class="logo-sm">

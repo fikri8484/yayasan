@@ -32,7 +32,7 @@
                         <option value="BELUM_TRANSFER">Belum Transfer</option>
                         <option value="BELUM_KONFIRM">Belum Konfirm</option>
                         <option value="SUDAH_KONFIRM">Sudah Konfirm</option>
-                        <option value="DITOLAK">Ditolak</option>
+                        <option value="DITOLAK" style="color: red;"><strong>DITOLAK</strong></option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">

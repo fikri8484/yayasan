@@ -13,13 +13,15 @@
     <meta name="author" content="okler.net" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('img/favicon.ico') }}" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="{{ url('img/apple-touch-icon.png') }}" />
+    <link rel="shortcut icon" href="{{ url('img/logo11.ico') }}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{{ url('img/logo11.png') }}" />
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no" />
 
+    @stack('prepend-style')
     @include('includes.style')
+    @stack('addon-style')
 </head>
 
 <body>
@@ -31,7 +33,9 @@
         @include('includes.footer')
     </div>
 
+    @stack('prepend-script')
     @include('includes.script')
+    @stack('addon-script')
 </body>
 
 </html>

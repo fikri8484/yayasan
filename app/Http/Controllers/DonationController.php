@@ -32,8 +32,8 @@ class DonationController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
         // $create = $program->created_at->isoFormat('dddd, D MMMM Y');
-        $create = $program->created_at->isoFormat('D-MM-Y');
-        $time_is_up = \Carbon\Carbon::parse($program->time_is_up)->format('d-m-Y');
+        $create = $program->created_at->format('d M Y');
+        $time_is_up = \Carbon\Carbon::parse($program->time_is_up)->format('d M Y');
 
         // $tomorrow = \Carbon\Carbon::tomorrow('Asia/Jakarta');
 
@@ -69,11 +69,7 @@ class DonationController extends Controller
     public function donasistore(Request $request)
     {
 
-        request()->validate([
-            'donor_name' => 'required|string',
-            'nominal_donation' => 'required|integer',
-            'shelter_accounts_id' => 'required|integer'
-        ]);
+
 
         $donatur = new DonationConfirmation;
         $id_donatur_terakhir = $donatur->latest()->first()->id_transaction;
@@ -109,9 +105,13 @@ class DonationController extends Controller
         $donatur->id_transaction = $id_transaction;
         $donatur->donor_name = $request->donor_name;
         $donatur->shelter_accounts_id = $request->shelter_accounts_id;
-        $donatur->nominal_input = $request->nominal_donation;
+
+        $t = preg_replace('/[^0-9]/i', '', $request->nominal_donation);
+        $venc = (int)$t;
+
+        $donatur->nominal_input = $venc;
         $a = $id_transaction;
-        $nominal_donation = $a + $request->nominal_donation;
+        $nominal_donation = $a + $venc;
         $donatur->nominal_donation = $nominal_donation;
         $donatur->email = $request->email;
         $donatur->support = $request->support;
@@ -119,7 +119,12 @@ class DonationController extends Controller
         $blmtf = 'BELUM_TRANSFER';
         $donatur->proof_payment = $bukti;
         $donatur->donation_status = $blmtf;
-        $donatur->save();
+
+        request()->validate([
+            'donor_name' => 'required|string',
+            'nominal_donation' => 'required|numeric|min:10.000',
+            'shelter_accounts_id' => 'required|integer'
+        ]);
 
         $vars = array(
             'secret' => env('G_RECAPTCHA_SECRET_KEY'),
@@ -134,6 +139,7 @@ class DonationController extends Controller
         $response = json_decode($encoded_response, true);
         curl_close($ch);
         if ($response['success'] && $response['action'] == 'donation' && $response['score'] > 0.5) {
+            $donatur->save();
             //continue basic login logic
             return redirect()->route('confirmdonation', ['id' => $donatur->id]);
         } else {

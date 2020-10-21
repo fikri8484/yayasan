@@ -40,9 +40,14 @@
                     <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $item->title }}">
                 </div>
 
+
+
                 <div class="form-group">
                     <label for="image">Image</label>
-                    <input type="file" class="form-control" name="image" placeholder="Image">
+                    @if($item->image)
+                    <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
+                    @endif
+                    <input type="file" class="form-control" name="image" placeholder="Image" value="{{$item->image}}">
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">

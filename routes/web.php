@@ -22,6 +22,9 @@ Route::get('/galeri', 'GalleryController@index')
 Route::get('/kegiatan', 'ActivityController@index')
     ->name('activity');
 
+// Route::get('/{tag}', 'ActivityController@show')
+//     ->name('tag');
+
 Route::get('/kegiatan/{slug}', 'ActivitydetailController@index')
     ->name('detail-kegiatan');
 
@@ -31,6 +34,14 @@ Route::get('/tentang', 'AboutController@index')
 Route::get('/dashboard', 'DashboardController@donasi')
     ->name('dashboard')
     ->middleware(['auth', 'verified']);
+
+Route::get('/donasiSaya', 'DashboardController@donasiSaya')
+    ->name('dashboard-DonasiSaya')
+    ->middleware(['auth', 'verified']);
+
+Route::get('/dashboardb/cari', 'DashboardController@cari');
+
+Route::get('/kirim-email', 'EmailController@index');
 
 
 // BAGIAN DONASI

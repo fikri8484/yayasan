@@ -1,5 +1,5 @@
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ url('backend/dist/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url('img/logo11.ico') }}">
 
     <!--Morris Chart-->
     <link rel="stylesheet" href="{{ url('backend/dist/assets/libs/morris-js/morris.css') }}" />

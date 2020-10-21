@@ -14,11 +14,11 @@
                     <div class="tabs tabs-vertical tabs-left">
 
                         <ul class="nav nav-tabs">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/dashboard" data-toggle="tab">Overview</a>
-                            </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/donasiSaya">Donasi Saya <i></i></a>
+                                <a class="nav-link" href="/dashboard">Overview</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/donasiSaya" data-toggle="tab">Donasi Saya <i></i></a>
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link bg-color-secondary" href="/logout" style="color: white">Keluar</a>
@@ -34,46 +34,13 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div id="overview" class="tab-pane active">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-4">
-                                            <div class="featured-box featured-box-no-borders featured-box-box-shadow">
-                                                <span class="box-content px-1 py-4 text-center d-block">
-                                                    <span class="text-primary text-8 position-relative top-3 mt-3"><i class="fas fa-heart"></i></span>
-                                                    <span class="elements-list-shadow-icon text-default"><i class="fa fa-heart"></i></span>
-                                                    <p>Telah Berpatisipasi {{ $info }} Program Donasi </p>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-6">
-                                        <div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-4">
-                                            <div class="featured-box featured-box-no-borders featured-box-box-shadow">
-                                                <span class="box-content px-1 py-4 text-center d-block">
-                                                    <span class="text-primary text-8 position-relative top-3 mt-3"><i class="fas fa-dollar-sign"></i></span>
-                                                    <span class="elements-list-shadow-icon text-default"><i class="fa fa-dollar-sign"></i></span>
-                                                    <p>@currency($totalDonation) Donasi Tersalurkan</p>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div id="donasisaya" class="tab-pane">
-                                <div class="col-lg-6 float-right">
-                                    <form role="search" class="d-flex w-30 pb-2 mb-2" action="page-search-results.html" method="get">
-                                        <div class="simple-search input-group w-30">
-                                            <input class="form-control border-0 bg-color-grey
-                            id=" headerSearch" name="q" type="search" value="" placeholder="Cari Donasi Saya..." />
-                                            <span class="input-group-append bg-color-secondary border-0">
-                                                <button class="btn" type="submit">
-                                                    <i class="fa fa-search header-nav-top-icon"></i>
-                                                </button>
-                                            </span>
-                                        </div>
+                            <div id="donasisaya" class="tab-pane active">
+                                <div class="col-lg-6">
+                                    <form action="/dashboardb/cari" method="GET" class="form-inline">
+                                        <input class="form-control mr-sm-2" type="text" placeholder="Cari donasi..." name="cari" value="{{ old('cari') }}">
+                                        <input type="submit" class="btn btn-primary my-2 my-sm-0" value="Cari">
                                     </form>
                                 </div>
 

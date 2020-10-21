@@ -8,7 +8,7 @@
                 <li data-transition="fade" class="slide-overlay slide-overlay-level-8">
                     <img src="img/slides/quran.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" />
 
-                    <h1 class="tp-caption font-weight-extra-bold text-color-light negative-ls-2" data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="center" data-y="center" data-voffset="['-55','-55','-55','-55']" data-fontsize="['50','50','50','90']" data-lineheight="['55','55','55','95']" data-letterspacing="-1" style="font: calibri">
+                    <h1 class="tp-caption font-weight-extra-bold text-color-light negative-ls-2" data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="center" data-y="center" data-voffset="['-55','-55','-55','-55']" data-fontsize="['50','50','50','90']" data-lineheight="['55','55','55','95']" data-letterspacing="-1">
                         وَمَا تُنفِقُوا۟ مِنْ خَيْرٍ فَإِنَّ ٱللَّهَ بِهِۦ عَلِيمٌ
                     </h1>
 
@@ -41,23 +41,6 @@
         </div>
     </div>
 
-    <!-- <section class="section section-quaternary mb-5">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col">
-                    <h4 class="mb-0">
-                        وَمَنْ يُوْقَ شُحَّ نَفْسِهِ فَأُلَئِكَ هُمُ الْمُفْلِحُوْنَ
-                    </h4>
-                    <p class="mb-0">Barangsiapa yang dijauhkan dari sifat kikir dirinya, <br />
-                        mereka itulah orang-orang yang beruntung.” (QS. Al-Hasyr :
-                        9)</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
-    <!-- <br><br><br> -->
     <div class="container pt-5">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
@@ -116,11 +99,11 @@
                             <?php
                             $a = $program->donation_collected;
                             $b = $program->donation_target;
-                            $c = 10;
-                            $bar = $a . $c / $b;
+                            $c = 100;
+                            $bar = $a * $c / $b;
                             ?>
 
-                            <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
+                            <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="{{$bar}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$bar}}%">
 
                             </div>
                         </div>
@@ -134,14 +117,8 @@
                 </div>
             </div>
             @endforeach
-
-
         </div>
-        <!-- <div class="row align-items-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
-            <div class="col-lg-12 text-center">
-                <a href="{{ route('donation') }}" class="btn btn-primary mt-3">Lihat Semua Donasi </a>
-            </div>
-        </div> -->
+
         <div class="row">
             <div class="col-lg-12 text-center">
                 <a href="{{ route('donation') }}" class="btn btn-primary btn-px-5 btn-py-2 font-weight-bold text-color-light rounded-0 text-2">Lihat Semua Donasi</a>
@@ -242,4 +219,72 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade pt-5 mt-5" id="test" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Ingin Donasi Apa Hari Ini?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center;">
+                    <img alt="SedekahJariah" width="100" height="50" src="{{ url('img/logo11.png') }}" />
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!-- <hr class="bg-color-grey size=" 50" style="height: 4px" /> -->
+                        <div class="divider divider-primary">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                @foreach ($modal as $modal)
+                <a href="{{ route('detail-donation', $modal->slug) }}"> <button class="btn btn-primary btn-block mb-2">{{ str_limit($modal->brief_explanation, $limit = 60 ) }}</button>
+                </a>
+                @endforeach
+                <a href="{{route('donation')}}">
+                    <button type="button" class="btn btn-primary btn-block mb-2">Cari Program Kebaikan Lainnya</button>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=6281522862759&text=Assalamu%27alaikum%20admin%20...%20%20%20%0A%0A%0ASumber%20info%3A%20http%3A%2F%2Fdev.sedekahjariyah.idekite.id%2F
+" target="_blank"><button type="button" class="btn btn-primary btn-block mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tanyaAdmin">
+    <a href="https://api.whatsapp.com/send?phone=6281522862759&text=Assalamu%27alaikum%20admin%20...%20%20%20%0A%0A%0ASumber%20info%3A%20http%3A%2F%2Fdev.sedekahjariyah.idekite.id%2F
+" target="_blank"><button type="button" class="btn btn-primary btn-xl mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
+
+</div>
 @endsection
+
+
+@push('prepend-style')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<style>
+    .tanyaAdmin {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        z-index: 99;
+    }
+</style>
+@endpush
+
+@push('prepend-script')
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#test").modal('show');
+    });
+</script>
+@endpush

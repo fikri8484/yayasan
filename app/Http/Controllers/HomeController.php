@@ -16,6 +16,7 @@ class HomeController extends Controller
         $program = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(3);
         $gallery = Gallery::orderBy('id', 'DESC')->paginate(8);
         $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->paginate(3);
-        return view('pages.home', compact('program', 'gallery', 'activity', 'today'));
+        $modal = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(2);
+        return view('pages.home', compact('program', 'gallery', 'activity', 'today', 'modal'));
     }
 }

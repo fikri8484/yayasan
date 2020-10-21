@@ -36,10 +36,14 @@
                         </div>
                         @if (count($errors)>0)
                         <div class="alert alert-danger">
-                            <strong>Whoops!</strong> Silahkan isi Nama, Nominal Donasi, dan Tujuan Transfer Bank
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                         @endif
-                        <form action="/donasi/{{$program->slug}}/form/store" method="POST" enctype="multipart/form-data">
+                        <form action="/donasi/{{$program->slug}}/form/store" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()" name="myForm">
                             @csrf
                             @if (Auth::check())
                             <h4 class="card-title">
@@ -84,23 +88,23 @@
                             <input type="hidden" name="programs_id" value="{{$program->id}}">
 
                             <div class="form-group">
-                                <label for="nominal_donation">Nominal Donasi</label>
+                                <label for="nominal_donation">Nominal Donasi (minimal 10.000)</label>
                                 <div class="input-group">
                                     <span class="input-group-prepend">
                                         <span class="input-group-text">
                                             Rp
                                         </span>
                                     </span>
-                                    <input type="number" class="form-control" name="nominal_donation" placeholder="Donasi" value="{{ old('nominal_donation') }}" required autocomplete="off" required>
+
+                                    <input type="text" class="form-control" name="nominal_donation" value="{{ old('nominal_donation') }}" required autocomplete="off" id="rupiah">
                                 </div>
 
 
                             </div>
-
                             <div class="form-group">
                                 <label for="shelter_accounts_id">Transfer Bank </label>
 
-                                <select name="shelter_accounts_id" required class="form-control">
+                                <select name="shelter_accounts_id" required class="form-control" onclick="GFG_Fun();">
                                     <option value="">Pilih Bank Tujuan Transfer</option>
                                     @foreach ($bank as $bank)
                                     <option value="{{ $bank->id }}">
@@ -116,10 +120,9 @@
                             </div>
                             <input type="hidden" name="recaptcha_v3" id="recaptcha_v3">
 
-                            <button type="submit" class="btn btn-primary btn-block" style="height: 80px; font-size:large;">
+                            <button type="submit" value="Submit" class="btn btn-primary btn-block" style="height: 80px; font-size:large;">
                                 Lanjutkan Donasi
                             </button>
-
                             </form>
                         </div>
                 </section>
@@ -145,13 +148,13 @@
     });
 </script>
 
-
 <script type="text/javascript">
+    var inputs, index;
     var rupiah = document.getElementById('rupiah');
     rupiah.addEventListener('keyup', function(e) {
         // tambahkan 'Rp.' pada saat form di ketik
         // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-        rupiah.value = formatRupiah(this.value, 'Rp. ');
+        rupiah.value = formatRupiah(this.value, '');
     });
 
     /* Fungsi formatRupiah */
@@ -169,39 +172,17 @@
         }
 
         rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        return prefix == undefined ? rupiah : (rupiah ? '' + rupiah : '');
     }
 </script>
 
-
-<script type="text/javascript">
-    /* Tanpa Rupiah */
-    var tanpa_rupiah = document.getElementById('tanpa-rupiah');
-    tanpa_rupiah.addEventListener('keyup', function(e) {
-        tanpa_rupiah.value = formatRupiah(this.value);
-    });
-
-    /* Dengan Rupiah */
-    var dengan_rupiah = document.getElementById('dengan-rupiah');
-    dengan_rupiah.addEventListener('keyup', function(e) {
-        dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
-    });
-
-    /* Fungsi */
-    function formatRupiah(angka, prefix) {
-        var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split = number_string.split(','),
-            sisa = split[0].length % 3,
-            rupiah = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-        if (ribuan) {
-            separator = sisa ? '.' : '';
-            rupiah += separator + ribuan.join('.');
+<script>
+    function validateForm() {
+        var x = document.forms["myForm"]["nominal_donation"].value;
+        if (x < 10, 000) {
+            alert("minimal 10.000");
+            return false;
         }
-
-        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
     }
 </script>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Kegiatan')
+@section('title', 'tag')
 
 @section('content')
 <div role="main" class="main">
@@ -31,7 +31,7 @@
                         @foreach($tag as $tag)
 
                         <li class="nav-item">
-                            <a class="nav-link">{{ $tag->tag }}</a>
+                            <a class="nav-link" href="{{ route('tag', $tag->tag) }}">{{ $tag->tag }}</a>
                         </li>
 
                         @endforeach
@@ -42,27 +42,27 @@
                 <div class="blog-posts">
 
                     <div class="row px-3">
-                        @foreach($activity as $a)
+                        @foreach($activityTag as $a)
                         <div class="col-sm-6">
                             <article class="post post-medium border-0 pb-0 mb-5">
                                 <div class="post-image">
-                                    <a href="{{ route('detail-kegiatan', $a->slug) }}">
+                                    <a href="{{ route('detail-kegiatan', $a->activities->slug) }}">
 
-                                        <img src="{{ $a->activity_gallery->count() ? Storage::url($a->activity_gallery->first()->image) : '' }}" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                                        <img src="{{ $a->activities->activity_gallery->count() ? Storage::url($a->activities->activity_gallery->first()->image) : '' }}" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 
                                     </a>
                                 </div>
 
                                 <div class="post-content">
 
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="{{ route('detail-kegiatan', $a->slug) }}" style="color:black">{{ $a->title }}</a></h2>
-                                    <p>{{ str_limit($a->description, $limit = 100 ) }}</p>
+                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="{{ route('detail-kegiatan', $a->slug) }}" style="color:black">{{ $a->activities->title }}</a></h2>
+                                    <p>{{ str_limit($a->activities->description, $limit = 100 ) }}</p>
 
                                     <div class="post-meta">
                                         <span><i class="far fa-user"></i> Admin </span>
-                                        <span><i class="far fa-folder"></i>{{ $a->activity_tag->tag }}</a> </span>
+                                        <span><i class="far fa-folder"></i></a> </span>
 
-                                        <span class="d-block mt-2"><a href="{{ route('detail-kegiatan', $a->slug) }}" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                                        <span class="d-block mt-2"><a href="{{ route('detail-kegiatan', $a->activities->slug) }}" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
                                     </div>
 
                                 </div>
@@ -71,7 +71,7 @@
                         @endforeach
 
                     </div>
-                    {!! $activity->links() !!}
+                    {!! $activityTag->links() !!}
 
 
                 </div>
