@@ -9,6 +9,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Alert;
+use PDF;
 
 class ProgramController extends Controller
 {
@@ -97,16 +98,41 @@ class ProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProgramRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
-        $data['image'] = $request->file('image')->store(
-            'assets/program',
-            'public'
-        );
-        $item = Program::findOrFail($id);
 
+
+        $image  = $request->file('image');
+        if ($image != '') {
+            request()->validate([
+                'categories_id' => 'required|integer|exists:categories,id',
+                'title' => 'required|max:255',
+                'image' => 'required|image',
+                'brief_explanation' => 'required',
+                'donation_target' => 'required|integer',
+                'time_is_up' => 'required|date',
+                'description' => 'required'
+            ]);
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->title);
+            $data['image'] = $request->file('image')->store(
+                'assets/program',
+                'public'
+            );
+        } else {
+            request()->validate([
+                'categories_id' => 'required|integer|exists:categories,id',
+                'title' => 'required|max:255',
+                'brief_explanation' => 'required',
+                'donation_target' => 'required|integer',
+                'time_is_up' => 'required|date',
+                'description' => 'required'
+            ]);
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->title);
+        }
+
+        $item = Program::findOrFail($id);
         $item->update($data);
         Alert::success('Success', 'Data Berhasil Diubah');
         return redirect()->route('program.index');

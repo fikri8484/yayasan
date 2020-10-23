@@ -25,6 +25,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('homeSlide.index') }}">
+                        <i class="mdi mdi-google-pages"></i>
+                        <span> Home Slide </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('gallery.index') }}">
                         <i class="mdi mdi-google-photos"></i>
                         <span> Gallery </span>
@@ -62,6 +69,12 @@
                     <a href="{{ route('bank.index') }}">
                         <i class="mdi mdi-bank"></i>
                         <span> Rekening Bank </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('contact.index') }}">
+                        <i class="mdi mdi-whatsapp"></i>
+                        <span> CP WhatsApp </span>
                     </a>
                 </li>
 

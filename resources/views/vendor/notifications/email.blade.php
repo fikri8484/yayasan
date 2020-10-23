@@ -6,15 +6,17 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# @lang('Hello!')
+# @lang('Assalamualaikum')
 @endif
 @endif
 
 {{-- Intro Lines --}}
-@foreach ($introLines as $line)
+<!-- @foreach ($introLines as $line)
 {{ $line }}
 
-@endforeach
+@endforeach -->
+
+Silahkan Klik Tombol dibawah Untuk verifikasi Akun Kamu di SedekahJariah
 
 {{-- Action Button --}}
 @isset($actionText)

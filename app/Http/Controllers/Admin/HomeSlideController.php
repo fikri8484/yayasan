@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\GalleryRequest;
-use App\Gallery;
-use App\GalleryCategory;
+use App\Http\Requests\Admin\HomeSlideRequest;
+use App\HomeSlide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Alert;
 
-class GalleryController extends Controller
+class HomeSlideController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +18,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $items = Gallery::with(['gallery_category'])->latest()->paginate(7);
+        $items = HomeSlide::orderBy('id', 'DESC')->get();
 
-        return view('pages.admin.gallery.index', [
+        return view('pages.admin.homeSlide.index', [
             'items' => $items
         ]);
     }
@@ -33,9 +32,9 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        $gallery_categories = GalleryCategory::all();
-        return view('pages.admin.gallery.create', [
-            'gallery_categories' => $gallery_categories
+        $home_slides = HomeSlide::all();
+        return view('pages.admin.homeSlide.create', [
+            'home_slides' => $home_slides
         ]);
     }
 
@@ -45,17 +44,17 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GalleryRequest $request)
+    public function store(HomeSlideRequest $request)
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
-            'assets/gallery',
+            'assets/home-slides',
             'public'
         );
 
-        Gallery::create($data);
+        HomeSlide::create($data);
         Alert::success('Success', 'Data Berhasil Ditambah');
-        return redirect()->route('gallery.index');
+        return redirect()->route('homeSlide.index');
     }
 
     /**
@@ -77,12 +76,9 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        $item = Gallery::findOrFail($id);
-        $gallery_categories = GalleryCategory::all();
-
-        return view('pages.admin.gallery.edit', [
-            'item' => $item,
-            'gallery_categories' => $gallery_categories
+        $item = HomeSlide::findOrFail($id);
+        return view('pages.admin.homeSlide.edit', [
+            'item' => $item
         ]);
     }
 
@@ -98,26 +94,26 @@ class GalleryController extends Controller
         $image  = $request->file('image');
         if ($image != '') {
             request()->validate([
-                'title' => 'required|max:255',
-                'gallery_categories_id' => 'required|integer|exists:gallery_categories,id',
+                'title' => 'required|max:25',
+                'description' => 'required|max:25',
                 'image' => 'required|image'
             ]);
             $data = $request->all();
             $data['image'] = $request->file('image')->store(
-                'assets/gallery',
+                'assets/home-slides',
                 'public'
             );
         } else {
             request()->validate([
-                'title' => 'required|max:255',
-                'gallery_categories_id' => 'required|integer|exists:gallery_categories,id',
+                'title' => 'required|max:25',
+                'description' => 'required|max:25',
             ]);
             $data = $request->all();
         }
-        $item = Gallery::findOrFail($id);
+        $item = HomeSlide::findOrFail($id);
         $item->update($data);
         Alert::success('Success', 'Data Berhasil diedit');
-        return redirect()->route('gallery.index');
+        return redirect()->route('homeSlide.index');
     }
 
     /**
@@ -128,9 +124,9 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        $item = Gallery::findOrFail($id);
+        $item = HomeSlide::findOrFail($id);
         $item->delete();
         Alert::success('Success', 'Data Berhasil dihapus');
-        return redirect()->route('gallery.index');
+        return redirect()->route('homeSlide.index');
     }
 }

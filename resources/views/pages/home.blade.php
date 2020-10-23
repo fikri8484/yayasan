@@ -5,38 +5,23 @@
     <div class="slider-container rev_slider_wrapper" style="height: 650px">
         <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 650, 'responsiveLevels': [4096,1200,992,500], 'navigation' : {'arrows': { 'enable': false }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
             <ul>
+
+                @foreach ($slide as $slide)
                 <li data-transition="fade" class="slide-overlay slide-overlay-level-8">
-                    <img src="img/slides/quran.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" />
+                    <img src="{{ Storage::url($slide->image) }}" alt="Sedekah" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" />
 
-                    <h1 class="tp-caption font-weight-extra-bold text-color-light negative-ls-2" data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="center" data-y="center" data-voffset="['-55','-55','-55','-55']" data-fontsize="['50','50','50','90']" data-lineheight="['55','55','55','95']" data-letterspacing="-1">
-                        وَمَا تُنفِقُوا۟ مِنْ خَيْرٍ فَإِنَّ ٱللَّهَ بِهِۦ عَلِيمٌ
-                    </h1>
+                    <h4 class="tp-caption font-extra-bold text-color-light negative-ls-2" data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="center" data-y="center" data-voffset="['-55','-55','-55','-55']" data-fontsize="['50','50','50','90']" data-lineheight="['55','55','55','95']" data-letterspacing="-1">
+                        {{ $slide->title }}
+                    </h4>
 
-                    <div class="tp-caption font-weight-light text-center" data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]' data-x="center" data-y="center" data-voffset="['-5','-5','-5','15']" data-fontsize="['18','18','18','50']" data-lineheight="['29','29','29','40']" style="color: #b5b5b5">
-                        <strong>Dan apa saja harta yang baik yang kamu nafkahkan (di jalan
-                            Allah),</strong>
-                        maka sesungguhnya Allah Maha Mengetahui
+                    <div class="tp-caption font-light text-center mt-4" data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]' data-x="center" data-y="center" data-voffset="['-5','-5','-5','15']" data-fontsize="['18','18','18','50']" data-lineheight="['29','29','29','40']" style="color: #b5b5b5">
+                        {{$slide->description}}
                     </div>
 
-                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold" data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-hash data-hash-offset="85" href="{{ route('donation') }}" data-x="center" data-hoffset="0" data-y="center" data-voffset="['65','65','65','105']" data-whitespace="nowrap" data-fontsize="['15','15','15','33']" data-paddingtop="['15','15','15','40']" data-paddingright="['45','45','45','110']" data-paddingbottom="['15','15','15','40']" data-paddingleft="['45','45','45','110']">Donasi Sekarang</a>
+                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold mt-5" data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-hash data-hash-offset="85" href="{{ route('donation') }}" data-x="center" data-hoffset="0" data-y="center" data-voffset="['65','65','65','105']" data-whitespace="nowrap" data-fontsize="['15','15','15','33']" data-paddingtop="['15','15','15','40']" data-paddingright="['45','45','45','110']" data-paddingbottom="['15','15','15','40']" data-paddingleft="['45','45','45','110']">Donasi Sekarang</a>
                 </li>
-                <li data-transition="fade" class="slide-overlay slide-overlay-level-8">
-                    <img src="img/slides/masjid.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" />
+                @endforeach
 
-                    <h1 class="tp-caption font-weight-extra-bold text-color-light negative-ls-2" data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-x="center" data-y="center" data-voffset="['-55','-55','-55','-55']" data-fontsize="['50','50','50','90']" data-lineheight="['55','55','55','95']" data-letterspacing="-1" style="font: calibri">
-                        <strong>Siapkan Sedekah Terbaikmu disini!</strong>
-                    </h1>
-                    <br /><br />
-
-                    <div class="tp-caption font-weight-light text-center" data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]' data-x="center" data-y="center" data-voffset="['-5','-5','-5','15']" data-fontsize="['18','18','18','50']" data-lineheight="['29','29','29','40']" style="color: #b5b5b5">
-                        Kalian sekali-kali tidak akan mencapai kebajikan yang sempurna
-                        <br />
-                        hingga kalian menafkahkan sebagian harta yang kalian cintai.”
-                        (QS. Ali-‘Imran : 92)
-                    </div>
-
-                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold" data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]' data-hash data-hash-offset="85" href="{{ route('donation') }}" data-x="center" data-hoffset="0" data-y="center" data-voffset="['65','65','65','105']" data-whitespace="nowrap" data-fontsize="['15','15','15','33']" data-paddingtop="['15','15','15','40']" data-paddingright="['45','45','45','110']" data-paddingbottom="['15','15','15','40']" data-paddingleft="['45','45','45','110']">Donasi Sekarang</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -220,7 +205,7 @@
     </div>
 </div>
 
-<div class="modal fade pt-5 mt-5" id="test" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+<div class="modal fade pt-3 mt-5" id="test" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -228,16 +213,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="text-align: center;">
+                <div style="text-align: center;" class="mt-4">
                     <img alt="SedekahJariah" width="100" height="50" src="{{ url('img/logo11.png') }}" />
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <!-- <hr class="bg-color-grey size=" 50" style="height: 4px" /> -->
-                        <div class="divider divider-primary">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
+                <div class="divider divider-primary">
+                    <i class="fas fa-chevron-down"></i>
                 </div>
                 @foreach ($modal as $modal)
                 <a href="{{ route('detail-donation', $modal->slug) }}"> <button class="btn btn-primary btn-block mb-2">{{ str_limit($modal->brief_explanation, $limit = 60 ) }}</button>
@@ -246,8 +226,10 @@
                 <a href="{{route('donation')}}">
                     <button type="button" class="btn btn-primary btn-block mb-2">Cari Program Kebaikan Lainnya</button>
                 </a>
-                <a href="https://api.whatsapp.com/send?phone=6281522862759&text=Assalamu%27alaikum%20admin%20...%20%20%20%0A%0A%0ASumber%20info%3A%20http%3A%2F%2Fdev.sedekahjariyah.idekite.id%2F
+                @foreach($contact as $cp)
+                <a href="https://api.whatsapp.com/send?phone={{$cp->number}}&text={{$cp->message}}
 " target="_blank"><button type="button" class="btn btn-primary btn-block mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
+                @endforeach
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
@@ -255,14 +237,13 @@
         </div>
     </div>
 </div>
-
+@foreach($contact as $contact)
 <div class="tanyaAdmin">
-    <a href="https://api.whatsapp.com/send?phone=6281522862759&text=Assalamu%27alaikum%20admin%20...%20%20%20%0A%0A%0ASumber%20info%3A%20http%3A%2F%2Fdev.sedekahjariyah.idekite.id%2F
+    <a href="https://api.whatsapp.com/send?phone={{$contact->number}}&text={{$contact->message}}
 " target="_blank"><button type="button" class="btn btn-primary btn-xl mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
-
+    @endforeach
 </div>
 @endsection
-
 
 @push('prepend-style')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">

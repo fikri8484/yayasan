@@ -40,7 +40,11 @@
 
                             <tr>
                                 <td>{{ $i++ }}</td>
+                                @if($item->program == null)
+                                <td>(Nama Program Sudah Dihapus)</td>
+                                @else
                                 <td>{{ $item->program->title }}</td>
+                                @endif
                                 <td>{{ $item->donor_name }}</td>
                                 <td>{{ $item->created_at->add('1 day')->format('H:i\ , d M Y') }}</td>
 

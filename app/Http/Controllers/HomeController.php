@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Program;
 use App\Gallery;
 use App\Activity;
+use App\HomeSlide;
+use App\Contact;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -17,6 +19,8 @@ class HomeController extends Controller
         $gallery = Gallery::orderBy('id', 'DESC')->paginate(8);
         $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->paginate(3);
         $modal = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(2);
-        return view('pages.home', compact('program', 'gallery', 'activity', 'today', 'modal'));
+        $slide = HomeSlide::get();
+        $contact = Contact::orderBy('id', 'DESC')->paginate(1);
+        return view('pages.home', compact('program', 'gallery', 'activity', 'today', 'modal', 'slide', 'contact'));
     }
 }

@@ -81,6 +81,8 @@ Route::prefix('admin')
         Route::resource('development', 'DevelopmentController');
         Route::resource('donatur', 'DonaturController');
         Route::resource('bank', 'ShelterAccountController');
+        Route::resource('homeSlide', 'HomeSlideController');
+        Route::resource('contact', 'ContactController');
     });
 
 Route::post('Ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.upload');

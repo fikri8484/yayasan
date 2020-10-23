@@ -115,11 +115,6 @@ class ActivityController extends Controller
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
 
-        // $item = Activity::findOrFail($id);
-        // $item->update($data);
-        // return redirect()->route('activity.index');
-        $item = ActivityGallery::where('activities_id', $id);
-        $item->delete();
         $myData = Activity::findOrFail($id);
 
         if ($files = $request->file('images')) {
@@ -138,9 +133,11 @@ class ActivityController extends Controller
         $myData->description = $request->get('description');
         $myData->time = $request->get('time');
 
-
-
         $myData->update();
+        //hapus gambar yg sebelumnya dipakai, 
+        $item = ActivityGallery::where('activities_id', $id);
+        $item->delete();
+
         Alert::success('Success', 'Data Berhasil Diubah');
 
         return redirect()->route('activity.index');

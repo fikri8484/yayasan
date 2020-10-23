@@ -42,7 +42,13 @@
 
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $p->title }}</td>
+                                <td>{{ $p->title }}
+                                    @if($p->donation_target <= $p->donation_collected)
+                                        <div class="badge badge-success">Terdanai <i class="fa fa-check"></i></div>
+                                        @endif
+
+
+                                </td>
                                 <td>
                                     <img src=" {{ Storage::url($p->image) }}" alt="" style="width: 50px" class="img-thumbnail">
                                 </td>

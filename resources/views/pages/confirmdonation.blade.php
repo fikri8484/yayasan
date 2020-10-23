@@ -50,14 +50,14 @@
 
                         </div>
                         <p>Rincian :</p>
-                        <div class="d-sm-flex align-items-center justify-content-between bg-color-primary px-3">
+                        <div class="d-sm-flex align-items-center justify-content-between bg-color-primary px-2">
                             <h4 class="mt-2" style="color: antiquewhite">
                                 Jumlah Donasi
                             </h4>
                             <h4 class="mt-2" style="color: antiquewhite">@currency($donatur->nominal_input)</h4>
                         </div>
-                        <div class="d-sm-flex align-items-center justify-content-between bg-color-light-scale-1 px-3">
-                            <h4>Kode Unik</h4>
+                        <div class="d-sm-flex align-items-center justify-content-between bg-color-light-scale-1 px-2">
+                            <h4>Kode Unik*</h4>
                             <h4>{{ $donatur->id_transaction }}</h4>
                         </div>
                         <p><i> *Kode unik akan didonasikan</i></p>

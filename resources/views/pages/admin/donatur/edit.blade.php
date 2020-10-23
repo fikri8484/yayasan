@@ -24,10 +24,11 @@
             <form action="{{ route('donatur.update', $item->id) }}" method="post">
                 @method('PUT')
                 @csrf
+                @if($item->donation_status == 'SUKSES')
                 <div class="form-group">
                     <label for="title">Status</label>
                     <select name="donation_status" required class="form-control">
-                        <option value="{{ $item->donation_status }}">Jangan Ubah ({{ $item->donation_status }})</option>
+                        <option value="{{ $item->donation_status }}">({{ $item->donation_status }})</option>
                         <option value="SUKSES">Sukses</option>
                         <option value="BELUM_TRANSFER">Belum Transfer</option>
                         <option value="BELUM_KONFIRM">Belum Konfirm</option>
@@ -35,6 +36,18 @@
                         <option value="DITOLAK" style="color: red;"><strong>DITOLAK</strong></option>
                     </select>
                 </div>
+                @else
+                <div class="form-group">
+                    <label for="title">Status</label>
+                    <select name="donation_status" required class="form-control">
+                        <option value="{{ $item->donation_status }}">({{ $item->donation_status }})</option>
+                        <option value="SUKSES">Sukses</option>
+                        <option value="BELUM_TRANSFER">Belum Transfer</option>
+                        <option value="BELUM_KONFIRM">Belum Konfirm</option>
+                        <option value="SUDAH_KONFIRM">Sudah Konfirm</option>
+                    </select>
+                </div>
+                @endif
                 <button type="submit" class="btn btn-primary btn-block">
                     Ubah
                 </button>
