@@ -88,7 +88,7 @@
                             <input type="hidden" name="programs_id" value="{{$program->id}}">
 
                             <div class="form-group">
-                                <label for="nominal_donation">Nominal Donasi (minimal 10.000)</label>
+                                <label for="nominal_donation">Nominal Donasi</label>
                                 <div class="input-group">
                                     <span class="input-group-prepend">
                                         <span class="input-group-text">

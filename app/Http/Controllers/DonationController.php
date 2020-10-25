@@ -122,7 +122,7 @@ class DonationController extends Controller
 
         request()->validate([
             'donor_name' => 'required|string',
-            'nominal_donation' => 'required|numeric|min:10.000',
+            // 'nominal_donation' => 'required|numeric|min:10.000',
             'shelter_accounts_id' => 'required|integer'
         ]);
 
