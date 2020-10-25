@@ -58,14 +58,6 @@ class DonationController extends Controller
         return view('pages.createdonation', compact('program', 'bank'));
     }
 
-
-    // public function donasicreate($id)
-    // {
-    //     $program = Program::with(['donation_confirmation'])->find($id);
-    //     $bank = ShelterAccount::all();
-    //     return view('pages.createdonation', compact('program', 'bank'));
-    // }
-
     public function donasistore(Request $request)
     {
 
