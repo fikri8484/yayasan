@@ -39,7 +39,7 @@
                             <div id="donasisaya" class="tab-pane active">
                                 <div class="col-lg-6">
                                     <form action="/dashboardb/cari" method="GET" class="form-inline">
-                                        <input class="form-control mr-sm-2" type="text" placeholder="Cari donasi..." name="cari" value="{{ old('cari') }}">
+                                        <input class="form-control mr-sm-2" type="text" placeholder="Cari nominal donasi..." name="cari" value="{{ old('cari') }}">
                                         <input type="submit" class="btn btn-primary my-2 my-sm-0" value="Cari">
                                     </form>
                                 </div>
@@ -60,7 +60,7 @@
 
                                             <td>
                                                 {{ $d->program->title }}
-                                                <a href="{{ route('detail-donation', $d->program->slug) }}">
+                                                <a href="{{ route('detail-donation', $d->program->slug) }}" target="_blank">
                                                     <i class="fa fa-eye"></i></a>
                                             </td>
                                             <td> @currency($d->nominal_donation)</td>

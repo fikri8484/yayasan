@@ -135,8 +135,8 @@ class ActivityController extends Controller
 
         $myData->update();
         //hapus gambar yg sebelumnya dipakai, 
-        $item = ActivityGallery::where('activities_id', $id);
-        $item->delete();
+        // $item = ActivityGallery::where('activities_id', $id);
+        // $item->delete();
 
         Alert::success('Success', 'Data Berhasil Diubah');
 

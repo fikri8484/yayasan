@@ -120,9 +120,30 @@
                             </div>
                             <input type="hidden" name="recaptcha_v3" id="recaptcha_v3">
 
+
+
+                            @if ($program->donation_collected >= $program->donation_target)
+                            <span class="btn mb-4" style="width: 100%; height: 100%; background-color:#7f8c8d;">
+
+                                <h4 style="color: whitesmoke" class="pt-2">
+                                    ~ Donasi Ditutup ~
+                                </h4>
+
+                            </span>
+                            @elseif ($program->is_published == 0)
+                            <span class="btn mb-4" style="width: 100%; height: 100%; background-color:#7f8c8d;">
+
+                                <h4 style="color: whitesmoke" class="pt-2">
+                                    ~ Donasi Ditutup ~
+                                </h4>
+
+                            </span>
+
+                            @else
                             <button type="submit" value="Submit" class="btn btn-primary btn-block" style="height: 80px; font-size:large;">
                                 Lanjutkan Donasi
                             </button>
+                            @endif
                             </form>
                         </div>
                 </section>

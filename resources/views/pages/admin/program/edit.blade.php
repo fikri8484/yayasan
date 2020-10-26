@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label for="is_selected">Program Donasi Pilihan?</label>
                     <select name="is_selected" required class="form-control">
-                        <option value="{{ $item->is_selected }}">Silahkan Ubah</option>
+                        <option value="{{ $item->is_selected }}">@if($item->is_selected == 1) YA @else TIDAK @endif</option>
                         <option value="1">Ya</option>
                         <option value="0">Tidak</option>
                     </select>
@@ -69,7 +69,7 @@
                 <div class="form-group">
                     <label for="is_published">Tampilkan Program Donasi ini di Publik?</label>
                     <select name="is_published" required class="form-control">
-                        <option value="{{ $item->is_published }}">Silahkan Ubah</option>
+                        <option value="{{ $item->is_published }}">@if($item->is_published == 1) YA @else TIDAK @endif</option>
                         <option value="1">Ya</option>
                         <option value="0">Tidak</option>
                     </select>

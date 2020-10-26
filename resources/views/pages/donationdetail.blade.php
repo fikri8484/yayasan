@@ -60,6 +60,14 @@
                         </h4>
 
                     </button>
+                    @elseif ($program->is_published == 0)
+                    <button class="btn mb-4" style="width: 100%; height: 100%; background-color:#7f8c8d;">
+
+                        <h4 style="color: whitesmoke" class="pt-2">
+                            ~ Donasi Ditutup ~
+                        </h4>
+
+                    </button>
 
                     @else
                     <a href="/donasi/{{$program->slug}}/form" class="btn btn-primary mb-4" style="width: 100%; height: 100%;">
