@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>@yield('title')</title>
-
+ 
     <meta name="keywords" content="AmalJariah" />
     <meta name="description" content="@yield('description')" />
     <meta name="author" content="amaljariah.com" />

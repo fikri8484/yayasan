@@ -187,7 +187,6 @@
 
                                         <span class="d-block mt-2"><a href="{{ route('detail-kegiatan', $activity->slug) }}" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
                                     </div>
-
                                 </div>
                             </article>
                         </div>
