@@ -8,10 +8,9 @@
 
     <title>@yield('title')</title>
 
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Porto - Responsive HTML5 Template" />
-    <meta name="author" content="okler.net" />
-
+    <meta name="keywords" content="AmalJariah" />
+    <meta name="description" content="@yield('description')" />
+    <meta name="author" content="amaljariah.com" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url('img/logo11.ico') }}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{ url('img/logo11.png') }}" />

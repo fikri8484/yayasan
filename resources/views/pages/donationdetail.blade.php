@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Detail-Donasi')
+@section('title', $program->title)
+@section('description', $program->brief_explanation)
 
 @section('content')
 <div role="main" class="main">

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'detail-kegiatan')
+@section('title', $activity->title)
+@section('description', str_limit($activity->description, $limit = 70 ) )
 
 @section('content')
 <div role="main" class="main">

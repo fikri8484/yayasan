@@ -220,7 +220,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 @foreach ($modal as $modal)
-                <a href="{{ route('detail-donation', $modal->slug) }}"> <button class="btn btn-primary btn-block mb-2">{{ str_limit($modal->brief_explanation, $limit = 60 ) }}</button>
+                <a href="{{ route('detail-donation', $modal->slug) }}"> <button class="btn btn-primary btn-block mb-2">{{ str_limit($modal->brief_explanation, $limit = 51 ) }}</button>
                 </a>
                 @endforeach
                 <a href="{{route('donation')}}">
