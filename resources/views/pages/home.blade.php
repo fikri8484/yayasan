@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'Beranda')
+@section('title', '#AyoBersedekah - SedekahJariah')
 @section('content')
 <div role="main" class="main">
     <div class="slider-container rev_slider_wrapper" style="height: 650px">
@@ -204,7 +204,7 @@
     </div>
 </div>
 
-<div class="modal fade pt-3 mt-5" id="test" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+<div class="modal fade pt-2 mt-3" id="test" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -212,22 +212,25 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="text-align: center;" class="mt-4">
+                <div style="text-align: center;" class="mt-1">
                     <img alt="SedekahJariah" width="100" height="50" src="{{ url('img/logo11.png') }}" />
                 </div>
                 <div class="divider divider-primary">
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 @foreach ($modal as $modal)
-                <a href="{{ route('detail-donation', $modal->slug) }}"> <button class="btn btn-primary btn-block mb-2">{{ str_limit($modal->brief_explanation, $limit = 51 ) }}</button>
+                <a href="{{ route('detail-donation', $modal->slug) }}">
+                    <p class="bg-color-primary my-2 btn-outline text-color-light" style="text-align: center;">{{$modal->brief_explanation}}</p>
                 </a>
                 @endforeach
                 <a href="{{route('donation')}}">
-                    <button type="button" class="btn btn-primary btn-block mb-2">Cari Program Kebaikan Lainnya</button>
+                    <p class="bg-color-primary my-2 btn-outline text-color-light" style="text-align: center;">Cari Program Kebaikan Lainnya</p>
                 </a>
                 @foreach($contact as $cp)
                 <a href="https://api.whatsapp.com/send?phone={{$cp->number}}&text={{$cp->message}}
-" target="_blank"><button type="button" class="btn btn-primary btn-block mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
+" target="_blank">
+                    <p class="bg-color-primary my-2 btn-outline text-color-light" style="text-align: center;"><i class="fab fa-whatsapp"></i> |Tanya Admin</p>
+                </a>
                 @endforeach
             </div>
             <div class="modal-footer">
@@ -238,10 +241,10 @@
 </div>
 @foreach($contact as $contact)
 <div class="tanyaAdmin">
-    <a href="https://api.whatsapp.com/send?phone={{$contact->number}}&text={{$contact->message}}
+    <a href="https://api.whatsapp.com/send?phone=6281522862759&text=Assalamu%27alaikum%20admin%20...%20%20%20%0A%0A%0ASumber%20info%3A%20http%3A%2F%2Fdev.sedekahjariyah.idekite.id%2F
 " target="_blank"><button type="button" class="btn btn-primary btn-xl mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
-    @endforeach
 </div>
+@endforeach
 @endsection
 
 @push('prepend-style')

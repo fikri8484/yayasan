@@ -6,6 +6,13 @@
 @section('content')
 <div role="main" class="main">
 
+    @foreach($contact as $contact)
+    <div class="tanyaAdmin">
+        <a href="https://api.whatsapp.com/send?phone=6281522862759&text=Assalamu%27alaikum%20admin%20...%20%20%20%0A%0A%0ASumber%20info%3A%20http%3A%2F%2Fdev.sedekahjariyah.idekite.id%2F
+" target="_blank"><button type="button" class="btn btn-primary btn-xl mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
+    </div>
+    @endforeach
+
     <div class="container py-4">
         <div class="row">
             <div class="col appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
@@ -239,3 +246,16 @@
     </div>
 </div>
 @endsection
+@push('prepend-style')
+<style>
+    .tanyaAdmin {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        z-index: 99;
+    }
+</style>
+@endpush

@@ -35,7 +35,7 @@
     <div class="logo-box pt-2">
         <a href="/admin" class="logo text-center">
             <span class="logo-lg">
-                <img src="{{ url('img/logo11.png') }}" alt="" height="35">
+                <img src="{{ url('img/logo11.png') }}" alt="" height="50">
                 <!-- <span class="logo-lg-text-light">Xeria</span> -->
             </span>
             <span class="logo-sm">

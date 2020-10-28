@@ -12,6 +12,7 @@ use App\DonationConfirmation;
 use App\ShelterAccount;
 use App\Development;
 use App\User;
+use App\Contact;
 use Alert;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -22,8 +23,8 @@ class DonationController extends Controller
     {
         $programs = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(6);
         $programsNew = Program::orderBy('id', 'DESC')->where('is_selected', 0)->where('is_published', 1)->paginate(9);
-
-        return view('pages.donation', compact('programs', 'programsNew'));
+        $contact = Contact::orderBy('id', 'DESC')->paginate(1);
+        return view('pages.donation', compact('programs', 'programsNew', 'contact'));
     }
 
     public function donasi(Request $request, $slug)
@@ -41,11 +42,12 @@ class DonationController extends Controller
         $start_date = \Carbon\Carbon::now('Asia/Jakarta');
         $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir);
         $different_days = $start_date->diffInDays($end_date);
+        $contact = Contact::orderBy('id', 'DESC')->paginate(1);
 
         // $tomorrow = \Carbon\Carbon::now('Asia/Jakarta')->add('1 day');
 
 
-        return view('pages.donationdetail', compact('program', 'create', 'different_days', 'time_is_up'));
+        return view('pages.donationdetail', compact('program', 'create', 'different_days', 'time_is_up', 'contact'));
     }
 
     public function donasicreate(Request $request, $slug)
