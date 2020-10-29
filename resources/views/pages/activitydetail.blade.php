@@ -88,4 +88,7 @@
         </div>
     </div>
 </div>
+@foreach ($about as $about)
+
+@endforeach
 @endsection

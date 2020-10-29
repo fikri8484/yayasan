@@ -75,7 +75,9 @@
 
 
                 </div>
+                @foreach ($about as $about)
 
+                @endforeach
 
             </div>
         </div>

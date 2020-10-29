@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\ActivityTag;
+use App\Body;
+use App\Contact;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -12,7 +14,9 @@ class ActivityController extends Controller
     {
         $tag = ActivityTag::all();
         $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->paginate(6);
-        return view('pages.activity', compact('tag', 'activity'));
+        $about = Body::orderBy('id', 'DESC')->paginate(1);
+        $contact = Contact::orderBy('id', 'DESC')->paginate(1);
+        return view('pages.activity', compact('tag', 'activity', 'about', 'contact'));
     }
 
     public function show(Request $request, $tag)

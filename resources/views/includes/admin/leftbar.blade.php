@@ -44,6 +44,12 @@
                         <span> Kegiatan </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('about.index') }}">
+                        <i class="mdi mdi-home-variant"></i>
+                        <span> Tentang AmalJariah </span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{ route('program.index') }}">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\ActivityTag;
+use App\Body;
+use App\Contact;
 use Illuminate\Http\Request;
 
 class ActivitydetailController extends Controller
@@ -16,6 +18,9 @@ class ActivitydetailController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        return view('pages.activitydetail', compact('activity', 'tag'));
+        $about = Body::orderBy('id', 'DESC')->paginate(1);
+        $contact = Contact::orderBy('id', 'DESC')->paginate(1);
+
+        return view('pages.activitydetail', compact('activity', 'tag', 'about', 'contact'));
     }
 }

@@ -8,7 +8,7 @@
 
     @foreach($contact as $contact)
     <div class="tanyaAdmin">
-        <a href="https://api.whatsapp.com/send?phone=6281522862759&text=Assalamu%27alaikum%20admin%20...%20%20%20%0A%0A%0ASumber%20info%3A%20http%3A%2F%2Fdev.sedekahjariyah.idekite.id%2F
+        <a href="https://api.whatsapp.com/send?phone={{$contact->number}}&text={{$contact->message}}
 " target="_blank"><button type="button" class="btn btn-primary btn-xl mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
     </div>
     @endforeach
@@ -103,7 +103,10 @@
                             <a class="nav-link" href="#berita" data-toggle="tab">Berita</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#donatur" data-toggle="tab">Donatur</a>
+                            <?php
+                            $total = $program->donation_confirmation->where('donation_status', 'SUKSES')->count()
+                            ?>
+                            <a class="nav-link" href="#donatur" data-toggle="tab">Donatur ({{$total}}) </a>
                         </li>
 
                     </ul>
@@ -245,6 +248,11 @@
         </div>
     </div>
 </div>
+
+@foreach ($about as $about)
+
+@endforeach
+
 @endsection
 @push('prepend-style')
 <style>

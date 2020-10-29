@@ -83,6 +83,7 @@ Route::prefix('admin')
         Route::resource('bank', 'ShelterAccountController');
         Route::resource('homeSlide', 'HomeSlideController');
         Route::resource('contact', 'ContactController');
+        Route::resource('about', 'BodyController');
     });
 
 Route::post('Ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.upload');

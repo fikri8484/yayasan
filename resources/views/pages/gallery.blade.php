@@ -59,7 +59,9 @@
                 @endforeach
 
                 {!! $gallery->links() !!}
+                @foreach ($about as $about)
 
+                @endforeach
             </div>
         </div>
     </div>

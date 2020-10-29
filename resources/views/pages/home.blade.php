@@ -25,32 +25,28 @@
             </ul>
         </div>
     </div>
-
+    @foreach($about as $about)
     <div class="container pt-5">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
                 <h2 class="text-color-dark font-weight-normal text-6 mb-2">
-                    Yayasan
-                    <strong class="font-weight-extra-bold">Abdurraman bin Auf</strong>
+                    <strong class="font-weight-extra-bold">{{$about->title}}</strong>
                 </h2>
                 <p class="lead">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit massa
-                    enim. Nullam id varius nunc.
-                </p>
-                <p class="pr-5 mr-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus blandit massa enim. Nullam id varius nunc. Vivamus
-                    bibendum magna ex, et faucibus lacus venenatis eget
+                    {{ str_limit($about->description, $limit = 450 ) }}
                 </p>
                 <a href="{{ route('about') }}" class="btn btn-primary font-weight-semibold btn-px-4 btn-py-2 text-2">Lihat Selengkapnya</a>
             </div>
             <div class="col-sm-8 col-md-6 col-lg-4 offset-sm-4 offset-md-4 offset-lg-2 mt-sm-5" style="top: 1.7rem">
-                <img src="img/generic/generic-corporate-3-1.jpg" class="img-fluid position-absolute d-none d-sm-block appear-animation" data-appear-animation="expandIn" data-appear-animation-delay="300" style="top: 10%; left: -50%" alt="" />
-                <img src="img/generic/generic-corporate-3-2.jpg" class="img-fluid position-absolute d-none d-sm-block appear-animation" data-appear-animation="expandIn" style="top: -33%; left: -29%" alt="" />
-                <img src="img/generic/generic-corporate-3-3.jpg" class="img-fluid position-relative appear-animation mb-2" data-appear-animation="expandIn" data-appear-animation-delay="600" alt="" />
+                <img src="{{ Storage::url($about->image3) }}" class="img-fluid position-absolute d-none d-sm-block appear-animation" data-appear-animation="expandIn" data-appear-animation-delay="300" style="top: 10%; left: -50%" alt="" />
+                <img src="{{ Storage::url($about->image2) }}" class="img-fluid position-absolute d-none d-sm-block appear-animation" data-appear-animation="expandIn" style="top: -33%; left: -29%" alt="" />
+                <img src="{{ Storage::url($about->image1) }}" class="img-fluid position-relative appear-animation mb-2" data-appear-animation="expandIn" data-appear-animation-delay="600" alt="" />
             </div>
+
+
         </div>
     </div>
+    @endforeach
 
     <div class="container py-3">
         <div class="row">
@@ -241,7 +237,7 @@
 </div>
 @foreach($contact as $contact)
 <div class="tanyaAdmin">
-    <a href="https://api.whatsapp.com/send?phone=6281522862759&text=Assalamu%27alaikum%20admin%20...%20%20%20%0A%0A%0ASumber%20info%3A%20http%3A%2F%2Fdev.sedekahjariyah.idekite.id%2F
+    <a href="https://api.whatsapp.com/send?phone={{$contact->number}}&text={{$contact->message}}
 " target="_blank"><button type="button" class="btn btn-primary btn-xl mb-2"><i class="fab fa-whatsapp"></i> |Tanya Admin</button></a>
 </div>
 @endforeach
