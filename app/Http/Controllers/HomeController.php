@@ -21,7 +21,7 @@ class HomeController extends Controller
         $gallery = Gallery::orderBy('id', 'DESC')->paginate(8);
         $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->paginate(3);
         $modal = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(2);
-        $slide = HomeSlide::get();
+        $slide = HomeSlide::orderBy('id', 'DESC')->paginate(15);
         $contact = Contact::orderBy('id', 'DESC')->paginate(1);
         return view('pages.home', compact('program', 'gallery', 'activity', 'today', 'modal', 'slide', 'contact', 'about'));
     }

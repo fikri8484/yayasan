@@ -26,7 +26,7 @@ class DevelopmentController extends Controller
         //     'items' => $items
         // ]);
 
-        $development = Development::all();
+        $development = Development::orderBy('id', 'DESC')->get();
         return view('pages.admin.development.index', ['development' => $development]);
     }
 
@@ -104,7 +104,7 @@ class DevelopmentController extends Controller
     {
 
         $myData = Development::findOrFail($id);
-
+        $myData->programs_id = $request->get('programs_id');
         $myData->title = $request->get('title');
         $myData->description = $request->get('description');
         $myData->time = $request->get('time');

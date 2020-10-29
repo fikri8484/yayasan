@@ -91,11 +91,15 @@
                                         <tr>
                                             @foreach($donasi->sortByDesc('id') as $d)
 
+                                            @if($d->program == null)
+                                            <td>*Program Sudah Selesai</td>
+                                            @else
                                             <td>
                                                 {{ $d->program->title }}
-                                                <a href="{{ route('detail-donation', $d->program->slug) }}">
+                                                <a href="{{ route('detail-donation', $d->program->slug) }}" target="_blank">
                                                     <i class="fa fa-eye"></i></a>
                                             </td>
+                                            @endif
                                             <td> @currency($d->nominal_donation)</td>
                                             <td>{{ $d->created_at->format('d-M-Y') }}</td>
                                             @if($d->donation_status == 'SUKSES')

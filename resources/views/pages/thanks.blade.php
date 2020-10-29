@@ -4,7 +4,7 @@
 
 @section('content')
 <div role="main" class="main">
-    <section class="page-header page-header-modern bg-color-secondary page-header-sm">
+    <section class="page-header page-header-modern bg-color-white page-header-sm">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 align-self-center p-static order-2 text-center"></div>
@@ -12,7 +12,7 @@
                 <div class="col-md-12 align-self-center order-1">
                     <ul class="breadcrumb d-block text-center">
                         <li> <a href="/">
-                                <img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40" src="{{ url('img/logo.png') }}" />
+                                <img alt="SedekahJariah" width="100" height="50" data-sticky-width="82" data-sticky-height="40" src="{{ url('img/logo11.png') }}" />
                             </a></li>
 
                     </ul>
@@ -34,7 +34,7 @@
                         </p>
                         <h4 style="text-align: center">
                             Syukron Jazaakumullahu Khayran (Semoga Allah Membalas
-                            Kebaikan yang Banyak bagi Kalian Semua)
+                            Kebaikan yang Banyak Untuk Kalian Semua)
                         </h4>
                         <a href="/donasi" class="btn btn-primary btn-block">
                             <h4 style="color: antiquewhite" class="mt-2">

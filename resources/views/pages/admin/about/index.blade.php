@@ -7,7 +7,7 @@
     <!-- Start Content-->
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-3 mt-2">
-            <h1 class="h3 mb-0 text-gray-800">Tentang Sedekah Jariah</h1>
+            <h1 class="h3 mb-0 text-gray-800">Tentang Sedekah Jariah (Hanya 1 Data)</h1>
             <a href="{{ route('about.create') }}" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data
             </a>

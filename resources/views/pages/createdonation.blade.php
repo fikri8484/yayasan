@@ -85,6 +85,10 @@
                                 <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                             </div>
                             @endif
+                            <div class="form-group">
+                                <label for="phone">No. Handphone</label>
+                                <input type="number" class="form-control" name="phone" placeholder="Nomor Handphone Aktif Anda" value="{{ old('phone') }}" required autocomplete="off">
+                            </div>
                             <input type="hidden" name="programs_id" value="{{$program->id}}">
 
                             <div class="form-group">
@@ -197,14 +201,14 @@
     }
 </script>
 
-<!-- <script>
+<script>
     function validateForm() {
-        var x = document.forms["myForm"]["nominal_donation"].value;
-        if (x < 10, 000) {
-            alert("minimal 10.000");
+        var x = document.forms["myForm"]["phone"].value;
+        if (x > 999999999999) {
+            alert("Masukkan Nomor HP Dengan Benar");
             return false;
         }
     }
-</script> -->
+</script>
 
 @endpush

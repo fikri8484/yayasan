@@ -20,6 +20,7 @@ class CreateDonationConfirmationsTable extends Migration
             $table->integer('shelter_accounts_id');
             $table->integer('id_transaction');
             $table->string('donor_name');
+            $table->bigInteger('phone');
             $table->string('email');
             $table->integer('nominal_input');
             $table->integer('nominal_donation');

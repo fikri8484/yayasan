@@ -10,7 +10,7 @@ class DonationConfirmation extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'programs_id', 'users_id', 'shelter_accounts_id', 'id_transaction', 'donor_name', 'email', 'nominal_input', 'nominal_donation', 'support', 'proof_payment', 'donation_status'
+        'programs_id', 'users_id', 'shelter_accounts_id', 'id_transaction', 'donor_name', 'phone', 'email', 'nominal_input', 'nominal_donation', 'support', 'proof_payment', 'donation_status'
     ];
 
     protected $hidden = [];

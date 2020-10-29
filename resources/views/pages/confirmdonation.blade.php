@@ -39,14 +39,14 @@
                         <div class="alert alert-info" style="text-align: center">
                             <strong>Penting</strong>
                             Mohon transfer tepat sampai 3 angka terakhir agar donasi
-                            Anda dapat diproses secara otomatis.
+                            Anda dapat diproses oleh Admin.
                             <strong> Jika Perlu Silahkan Screenshot Halaman Ini</strong>
                         </div>
                         <div style="text-align: center">
 
                             <p>Silahkan Transfer ke :</p>
                             <h4> {{ $donatur->shelter_account->bank }} : {{ $donatur->shelter_account->account_number }}</h4>
-                            <p>an. <b>{{ $donatur->shelter_account->on_name }}</b></p>
+                            <p><b>{{ $donatur->shelter_account->on_name }}</b></p>
 
                         </div>
                         <p>Rincian :</p>

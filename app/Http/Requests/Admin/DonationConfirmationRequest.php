@@ -27,6 +27,7 @@ class DonationConfirmationRequest extends FormRequest
             'programs_id' => 'required|integer|exists:programs,id',
             'shelter_accounts_id' => 'required|integer|exists:shelter_accounts,id',
             'nominal_donation' => 'required|integer',
+            'phone' => 'required',
             'donation_status' => 'required|string|in:SUKSES,BELUM_TRANSFER,BELUM_KONFIRM,SUDAH_KONFIRM,DITOLAK',
             'proof_payment' => 'required|image'
         ];

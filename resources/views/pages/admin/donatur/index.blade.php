@@ -52,7 +52,11 @@
                                 <td>{{ $item->created_at->add('1 day')->format('H:i\ , d M Y') }}</td>
 
                                 <td>@currency($item->nominal_donation)</td>
+                                @if($item->shelter_account == null)
+                                <td>(Data Rekening Sudah Dihapus)</td>
+                                @else
                                 <td>{{ $item->shelter_account->bank }} <br> ({{ $item->shelter_account->account_number }})</td>
+                                @endif
                                 <td>{{ $item->donation_status }}</td>
                                 <td>
                                     <a href="{{ route('donatur.show', $item->id) }}" class="btn btn-primary">

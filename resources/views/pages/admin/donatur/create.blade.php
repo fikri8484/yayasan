@@ -21,7 +21,7 @@
 
     <div class="card shadow">
         <div class="card-body">
-            <form action="{{ route('donatur.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('donatur.store') }}" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()" name="myForm">
                 @csrf
 
                 <div class="form-group">
@@ -41,7 +41,11 @@
                     <input type="text" class="form-control" name="donor_name" placeholder="Nama" value="{{ old('donor_name') }}" required autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email <i>(Optional/Boleh kosong)</i></label>
+                    <label for="phone">No. Handphone</label>
+                    <input type="number" class="form-control" name="phone" placeholder="Nomor Handphone Aktif Anda" value="{{ old('phone') }}" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                 </div>
 
@@ -114,6 +118,16 @@
 
         rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
         return prefix == undefined ? rupiah : (rupiah ? '' + rupiah : '');
+    }
+</script>
+
+<script>
+    function validateForm() {
+        var x = document.forms["myForm"]["phone"].value;
+        if (x > 999999999999) {
+            alert("Masukkan Nomor HP Dengan Benar");
+            return false;
+        }
     }
 </script>
 

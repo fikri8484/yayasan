@@ -107,6 +107,7 @@ class DonationController extends Controller
         $a = $id_transaction;
         $nominal_donation = $a + $venc;
         $donatur->nominal_donation = $nominal_donation;
+        $donatur->phone = $request->phone;
         $donatur->email = $request->email;
         $donatur->support = $request->support;
         $bukti = 'null';
@@ -117,6 +118,7 @@ class DonationController extends Controller
         request()->validate([
             'donor_name' => 'required|string',
             // 'nominal_donation' => 'required|numeric|min:10.000',
+            'phone' => 'required',
             'shelter_accounts_id' => 'required|integer'
         ]);
 

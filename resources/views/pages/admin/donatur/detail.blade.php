@@ -6,7 +6,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Detail Donasi {{ $item->program->title }}</h1>
+        <h1 class="h3 mb-0 text-gray-800">Detail Donasi @if($item->program == null) (null) @else {{ $item->program->title }} @endif</h1>
     </div>
 
     @if ($errors->any())
@@ -28,11 +28,19 @@
                 </tr>
                 <tr>
                     <th>Donasi</th>
+                    @if($item->program == null)
+                    <td>(Nama Program Sudah Dihapus)</td>
+                    @else
                     <td>{{ $item->program->title }}</td>
+                    @endif
                 </tr>
                 <tr>
                     <th>Donatur</th>
                     <td>{{ $item->donor_name }}</td>
+                </tr>
+                <tr>
+                    <th>Nomor Hp</th>
+                    <td>0{{ $item->phone }}</td>
                 </tr>
                 <tr>
                     <th>Nominal Donasi</th>
@@ -48,9 +56,13 @@
                 </tr>
                 <tr>
                     <th>Bank</th>
+                    @if($item->shelter_account == null)
+                    <td>(Data Rekening Sudah Dihapus)</td>
+                    @else
                     <td>{{ $item->shelter_account->bank }}
                         <br> {{ $item->shelter_account->account_number }}
                     </td>
+                    @endif
                 </tr>
                 <tr>
                     <th>Bukti Pembayaran Donasi</th>

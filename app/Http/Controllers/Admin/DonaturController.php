@@ -73,6 +73,7 @@ class DonaturController extends Controller
         $a = $id_transaction;
         $nominal_donation = $venc;
         $donatur->nominal_donation = $nominal_donation;
+        $donatur->phone = $request->phone;
         $donatur->email = $request->email;
         $donatur->support = $request->support;
         $bukti = 'null';

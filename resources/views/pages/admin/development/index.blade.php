@@ -45,10 +45,14 @@
 
                             <tr>
                                 <td>{{ $i++ }}</td>
+                                @if($d->program == null)
+                                <td>(Program Sudah Dihapus)</td>
+                                @else
                                 <td>{{ $d->program->title }}</td>
+                                @endif
                                 <td>{{ $d->title }}</td>
 
-                                <td>{!! str_limit($d->description, $limit = 150) !!}</td>
+                                <td>{!! str_limit($d->description, $limit = 500) !!}</td>
 
                                 <td>{{ \Carbon\Carbon::parse($d->time)->format('d, M-Y') }}</td>
                                 <td>
