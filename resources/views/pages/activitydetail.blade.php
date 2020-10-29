@@ -11,13 +11,11 @@
                 <aside class="sidebar">
                     <h5 class="font-weight-bold pt-4">Kategori</h5>
                     <ul class="nav nav-list flex-column mb-5">
-
                         @foreach ($tag as $tag)
                         <li class="nav-item">
                             <a class="nav-link" href="#">{{ $tag->tag }}</a>
                         </li>
                         @endforeach
-
                     </ul>
                 </aside>
             </div>
