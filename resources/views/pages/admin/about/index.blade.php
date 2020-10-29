@@ -86,8 +86,3 @@
 </div> <!-- content -->
 
 @endsection
-
-@push('addon-script')
-
-
-@endpush
