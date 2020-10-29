@@ -250,7 +250,6 @@
 </div>
 
 @foreach ($about as $about)
-
 @endforeach
 
 @endsection
