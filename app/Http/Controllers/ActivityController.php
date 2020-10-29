@@ -13,7 +13,7 @@ class ActivityController extends Controller
     public function index(Request $request)
     {
         $tag = ActivityTag::all();
-        $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->paginate(6);
+        $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->paginate(8);
         $about = Body::orderBy('id', 'DESC')->paginate(1);
         $contact = Contact::orderBy('id', 'DESC')->paginate(1);
         return view('pages.activity', compact('tag', 'activity', 'about', 'contact'));

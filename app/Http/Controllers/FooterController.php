@@ -11,7 +11,7 @@ class FooterController extends Controller
     public function index()
     {
 
-        $footer = Body::orderBy('id', 'DESC')->paginate(1);
+        $footer1 = Body::orderBy('id', 'DESC')->paginate(1);
         $contact = Contact::orderBy('id', 'DESC')->paginate(1);
         return view('includes.footer', compact('footer1', 'contact'));
     }

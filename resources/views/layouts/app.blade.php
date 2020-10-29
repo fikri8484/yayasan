@@ -29,7 +29,6 @@
 
         @yield('content')
 
-        @include('includes.footer')
     </div>
 
     @stack('prepend-script')

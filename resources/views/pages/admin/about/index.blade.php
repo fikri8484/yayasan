@@ -27,7 +27,7 @@
                     </tr>
                     <tr>
                         <th>Deskripsi</th>
-                        <td>{{ $item->description }}</td>
+                        <td>{!! $item->description !!}</td>
                     </tr>
                     <tr>
                         <th>Alamat</th>

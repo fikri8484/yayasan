@@ -19,7 +19,7 @@
         </ul>
     </div>
     @endif
-    <p>Silahkan Kunjungi <a href="https://www.w3schools.com/TagS/ref_urlencode.asp" target="_blank">Link ini</a> untuk mengubah kalimat pesan menjadi encodeURIComponent() {pilih bagian <strong>URL Encoding Functions}</strong></p>
+    <p>Silahkan Kunjungi <a href="https://www.w3schools.com/TagS/ref_urlencode.asp" target="_blank">Link ini</a> untuk mengubah kalimat pesan menjadi encodeURIComponent() {pilih bagian <strong>URL Encoding Functions}</strong> (kode enter : %0A)</p>
     <div class="card shadow">
         <div class="card-body">
             <form action="{{ route('contact.store') }}" method="POST" enctype="multipart/form-data">

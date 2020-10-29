@@ -22,8 +22,8 @@ class DonationController extends Controller
 {
     public function index()
     {
-        $programs = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(6);
-        $programsNew = Program::orderBy('id', 'DESC')->where('is_selected', 0)->where('is_published', 1)->paginate(9);
+        $programs = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(10);
+        $programsNew = Program::orderBy('id', 'DESC')->where('is_selected', 0)->where('is_published', 1)->paginate(12);
         $contact = Contact::orderBy('id', 'DESC')->paginate(1);
         $about = Body::orderBy('id', 'DESC')->paginate(1);
         return view('pages.donation', compact('programs', 'programsNew', 'contact', 'about', 'contact'));
@@ -65,9 +65,6 @@ class DonationController extends Controller
 
     public function donasistore(Request $request)
     {
-
-
-
         $donatur = new DonationConfirmation;
         $id_donatur_terakhir = $donatur->latest()->first()->id_transaction;
 
@@ -191,8 +188,10 @@ class DonationController extends Controller
 
             ['brief_explanation', 'like', "%" . $cari . "%"], ['title', 'like', "%" . $cari . "%"]
         ])->orderBy('id', 'DESC')->paginate(9);
+        $contact = Contact::orderBy('id', 'DESC')->paginate(1);
+        $about = Body::orderBy('id', 'DESC')->paginate(1);
 
         // mengirim data donasi ke view index
-        return view('pages.donationn', ['programs' => $programs]);
+        return view('pages.donationn', compact('programs', 'contact', 'about'));
     }
 }

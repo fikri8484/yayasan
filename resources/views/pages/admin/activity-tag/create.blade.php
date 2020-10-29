@@ -6,7 +6,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Tambah Tag</h1>
+        <h1 class="h3 mb-0 text-gray-800">Tambah Kategori</h1>
     </div>
 
     @if ($errors->any())
@@ -24,7 +24,7 @@
             <form action="{{ route('activity-tag.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="tag">Tag</label>
+                    <label for="tag">Kategori</label>
                     <input type="text" class="form-control" name="tag" placeholder="Tag" value="{{ old('tag') }}">
                 </div>
 

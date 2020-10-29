@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DevelopmentRequest;
 use App\DonationConfirmation;
 use App\Program;
+use App\ShelterAccount;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -36,7 +37,10 @@ class DonaturController extends Controller
      */
     public function create()
     {
-        // return view('pages.admin.activity.create');
+        $program = Program::all();
+
+        $bank = ShelterAccount::all();
+        return view('pages.admin.donatur.create', compact('program', 'bank'));
     }
 
     /**
@@ -47,10 +51,54 @@ class DonaturController extends Controller
      */
     public function store(Request $request)
     {
+        $donatur = new DonationConfirmation;
+        $id_donatur_terakhir = $donatur->latest()->first()->id_transaction;
 
-        $data = $request->all();
+        if ($id_donatur_terakhir >= 950) {
+            $id_donatur_terakhir = 0;
+        }
 
-        DonationConfirmation::create($data);
+        $i = 1;
+        $id_transaction = $id_donatur_terakhir + $i;
+        $donatur->programs_id = $request->programs_id;
+        $donatur->users_id = $request->users_id;
+        $donatur->id_transaction = $id_transaction;
+        $donatur->donor_name = $request->donor_name;
+        $donatur->shelter_accounts_id = $request->shelter_accounts_id;
+
+        $t = preg_replace('/[^0-9]/i', '', $request->nominal_donation);
+        $venc = (int)$t;
+
+        $donatur->nominal_input = $venc;
+        $a = $id_transaction;
+        $nominal_donation = $venc;
+        $donatur->nominal_donation = $nominal_donation;
+        $donatur->email = $request->email;
+        $donatur->support = $request->support;
+        $bukti = 'null';
+        $tf = 'SUKSES';
+        $donatur->proof_payment = $bukti;
+        $donatur->donation_status = $tf;
+
+        request()->validate([
+            'donor_name' => 'required|string',
+            // 'nominal_donation' => 'required|numeric|min:10.000',
+            'shelter_accounts_id' => 'required|integer'
+        ]);
+
+        $donatur->save();
+
+        //tambah nominal ke program
+        $program = Program::where('id', $request->programs_id)->sum('donation_collected');
+
+        $tambah = $venc + $program;
+
+        $programs = Program::where('id', $request->programs_id)->first();
+        $programs->update(['donation_collected' => $tambah]);
+
+
+        Alert::success('Success', 'Isi data berhasil');
+
         return redirect()->route('donatur.index');
     }
 

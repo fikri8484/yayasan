@@ -3,6 +3,7 @@
         <div class="row pt-3 mt-4">
             <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 pt-3">
 
+
                 <h5 class="text-3 mb-3">Tentang Kami {{$about->title}}</h5>
                 <p>{{ str_limit($about->description, $limit = 250 ) }}</p>
                 <p class="mb-0"><a href="{{ route('about') }}" class="btn-flat btn-xs text-color-light p-relative top-5"><strong class="text-2">Lihat Selengkapnya</strong><i class="fas fa-angle-right p-relative top-1 pl-2"></i></a></p>
@@ -27,8 +28,12 @@
             </div>
 
             <div class="col-lg-5 pt-3">
-                <h5 class="text-3 mb-3 pb-1">Kirim Saran Anda</h5>
-                <form id="contactForm" class="contact-form" action="php/contact-form.php" method="POST">
+                <h5 class="text-3 mb-3 pb-1"></h5>
+
+                <div style="text-align: center;" class="mt-1">
+                    <img alt="SedekahJariah" width="300" height="150" src="{{ url('img/logo11.png') }}" />
+                </div>
+                <!-- <form id="contactForm" class="contact-form" action="php/contact-form.php" method="POST">
                     <input type="hidden" value="Contact Form" name="subject" id="subject">
                     <div class="contact-form-success alert alert-success d-none" id="contactSuccess">
                         Message has been sent to us.
@@ -56,7 +61,8 @@
                             <input type="submit" value="SUBMIT" class="btn btn-xl btn-outline btn-primary text-1 font-weight-bold text-uppercase" data-loading-text="Loading...">
                         </div>
                     </div>
-                </form>
+                </form> -->
+                <p class="text-3 mb-3 pb-1" style="text-align: center;">SedekahJariah © Copyright 2020. All Rights Reserved.</p>
                 <br><br>
             </div>
 
@@ -64,7 +70,7 @@
         </div>
 
     </div>
-    <div class="footer-copyright">
+    <!-- <div class="footer-copyright">
         <div class="container py-2">
             <div class="row py-4">
                 <div class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
@@ -86,5 +92,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </footer>

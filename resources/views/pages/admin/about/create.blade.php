@@ -27,10 +27,7 @@
                     <label for="title">Judul</label>
                     <input type="text" class="form-control" name="title" placeholder="title" value="{{ old('title') }}" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="description">Deskripsi</label>
-                    <textarea name="description" rows="10" class="d-block w-100 form-control">{{ old('description') }}</textarea>
-                </div>
+
                 <div class="form-group">
                     <label for="address">Alamat</label>
                     <input type="text" class="form-control" name="address" placeholder="alamat" value="{{ old('address') }}" class="form-control">
@@ -59,6 +56,10 @@
                     <label for="image3">Foto 3</label>
                     <input type="file" class="form-control" name="image3" placeholder="Image" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label for="description" class="label">Deskripsi</label>
+                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan Data
                 </button>
@@ -70,3 +71,14 @@
 </div>
 <!-- /.container-fluid -->
 @endsection
+@push('addon-script')
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('description', {
+        filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+</script>
+
+
+@endpush

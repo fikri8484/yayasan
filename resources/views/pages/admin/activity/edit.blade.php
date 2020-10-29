@@ -40,10 +40,6 @@
                     <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $item->title }}">
                 </div>
                 <div class="form-group">
-                    <label for="description">Deskripsi</label>
-                    <textarea name="description" rows="10" class="d-block w-100 form-control">{{ $item->description }}</textarea>
-                </div>
-                <div class="form-group">
                     <label for="time">Waktu Pembuatan</label>
                     <input type="date" class="form-control" name="time" placeholder="time" value="{{ $item->time }}">
                 </div>
@@ -51,8 +47,10 @@
                     <label for="image">Image (Bisa input lebih dari 1 foto)</label>
                     <input type="file" class="form-control" name="images[]" placeholder="Image" multiple class="form-control" required autocomplete="off">
                 </div>
-
-
+                <div class="form-group">
+                    <label for="description">Deskripsi</label>
+                    <textarea name="description" id="description" rows="10">{{ $item->description }}</textarea>
+                </div>
 
                 <button type="submit" class="btn btn-primary btn-block">
                     Ubah Data
@@ -64,3 +62,14 @@
 </div>
 <!-- /.container-fluid -->
 @endsection
+@push('addon-script')
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('description', {
+        filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+</script>
+
+
+@endpush

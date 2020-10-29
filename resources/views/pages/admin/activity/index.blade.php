@@ -44,7 +44,7 @@
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $a->title }}</td>
-                                <td>{{ str_limit($a->description, $limit = 150 ) }}</td>
+                                <td>{!! str_limit($a->description, $limit = 150) !!}</td>
                                 <td>{{ $a->activity_tag->tag }}</td>
                                 <td>{{ \Carbon\Carbon::parse($a->time)->format('d, M-y') }}</td>
                                 <td>@foreach($a->activity_gallery as $g)

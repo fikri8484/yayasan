@@ -197,7 +197,7 @@
     }
 </script>
 
-<script>
+<!-- <script>
     function validateForm() {
         var x = document.forms["myForm"]["nominal_donation"].value;
         if (x < 10, 000) {
@@ -205,6 +205,6 @@
             return false;
         }
     }
-</script>
+</script> -->
 
 @endpush

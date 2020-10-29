@@ -48,7 +48,7 @@
                                 <td>{{ $d->program->title }}</td>
                                 <td>{{ $d->title }}</td>
 
-                                <td>{{ str_limit($d->description, $limit = 100 ) }}</td>
+                                <td>{!! str_limit($d->description, $limit = 150) !!}</td>
 
                                 <td>{{ \Carbon\Carbon::parse($d->time)->format('d, M-Y') }}</td>
                                 <td>

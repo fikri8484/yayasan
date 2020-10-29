@@ -250,8 +250,41 @@
 </div>
 
 @foreach ($about as $about)
-@endforeach
+<footer id="footer" class="mt-4">
+    <div class="container">
+        <div class="row pt-3 mt-4">
+            <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 pt-3">
+                <h5 class="text-3 mb-3">Tentang Kami {{$about->title}}</h5>
+                <p>{!! str_limit($about->description, $limit = 150) !!}</p>
+                <p class="mb-0"><a href="{{ route('about') }}" class="btn-flat btn-xs text-color-light p-relative top-5"><strong class="text-2">Lihat Selengkapnya</strong><i class="fas fa-angle-right p-relative top-1 pl-2"></i></a></p>
+            </div>
+            <div class="col-md-5 col-lg-3 mb-5 mb-lg-0 pt-3">
+                <h5 class="text-3 mb-2">Hubungi Kami</h5>
+                <p class="text-5 text-color-light font-weight-bold">(+62) {{$about->whatsapp}}</p>
+                <ul class="list list-icons list-icons-lg">
+                    <li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>
+                        <p class="m-0">{{$about->address}}</p>
+                    </li>
+                    <li class="mb-1"><i class="far fa-envelope text-color-primary"></i>
+                        <p class="m-0">{{$about->email}}</p>
+                    </li>
+                    <li class="mb-1"><i class="fab fa-facebook text-color-primary"></i>
+                        <p class="m-0"><a href="{{$about->fb}}">{{$about->title}}</a></p>
+                    </li>
+                </ul>
+            </div>
 
+            <div class="col-lg-5 pt-3">
+                <div style="text-align: center;" class="mt-1">
+                    <img alt="SedekahJariah" width="300" height="150" src="{{ url('img/logo11.png') }}" />
+                </div>
+                <p class="text-3 mb-3 pb-1" style="text-align: center;">SedekahJariah © Copyright 2020. All Rights Reserved.</p>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</footer>
+@endforeach
 @endsection
 @push('prepend-style')
 <style>

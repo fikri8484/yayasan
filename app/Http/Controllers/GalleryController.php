@@ -12,7 +12,7 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $gallery = Gallery::orderBy('id', 'DESC')->paginate(12);
+        $gallery = Gallery::orderBy('id', 'DESC')->paginate(20);
         $category = GalleryCategory::all();
         $about = Body::orderBy('id', 'DESC')->paginate(1);
         $contact = Contact::orderBy('id', 'DESC')->paginate(1);
