@@ -1,6 +1,6 @@
 @extends('layouts.donation')
 
-@section('title', 'TerimaKasih')
+@section('title', 'TerimaKasih - Sedekah Jariah')
 
 @section('content')
 <div role="main" class="main">

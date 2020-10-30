@@ -1,6 +1,6 @@
 @extends('layouts.donation')
 
-@section('title', 'TerimaKasih')
+@section('title', 'TerimaKasih - SedekahJariah')
 
 @section('content')
 <div role="main" class="main">
@@ -50,16 +50,21 @@
 
                         </div>
                         <p>Rincian :</p>
-                        <div class="d-sm-flex align-items-center justify-content-between bg-color-primary px-2">
+                        <!-- <div class="d-sm-flex align-items-center justify-content-center bg-color-primary px-2">
                             <h4 class="mt-2" style="color: antiquewhite">
                                 Jumlah Donasi
                             </h4>
                             <h4 class="mt-2" style="color: antiquewhite">@currency($donatur->nominal_input)</h4>
-                        </div>
+                        </div> -->
+                        <h4 class="bg-color-primary my-2 btn-outline text-color-light justify-content-between" style="text-align: center;">Jumlah Donasi : @currency($donatur->nominal_input)
+                        </h4>
+                        <h4 class="bg-color-light-scale-1 my-2 btn-outline justify-content-between" style="text-align: center;">Kode Unik* : {{ $donatur->id_transaction }}
+                        </h4>
+                        <!-- 
                         <div class="d-sm-flex align-items-center justify-content-between bg-color-light-scale-1 px-2">
                             <h4>Kode Unik*</h4>
                             <h4>{{ $donatur->id_transaction }}</h4>
-                        </div>
+                        </div> -->
                         <p><i> *Kode unik akan didonasikan</i></p>
                     </div>
                 </div>
