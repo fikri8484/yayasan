@@ -4,7 +4,7 @@
             <div class="row py-4">
                 <div class="col d-flex align-items-center justify-content-center">
                     <p>
-                        <strong>Yayasan Abdurrahman bin Auf Siantan</strong> - © Copyright 2020. All Rights
+                        <strong>SedekahJariah</strong>© Copyright 2020. All Rights
                         Reserved.
                     </p>
                 </div>

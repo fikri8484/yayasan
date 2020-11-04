@@ -10,7 +10,7 @@ class ActivityTag extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'tag'
+        'tag', 'slug'
     ];
 
     protected $hidden = [];

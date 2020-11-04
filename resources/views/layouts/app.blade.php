@@ -11,6 +11,7 @@
     <meta name="keywords" content="AmalJariah" />
     <meta name="description" content="@yield('description')" />
     <meta name="author" content="amaljariah.com" />
+    <meta property="og:image" content="@yield('image')" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url('img/logo11.ico') }}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{ url('img/logo11.png') }}" />

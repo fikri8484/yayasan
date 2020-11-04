@@ -13,7 +13,7 @@
                     <ul class="nav nav-list flex-column mb-5">
                         @foreach ($tag as $tag)
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ $tag->tag }}</a>
+                            <a class="nav-link" href="{{route('kegiatan.kategori', $tag->id)}}">{{ $tag->tag }}</a>
                         </li>
                         @endforeach
                     </ul>

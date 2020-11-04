@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ActivityTagRequest;
 use App\ActivityTag;
+use App\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Alert;
 
 class ActivityTagController extends Controller
 {
@@ -17,6 +19,11 @@ class ActivityTagController extends Controller
      */
     public function index()
     {
+        $items = ActivityTag::orderBy('id', 'DESC')->get();
+
+        return view('pages.admin.activity-tag.index', [
+            'items' => $items
+        ]);
     }
 
     /**
@@ -38,6 +45,7 @@ class ActivityTagController extends Controller
     public function store(ActivityTagRequest $request)
     {
         $data = $request->all();
+        $data['slug'] = Str::slug($request->tag);
 
         ActivityTag::create($data);
         return redirect()->route('activity.create');
@@ -62,6 +70,11 @@ class ActivityTagController extends Controller
      */
     public function edit($id)
     {
+        $item = ActivityTag::findOrFail($id);
+
+        return view('pages.admin.activity-tag.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -71,8 +84,15 @@ class ActivityTagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ActivityTagRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        $myData = ActivityTag::findOrFail($id);
+
+        $myData->tag = $request->get('tag');
+
+        $myData->update();
+        Alert::success('Success', 'Data Berhasil diubah');
+        return redirect()->route('activity-tag.index');
     }
 
     /**
@@ -86,6 +106,10 @@ class ActivityTagController extends Controller
         $item = ActivityTag::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('activity.index');
+        $data = Activity::where('activity_tags_id', $id);
+        $data->delete();
+
+        Alert::success('Success', 'Data Berhasil dihapus');
+        return redirect()->route('activity-tag.index');
     }
 }

@@ -7,10 +7,16 @@
     <!-- Start Content-->
     <div class="container-fluid">
 
-        <div class="d-sm-flex align-items-center justify-content-between mb-3 mt-2">
+        <div class="d-sm-flex align-items-center justify-content-between mt-2">
             <h1 class="h3 mb-0 text-gray-800">Gallery</h1>
             <a href="{{ route('gallery.create') }}" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Gallery
+            </a>
+        </div>
+        <div class="d-sm-flex align-items-center justify-content-between mb-3">
+            .
+            <a href="{{ route('category.index') }}" class="btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-cog fa-sm text-white-50"></i> Kategori Galery
             </a>
         </div>
 

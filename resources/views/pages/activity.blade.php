@@ -13,7 +13,7 @@
 
                 <div class="col-md-4 order-1 order-md-2 align-self-center">
                     <ul class="breadcrumb d-block text-md-right">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li class="active">Kegiatan</li>
                     </ul>
                 </div>
@@ -28,10 +28,10 @@
                     <h5 class="font-weight-bold pt-2">Kategori</h5>
                     <ul class="nav nav-list flex-column mb-5">
 
-                        @foreach($tag as $tag)
+                        @foreach($tag as $item)
 
                         <li class="nav-item">
-                            <a class="nav-link">{{ $tag->tag }}</a>
+                            <a href="{{route('kegiatan.kategori', $item->id)}}" class="nav-link">{{ $item->tag }}</a>
                         </li>
 
                         @endforeach

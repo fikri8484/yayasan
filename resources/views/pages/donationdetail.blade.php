@@ -2,7 +2,7 @@
 
 @section('title', $program->title)
 @section('description', $program->brief_explanation)
-
+@section('image', Storage::url($program->image))
 @section('content')
 <div role="main" class="main">
 
@@ -92,19 +92,19 @@
                 <div class="tabs">
                     <ul class="nav nav-tabs">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#keterangan" data-toggle="tab">Keterangan</a>
+                            <a class="nav-link" href="#keterangan" data-toggle="tab" style="font-size: 10px;">Keterangan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#caradonasi" data-toggle="tab">Cara Donasi</a>
+                            <a class="nav-link" href="#caradonasi" data-toggle="tab" style="font-size: 10px;">CaraDonasi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#berita" data-toggle="tab">Berita</a>
+                            <a class="nav-link" href="#berita" data-toggle="tab" style="font-size: 10px;">Berita</a>
                         </li>
                         <li class="nav-item">
                             <?php
                             $total = $program->donation_confirmation->where('donation_status', 'SUKSES')->count()
                             ?>
-                            <a class="nav-link" href="#donatur" data-toggle="tab">Donatur ({{$total}}) </a>
+                            <a class="nav-link" href="#donatur" data-toggle="tab" style="font-size: 10px;">Donatur({{$total}}) </a>
                         </li>
 
                     </ul>

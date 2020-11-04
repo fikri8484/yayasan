@@ -22,8 +22,8 @@ class CreateDonationConfirmationsTable extends Migration
             $table->string('donor_name');
             $table->bigInteger('phone');
             $table->string('email');
-            $table->integer('nominal_input');
-            $table->integer('nominal_donation');
+            $table->bigInteger('nominal_input');
+            $table->bigInteger('nominal_donation');
             $table->text('support');
             $table->text('proof_payment');
             $table->string('donation_status');

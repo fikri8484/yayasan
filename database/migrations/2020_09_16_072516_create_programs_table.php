@@ -20,9 +20,9 @@ class CreateProgramsTable extends Migration
             $table->string('slug');
             $table->text('image');
             $table->text('brief_explanation');
-            $table->integer('donation_target');
+            $table->bigInteger('donation_target');
             $table->date('time_is_up');
-            $table->integer('donation_collected');
+            $table->bigInteger('donation_collected');
             $table->text('description');
             $table->tinyInteger('is_published')->default(1);
             $table->softDeletes();

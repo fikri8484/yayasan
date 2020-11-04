@@ -22,6 +22,9 @@ Route::get('/galeri', 'GalleryController@index')
 Route::get('/kegiatan', 'ActivityController@index')
     ->name('activity');
 
+Route::get('/kegiatan-kategori/{id}', 'ActivityController@show')
+    ->name('kegiatan.kategori');
+
 // Route::get('/{tag}', 'ActivityController@show')
 //     ->name('tag');
 

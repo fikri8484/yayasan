@@ -1,6 +1,7 @@
 @extends('layouts.donation')
 
 @section('title', 'Form-Donasi')
+@section('description', $program->title)
 
 @section('content')
 

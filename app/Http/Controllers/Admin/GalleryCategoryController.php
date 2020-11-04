@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\GalleryCategoryRequest;
 use App\GalleryCategory;
+use App\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Alert;
 
 class GalleryCategoryController extends Controller
 {
@@ -17,6 +19,11 @@ class GalleryCategoryController extends Controller
      */
     public function index()
     {
+        $items = GalleryCategory::orderBy('id', 'DESC')->get();
+
+        return view('pages.admin.category.index', [
+            'items' => $items
+        ]);
     }
 
     /**
@@ -62,6 +69,11 @@ class GalleryCategoryController extends Controller
      */
     public function edit($id)
     {
+        $item = GalleryCategory::findOrFail($id);
+
+        return view('pages.admin.category.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -71,8 +83,15 @@ class GalleryCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GalleryCategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        $myData = GalleryCategory::findOrFail($id);
+
+        $myData->category = $request->get('category');
+
+        $myData->update();
+        Alert::success('Success', 'Data Berhasil diubah');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -86,6 +105,10 @@ class GalleryCategoryController extends Controller
         $item = GalleryCategory::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('gallery.index');
+        $data = Gallery::where('gallery_categories_id', $id);
+        $data->delete();
+
+        Alert::success('Success', 'Data Berhasil dihapus');
+        return redirect()->route('category.index');
     }
 }

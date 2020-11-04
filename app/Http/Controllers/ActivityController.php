@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $tag = ActivityTag::all();
         $activity = Activity::with(['activity_gallery'])->orderBy('id', 'DESC')->paginate(8);
@@ -19,13 +19,12 @@ class ActivityController extends Controller
         return view('pages.activity', compact('tag', 'activity', 'about', 'contact'));
     }
 
-    public function show(Request $request, $tag)
+    public function show(Request $request, $id)
     {
-        // $activity = $tag->activities()->latest()->paginate(6);
-        // return view('pages.tag', compact('activity', 'activityTag'));
+        $activity = Activity::with(['activity_gallery'])->where('activity_tags_id', $id)->orderBy('id', 'DESC')->paginate(8);
         $tag = ActivityTag::all();
-        $activityTag = ActivityTag::with(['activities'])->where('tag', $tag)->firstOrFail();
-
-        return view('pages.tag', compact('activityTag', 'tag'));
+        $about = Body::orderBy('id', 'DESC')->paginate(1);
+        $contact = Contact::orderBy('id', 'DESC')->paginate(1);
+        return view('pages.activity', compact('tag', 'activity', 'about', 'contact'));
     }
 }

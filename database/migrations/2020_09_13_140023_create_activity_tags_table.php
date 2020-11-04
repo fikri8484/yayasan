@@ -16,6 +16,7 @@ class CreateActivityTagsTable extends Migration
         Schema::create('activity_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tag');
+            $table->string('slug');
             $table->softDeletes();
             $table->timestamps();
         });
