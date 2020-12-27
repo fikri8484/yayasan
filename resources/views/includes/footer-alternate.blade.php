@@ -3,8 +3,11 @@
         <div class="container py-2">
             <div class="row py-4">
                 <div class="col d-flex align-items-center justify-content-center">
+                    <?php 
+                    $year = \Carbon\Carbon::now('Asia/Jakarta')->format('Y');
+                    ?>
                     <p>
-                        <strong>SedekahJariah</strong>© Copyright 2020. All Rights
+                        <strong>SedekahJariah</strong>© Copyright {{ $year }}. All Rights
                         Reserved.
                     </p>
                 </div>

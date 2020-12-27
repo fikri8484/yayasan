@@ -2,7 +2,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                2020 &copy; Yayasan Abdurrahman bin Auf Siantan
+                <?php 
+                $year = \Carbon\Carbon::now('Asia/Jakarta')->format('Y');
+                ?>
+                {{ $year }} &copy; SedekahJariah
             </div>
         </div>
     </div>

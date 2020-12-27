@@ -41,6 +41,7 @@
                     @endif
                     <input type="file" class="form-control" name="image" placeholder="Image" value="{{$item->image}}">
                 </div>
+                <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
 
                 <button type="submit" class="btn btn-primary btn-block">
                     Ubah Data

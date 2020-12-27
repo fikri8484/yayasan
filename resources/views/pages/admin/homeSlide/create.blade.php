@@ -37,6 +37,7 @@
                     <label for="image">Image</label>
                     <input type="file" class="form-control" name="image" placeholder="Image" class="form-control">
                 </div>
+                <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan Data
                 </button>

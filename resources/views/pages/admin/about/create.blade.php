@@ -60,6 +60,7 @@
                     <label for="description" class="label">Deskripsi</label>
                     <textarea name="description" id="description" cols="30" rows="10"></textarea>
                 </div>
+                <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan Data
                 </button>

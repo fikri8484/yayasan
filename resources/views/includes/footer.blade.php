@@ -62,7 +62,11 @@
                         </div>
                     </div>
                 </form> -->
-                <p class="text-3 mb-3 pb-1" style="text-align: center;">SedekahJariah © Copyright 2020. All Rights Reserved.</p>
+                <?php 
+                $year = \Carbon\Carbon::now('Asia/Jakarta')->format('Y');
+                ?>
+
+                <p class="text-3 mb-3 pb-1" style="text-align: center;">SedekahJariah © Copyright {{ $year }}. All Rights Reserved.</p>
                 <br><br>
             </div>
 

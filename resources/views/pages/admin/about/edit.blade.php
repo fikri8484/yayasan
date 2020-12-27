@@ -64,6 +64,7 @@
                     <label for="description">Deskripsi</label>
                     <textarea name="description" id="description" rows="10">{{ $item->description }}</textarea>
                 </div>
+                <input type="hidden" name="users_id" value="{{Auth::user()->id}}">
 
                 <button type="submit" class="btn btn-primary btn-block">
                     Ubah Data
