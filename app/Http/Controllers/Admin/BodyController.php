@@ -19,7 +19,7 @@ class BodyController extends Controller
     public function index()
     {
         $body = Body::orderBy('id', 'DESC')->get();
-        return view('pages.admin.about.index', ['body' => $body]);
+        return view('pages.admin.dashboard', ['body' => $body]);
     }
 
     /**
@@ -44,7 +44,11 @@ class BodyController extends Controller
      */
     public function store(BodyRequest $request)
     {
-
+        request()->validate([
+            'image1' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image2' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image3' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
         $data = $request->all();
         $data['image1'] = $request->file('image1')->store(
             'assets/about',
@@ -103,6 +107,12 @@ class BodyController extends Controller
      */
     public function update(BodyRequest $request, $id)
     {
+        request()->validate([
+            'image1' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image2' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image3' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+
         $data = $request->all();
         $data['image1'] = $request->file('image1')->store(
             'assets/about',
@@ -119,7 +129,7 @@ class BodyController extends Controller
         $item = Body::findOrFail($id);
         $item->update($data);
         Alert::success('Success', 'Data Berhasil Diubah');
-        return redirect()->route('about.index');
+        return redirect()->route('dashboard');
     }
 
     /**

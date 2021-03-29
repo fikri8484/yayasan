@@ -47,6 +47,9 @@ class HomeSlideController extends Controller
     public function store(HomeSlideRequest $request)
     {
         $data = $request->all();
+        request()->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
         $data['image'] = $request->file('image')->store(
             'assets/home-slides',
             'public'
@@ -96,7 +99,7 @@ class HomeSlideController extends Controller
             request()->validate([
                 'title' => 'required|max:25',
                 'description' => 'required|max:25',
-                'image' => 'required|image'
+                'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
             ]);
             $data = $request->all();
             $data['image'] = $request->file('image')->store(

@@ -34,7 +34,7 @@
                 </h2>
                 <p class="lead">
 
-                    {!! str_limit($about->description, $limit = 400) !!}
+                    {!! str_limit($about->description, $limit = 250) !!}
                 </p>
                 <a href="{{ route('about') }}" class="btn btn-primary font-weight-semibold btn-px-4 btn-py-2 text-2">Lihat Selengkapnya</a>
             </div>
@@ -50,7 +50,7 @@
     @endforeach
 
     <div class="container py-3">
-        <div class="row">
+        <div class="row pt-5">
             <div class="col">
                 <hr class="my-5 bg-color-grey size=" 50" style="height: 4px" />
             </div>

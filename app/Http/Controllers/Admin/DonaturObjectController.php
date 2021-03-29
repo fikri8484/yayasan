@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Contact;
-use App\Http\Requests\Admin\ContactRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Alert;
+use App\DonationOfObject;
+use App\Program;
 
-class ContactController extends Controller
+use Illuminate\Http\Request;
+use Alert;
+use App\Http\Requests\Admin\DonationOfObjectRequest;
+
+class DonaturObjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +19,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $items = Contact::orderBy('id', 'DESC')->get();
+        $items = DonationOfObject::with([
+            'program', 'user'
+        ])->orderBy('id', 'DESC')->get();
 
-        return view('pages.admin.contact.index', [
+        return view('pages.admin.donaturobject.index', [
             'items' => $items
         ]);
     }
@@ -32,10 +35,9 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $contacts = Contact::all();
-        return view('pages.admin.contact.create', [
-            'contacts' => $contacts
-        ]);
+        $program = Program::all();
+
+        return view('pages.admin.donaturobject.create', compact('program'));
     }
 
     /**
@@ -44,13 +46,16 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactRequest $request)
+    public function store(DonationOfObjectRequest $request)
     {
+
         $data = $request->all();
 
-        Contact::create($data);
-        Alert::success('Success', 'Data Berhasil Ditambah');
-        return redirect()->route('contact.index');
+        DonationOfObject::create($data);
+
+        Alert::success('Success', 'Isi data berhasil');
+
+        return redirect()->route('donaturobject.index');
     }
 
     /**
@@ -61,7 +66,6 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -72,9 +76,12 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        $item = Contact::findOrFail($id);
-        return view('pages.admin.contact.edit', [
-            'item' => $item
+        $item = DonationOfObject::findOrFail($id);
+        $program = Program::all();
+
+        return view('pages.admin.donaturobject.edit', [
+            'item' => $item,
+            'program' => $program
         ]);
     }
 
@@ -87,15 +94,18 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
-            'number' => 'required|integer',
-            'message' => 'required|string',
-        ]);
-        $data = $request->all();
-        $item = Contact::findOrFail($id);
-        $item->update($data);
-        Alert::success('Success', 'Data Berhasil diedit');
-        return redirect()->route('dashboard');
+        $myData = DonationOfObject::findOrFail($id);
+        $myData->programs_id = $request->get('programs_id');
+        $myData->donor_name = $request->get('donor_name');
+        $myData->phone = $request->get('phone');
+        $myData->object = $request->get('object');
+        $myData->support = $request->get('support');
+
+
+
+        $myData->update();
+        Alert::success('Success', 'Data Berhasil diubah');
+        return redirect()->route('donaturobject.index');
     }
 
     /**
@@ -106,9 +116,10 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        $item = Contact::findOrFail($id);
+        $item = DonationOfObject::findorFail($id);
         $item->delete();
+
         Alert::success('Success', 'Data Berhasil dihapus');
-        return redirect()->route('contact.index');
+        return redirect()->route('donaturobject.index');
     }
 }

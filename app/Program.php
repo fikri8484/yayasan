@@ -21,6 +21,11 @@ class Program extends Model
         return $this->hasMany(DonationConfirmation::class, 'programs_id', 'id');
     }
 
+    public function donation_object()
+    {
+        return $this->hasMany(DonationOfObject::class, 'programs_id', 'id');
+    }
+
     public function developments()
     {
         return $this->hasMany(Development::class, 'programs_id', 'id');

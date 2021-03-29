@@ -102,7 +102,9 @@
                         </li>
                         <li class="nav-item">
                             <?php
-                            $total = $program->donation_confirmation->where('donation_status', 'SUKSES')->count()
+                            $total1 = $program->donation_confirmation->where('donation_status', 'SUKSES')->count();
+                            $total2 = $program->donation_object->count();
+                            $total = $total1+$total2;
                             ?>
                             <a class="nav-link" href="#donatur" data-toggle="tab" style="font-size: 10px;">Donatur({{$total}}) </a>
                         </li>
@@ -126,9 +128,12 @@
                                             <strong class="text-color-primary">Jumlah Donatur yang Telah Berdonasi:</strong>
                                             <strong class="text-color-secondary">
                                                 <?php
-                                                $total = $program->donation_confirmation->where('donation_status', 'SUKSES')->count()
-                                                ?>
-                                                {{$total}}
+                            $totala = $program->donation_confirmation->where('donation_status', 'SUKSES')->count();
+                            $totalb = $program->donation_object->count();
+                            $totalc = $totala+$totalb;
+                            ?>
+                                            
+                                                {{$totalc}}
 
 
                                             </strong>
@@ -174,9 +179,39 @@
                             </div>
                         </div>
                         <div id="donatur" class="tab-pane">
+                            <button class="btn btn-modern btn-primary mb-2" data-toggle="modal" data-target="#defaultModal">
+                                Lihat Donasi Barang
+                            </button>
+                            <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="defaultModalLabel">Donasi Barang yg Telah Terkumpul</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {!! $program->donation_object->count() ? '' : 'Belum ada Donatur, <b>Ayo Jadi Donatur yang Pertama!</b> '!!}
+                                            @foreach($program->donation_object->sortByDesc('id') as $donaturobject)
+                                            <blockquote class="with-borders" style="margin-bottom: -2px" >
+                                                <div class="sample-icon">
+                                                    <a><i class="icon-user icons"></i><span class="name"> {{ $donaturobject->donor_name }}</span> ~ <i>{{$donaturobject->updated_at->diffForHumans()}}</i></a>
+                                                </div>
+                                                <p>
+                                                    Berdonasi Sebesar <strong>{{ $donaturobject->object }}</strong> <br />
+                                                    <i>{{ $donaturobject->support }}</i>
+                                                </p>
+                                            </blockquote>
+                                            @endforeach
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {!! $program->donation_confirmation->where('donation_status' , 'SUKSES')->count() ? '' : 'Belum ada Donatur, <b>Ayo Jadi Donatur yang Pertama!</b> '!!}
                             @foreach($program->donation_confirmation->where('donation_status','SUKSES')->sortByDesc('id') as $donatur)
-                            <blockquote class="with-borders">
+                            <blockquote class="with-borders" style="margin-bottom: -2px" >
                                 <div class="sample-icon">
                                     <a><i class="icon-user icons"></i><span class="name"> {{ $donatur->donor_name }}</span> ~ <i>{{$donatur->updated_at->diffForHumans()}}</i></a>
                                 </div>
@@ -201,6 +236,11 @@
                                         3. Pilih nominal donasi dan Bank yang akan menjadi tujuan transferan donasi anda, lalu klik tombol <b>"LANJUTKAN DONASI"</b> <br>
                                         4. Silahkan Transfer donasi sesuai arahan (sesuai dengan kode unik yang diberikan) <br>
                                         5. Silahkan kirim foto atau screenshot bukti donasi anda <br>
+
+                                        <br>
+                                        <p><b>Teman-teman juga bisa berdonasi dalam bentuk barang dengan cara : </b> Langsung menghubungi Admin Sedekah Jariah lewat WhatsApp atau langsung datang ke kantor Sedekah Jariah  <br>
+                                       
+                                        </p>
 
                                         Terimakasih atas doa, dukungan dan bantuannya, semoga Allah membalas semua kebaikan teman-teman.
                                     </p>

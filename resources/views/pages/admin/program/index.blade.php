@@ -43,7 +43,7 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $p->title }}
                                     @if($p->donation_target <= $p->donation_collected)
-                                        <div class="badge badge-success">Terdanai <i class="fa fa-check"></i></div>
+                                        <div class="badge badge-success" style="font-size: small">Terdanai <i class="fa fa-check"></i></div>
                                         @endif
 
 
@@ -59,11 +59,14 @@
                                 <td>@currency($p->donation_collected)</td>
                                 <td>{{ \Carbon\Carbon::parse($p->time_is_up)->format('d, M-Y') }}</td>
                                 <td> @if ($p->is_published == 1)
-                                    <b>Ya</b>
+                                    <div class="badge badge-success" style="font-size: small">Terpublish <i class="fa fa-check"></i></div>
                                     @else
-                                    <b>Tidak</b>
+                                    <div class="badge badge-danger" style="font-size: small">Tdk Terpublish <i class="fa fa-window-close"></i></div>
                                     @endif</td>
                                 <td>
+                                    <a href="{{ route('print', $p->id) }}" target="blank" class="btn btn-info">
+                                        <i class="fa fa-print"></i>
+                                    </a>
                                     <a href="{{ route('program.show', $p->id) }}" class="btn btn-info">
                                         <i class="fa fa-eye"></i>
                                     </a>

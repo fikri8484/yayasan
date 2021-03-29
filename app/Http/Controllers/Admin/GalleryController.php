@@ -47,6 +47,9 @@ class GalleryController extends Controller
      */
     public function store(GalleryRequest $request)
     {
+        request()->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048'
+        ]);
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
             'assets/gallery',
@@ -100,7 +103,7 @@ class GalleryController extends Controller
             request()->validate([
                 'title' => 'required|max:255',
                 'gallery_categories_id' => 'required|integer|exists:gallery_categories,id',
-                'image' => 'required|image'
+                'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048'
             ]);
             $data = $request->all();
             $data['image'] = $request->file('image')->store(

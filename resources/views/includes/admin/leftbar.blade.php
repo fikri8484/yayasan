@@ -44,12 +44,12 @@
                         <span> Kegiatan </span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('about.index') }}">
                         <i class="mdi mdi-home-variant"></i>
                         <span> Tentang AmalJariah </span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li>
                     <a href="{{ route('program.index') }}">
@@ -66,23 +66,28 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('donatur.index') }}">
+                    <a href="javascript: void(0);">
                         <i class="mdi mdi-face"></i>
                         <span> Donatur </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{ route('donatur.index') }}">Donatur Dana</a></li>
+                        <li><a href="{{ route('donaturobject.index') }}">Donatur Barang</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{ route('bank.index') }}">
                         <i class="mdi mdi-bank"></i>
                         <span> Rekening Bank </span>
-                    </a>
+                    </a> 
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('contact.index') }}">
                         <i class="mdi mdi-whatsapp"></i>
                         <span> CP WhatsApp </span>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
 

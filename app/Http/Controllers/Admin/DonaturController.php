@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DevelopmentRequest;
+use App\DonationOfObject;
 use App\DonationConfirmation;
 use App\Program;
 use App\ShelterAccount;

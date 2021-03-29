@@ -9,6 +9,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Alert;
+use App\DonationOfObject;
 use PDF;
 
 class ProgramController extends Controller
@@ -46,7 +47,9 @@ class ProgramController extends Controller
      */
     public function store(ProgramRequest $request)
     {
-
+        request()->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048'
+        ]);
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
         $data['image'] = $request->file('image')->store(
@@ -100,14 +103,12 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
         $image  = $request->file('image');
         if ($image != '') {
             request()->validate([
                 'categories_id' => 'required|integer|exists:categories,id',
                 'title' => 'required|max:255',
-                'image' => 'required|image',
+                'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
                 'brief_explanation' => 'required',
                 'donation_target' => 'required|integer',
                 'time_is_up' => 'required|date',
@@ -150,5 +151,12 @@ class ProgramController extends Controller
         $item->delete();
         Alert::success('Success', 'Data Berhasil dihapus');
         return redirect()->route('program.index');
+    }
+
+    public function print($id)
+    {
+        $laporan = 'Laporan';
+        $item = Program::with(['donation_confirmation', 'donation_object'])->where('id', $id)->firstOrFail();
+        return view('pages.admin.program.print', ['item' => $item, 'laporan' => $laporan]);
     }
 }

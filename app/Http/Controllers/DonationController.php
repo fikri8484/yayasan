@@ -111,14 +111,14 @@ class DonationController extends Controller
         $donatur->email = $request->email;
         $donatur->support = $request->support;
         $bukti = 'null';
-        $blmtf = 'BELUM_TRANSFER';
+        $blmtf = 'BELUM_KONFIRM';
         $donatur->proof_payment = $bukti;
         $donatur->donation_status = $blmtf;
 
         request()->validate([
             'donor_name' => 'required|string',
             // 'nominal_donation' => 'required|numeric|min:10.000',
-            'phone' => 'required',
+            'phone' => 'required|digits_between:11,13',
             'shelter_accounts_id' => 'required|integer'
         ]);
 

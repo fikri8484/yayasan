@@ -52,7 +52,7 @@
                                 @endif
                                 <td>{{ $d->title }}</td>
 
-                                <td>{!! str_limit($d->description, $limit = 500) !!}</td>
+                                <td>{!! str_limit($d->description, $limit = 300) !!}</td>
 
                                 <td>{{ \Carbon\Carbon::parse($d->time)->format('d, M-Y') }}</td>
                                 <td>

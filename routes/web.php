@@ -72,7 +72,6 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/', 'DashboardController@index')
             ->name('dashboard');
-        Route::get('/hello', 'ActivityController@hello');
 
         Route::resource('category', 'GalleryCategoryController');
         Route::resource('gallery', 'GalleryController');
@@ -80,9 +79,11 @@ Route::prefix('admin')
         Route::resource('activity-tag', 'ActivityTagController');
         Route::resource('activity-gallery', 'ActivityGalleryController');
         Route::resource('program', 'ProgramController');
+        Route::get('program/{id}/print', 'ProgramController@print')->name('print');
         Route::resource('categoryprogram', 'CategoryController');
         Route::resource('development', 'DevelopmentController');
         Route::resource('donatur', 'DonaturController');
+        Route::resource('donaturobject', 'DonaturObjectController');
         Route::resource('bank', 'ShelterAccountController');
         Route::resource('homeSlide', 'HomeSlideController');
         Route::resource('contact', 'ContactController');

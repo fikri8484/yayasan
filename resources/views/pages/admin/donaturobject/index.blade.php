@@ -8,8 +8,8 @@
     <div class="container-fluid">
 
         <div class="d-sm-flex align-items-center justify-content-between mb-3 mt-2">
-            <h1 class="h3 mb-0 text-gray-800">Data Donatur Dana</h1>
-            <a href="{{ route('donatur.create') }}" class="btn btn-sm btn-primary shadow-sm">
+            <h1 class="h3 mb-0 text-gray-800">Data Donatur Barang</h1>
+            <a href="{{ route('donaturobject.create') }}" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data
             </a>
         </div>
@@ -22,25 +22,18 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Donasi</th>
+                                <th>Program Donasi</th>
                                 <th>Donatur</th>
-                                <th>Tgl Limit Donasi</th>
-                                <th>Nominal Donasi</th>
-                                <th>Bank</th>
-                                <th>Status</th>
+                                <th>Tgl Donasi</th>
+                                <th>Barang Donasi</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-
-
-
                         <tbody>
                             <?php
                             $i = 1;
-
                             ?>
                             @forelse($items as $item)
-
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 @if($item->program == null)
@@ -50,22 +43,12 @@
                                 @endif
                                 <td>{{ $item->donor_name }}</td>
                                 <td>{{ $item->created_at->add('1 day')->format('H:i\ , d M Y') }}</td>
-
-                                <td>@currency($item->nominal_donation)</td>
-                                @if($item->shelter_account == null)
-                                <td>(Data Rekening Sudah Dihapus)</td>
-                                @else
-                                <td>{{ $item->shelter_account->bank }} <br> ({{ $item->shelter_account->account_number }})</td>
-                                @endif
-                                <td>{{ $item->donation_status }}</td>
+                                <td>{{ $item->object }}</td>
                                 <td>
-                                    <a href="{{ route('donatur.show', $item->id) }}" class="btn btn-primary">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('donatur.edit', $item->id) }}" class="btn btn-info">
+                                    <a href="{{ route('donaturobject.edit', $item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{ route('donatur.destroy', $item->id) }}" method="post" class="d-inline" onclick="return confirm('Yakin ingin menghapus?');">
+                                    <form action="{{ route('donaturobject.destroy', $item->id) }}" method="post" class="d-inline" onclick="return confirm('Yakin ingin menghapus?');">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">
@@ -77,8 +60,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
-
                 </div>
             </div>
         </div>

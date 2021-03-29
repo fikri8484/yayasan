@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <label for="whatsapp">Nomor Whatsapp Admin</label>
-                    <input type="text" class="form-control" name="whatsapp" placeholder="Nomor Whatsapp" value="{{ $item->whatsapp }}">
+                    <input type="text" class="form-control" name="whatsapp" placeholder="Nomor Whatsapp" value="0{{ $item->whatsapp }}">
                 </div>
                 <div class="form-group">
                     <label for="fb">Link Fanspage Facebook (jika Ada)</label>
