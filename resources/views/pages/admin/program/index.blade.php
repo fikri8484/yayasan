@@ -55,9 +55,18 @@
 
 
 
-                                <td>@currency($p->donation_target)</td>
+                                <td>@if ($p->donation_target == 9999999999999999)
+                                    <div class="badge badge-warning" style="font-size: small">Program Terus Digalang</div>
+                                @else
+                                @currency($p->donation_target)
+                                @endif
+                                </td>
                                 <td>@currency($p->donation_collected)</td>
-                                <td>{{ \Carbon\Carbon::parse($p->time_is_up)->format('d, M-Y') }}</td>
+                                <td>@if ($p->time_is_up == '2015-01-01')
+                                    <div class="badge badge-warning" style="font-size: small">Program Terus Digalang</div>
+                                @else
+                                {{ \Carbon\Carbon::parse($p->time_is_up)->format('d, M-Y') }}
+                                @endif</td>
                                 <td> @if ($p->is_published == 1)
                                     <div class="badge badge-success" style="font-size: small">Terpublish <i class="fa fa-check"></i></div>
                                     @else

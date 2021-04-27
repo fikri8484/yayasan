@@ -15,7 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $about = Body::orderBy('id', 'DESC')->paginate(1);
+        $about = Body::orderBy('id', 'DESC')->get();
         $today = Carbon::now()->isoFormat('dddd, D MMMM Y');
         $program = Program::where('is_selected', 1)->where('is_published', 1)->orderBy('id', 'DESC')->paginate(3);
         $gallery = Gallery::orderBy('id', 'DESC')->paginate(8);

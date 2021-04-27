@@ -26,10 +26,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <p style="text-align: center">
+                {{-- <p style="text-align: center">
                     <i class="icon-clock icons"></i> Selesaikan pembayaran donasi
                     sebelum <b>besok</b> jam <b>{{$tomorrow}}</b>
-                </p>
+                </p> --}}
                 <div class="card">
                     <div class="card-body">
                         <h4 style="text-align: center">Total Pembayaran Donasi</h4>
@@ -39,8 +39,7 @@
                         <div class="alert alert-info" style="text-align: center">
                             <strong>Penting</strong>
                             Mohon transfer tepat sampai 3 angka terakhir agar donasi
-                            Anda dapat diproses oleh Admin.
-                            <strong> Jika Perlu Silahkan Screenshot Halaman Ini</strong>
+                            Anda dapat diproses oleh Admin. Jika nominal donasi tidak sesuai, silahkan Hubungi Admin via WhatsApp
                         </div>
                         <div style="text-align: center">
 

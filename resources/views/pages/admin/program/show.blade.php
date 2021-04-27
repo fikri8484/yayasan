@@ -45,7 +45,11 @@
                 </tr>
                 <tr>
                     <th>Target Donasi</th>
-                    <td>@currency($item->donation_target)</td>
+                    <td>@if ($item->donation_target == 9999999999999999)
+                        <div class="badge badge-warning" style="font-size: small">Program Terus Digalang</div>
+                    @else
+                    @currency($item->donation_target)
+                @endif</td>
                 </tr>
                 <tr>
                     <th>Donasi Terkumpul</th>
@@ -54,7 +58,11 @@
 
                 <tr>
                     <th>Tanggal Penutupan Donasi</th>
-                    <td>{{ \Carbon\Carbon::parse($item->time_is_up)->format('d-M-Y') }}</td>
+                    <td>@if ($item->time_is_up == '2015-01-01')
+                        <div class="badge badge-warning" style="font-size: small">Program Terus Digalang</div>
+                    @else
+                    {{ \Carbon\Carbon::parse($item->time_is_up)->format('d, M-Y') }}
+                    @endif</td>
                 </tr>
                 <tr>
                     <th>Program Donasi Pilihan?</th>

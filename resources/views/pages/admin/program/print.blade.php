@@ -15,12 +15,15 @@
             @endif</h1>
             
         </div>
+      
+            
         
         <div class="row">
             <div class="col-12">
                 <div class="card-box">
                     <p>Total Donasi Terkumpul : @currency( $item->donation_confirmation->where('donation_status', 'SUKSES')->sum('nominal_donation') )</p>
-                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
+                    <p>Periode Donasi : {{ $item->created_at->format('d M Y') }} - {{ \Carbon\Carbon::parse($item->time_is_up)->format('d M Y') }}</p>
+                    <table class="table mb-0">
                         <thead>
                             <tr>
                                 <th>No</th>

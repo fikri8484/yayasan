@@ -76,8 +76,8 @@
                                     $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir);
                                     $different_days = $start_date->diffInDays($end_date);
                                     ?>
-                                    @if ($different_days == 0) Kurang dari 1 @else {{$different_days}} @endif
-                                </strong> Hari lagi / Terkumpul <strong class="text-color-primary" style="text-align: right;"> @if ($program->donation_collected == 0)Rp 0
+                                    @if ($different_days == 0) Kurang dari 1 @elseif ($different_days > 1000) <i class="fas fa-infinity"></i>  @else {{$different_days}} Hari Lagi @endif
+                                </strong> / Terkumpul <strong class="text-color-primary" style="text-align: right;"> @if ($program->donation_collected == 0)Rp 0
                                     @else
                                     @currency($program->donation_collected)
                                     @endif</strong> </p>

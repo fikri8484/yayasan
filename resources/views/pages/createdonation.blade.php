@@ -75,7 +75,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="donor_name">Nama</label>
-                                <input type="text" class="form-control" name="donor_name" placeholder="Nama" value="{{ old('donor_name') }}" required autocomplete="off">
+                                <input type="text" class="form-control remove-sharp" name="donor_name" placeholder="Nama" value="{{ old('donor_name') }}" pattern = "^\D{0,100}$" required autocomplete="off">
                                 <div class="form-check">
                                     <input id="check" type="checkbox" name="donor_name" class="form-check-input" value="Hamba Allah">
                                     <label for="check" class="form-check-label">Sembunyikan Nama Saya (Hamba Allah)</label>
@@ -211,5 +211,17 @@
         }
     }
 </script>
+
+<script>
+    $(function() {
+  $(".remove-sharp").on("keyup", function(event) {
+    var value = $(this).val();
+    if (value.indexOf('#') != -1) {
+      $(this).val(value.replace(/\#/g, ""));
+    }
+  })
+});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 @endpush

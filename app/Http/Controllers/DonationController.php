@@ -186,10 +186,23 @@ class DonationController extends Controller
 
         // mengambil data dari table program sesuai pencarian data
 
-        $programs = Program::where('is_published', 1)->where([
+        // $programs = Program::where('is_published', 1)->where([
 
-            ['brief_explanation', 'like', "%" . $cari . "%"], ['title', 'like', "%" . $cari . "%"]
-        ])->orderBy('id', 'DESC')->paginate(9);
+        //     ['brief_explanation', 'like', "%" . $cari . "%"], ['title', 'like', "%" . $cari . "%"]
+        // ])->orderBy('id', 'DESC')->paginate(9);
+
+        $programs = Program::where(
+            'brief_explanation',
+            'like',
+            "%" . $cari . "%"
+        )->orwhere(
+            'title',
+            'like',
+            "%" . $cari . "%"
+        )->where('is_published', 1)->orderBy('id', 'DESC')->paginate(9);
+
+
+
         $contact = Contact::orderBy('id', 'DESC')->paginate(1);
         $about = Body::orderBy('id', 'DESC')->paginate(1);
 
