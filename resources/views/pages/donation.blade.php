@@ -63,19 +63,25 @@
                             $c = 100;
                             $bar = $a * $c / $b;
                             ?>
+                              <?php
+                              $akhir = \Carbon\Carbon::parse($program->time_is_up)->format('Y-m-d');
+                              $start_date = \Carbon\Carbon::now('Asia/Jakarta');
+                              $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir);
+                              $different_days = $start_date->diffInDays($end_date);
+                              ?>
 
+                            @if ($program->donation_target == 9999999999999999 or $different_days > 1000)
+                            <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="{{$bar}}" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                            </div>    
+                            @else
                             <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="{{$bar}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$bar}}%">
-
                             </div>
+                            @endif
+
                         </div>
                         <div class="col-lg-12">
                             <p style="text-align: center;"> <strong class="text-color-primary">
-                                    <?php
-                                    $akhir = \Carbon\Carbon::parse($program->time_is_up)->format('Y-m-d');
-                                    $start_date = \Carbon\Carbon::now('Asia/Jakarta');
-                                    $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir);
-                                    $different_days = $start_date->diffInDays($end_date);
-                                    ?>
+                                  
                                     @if ($different_days == 0) Kurang dari 1 @elseif ($different_days > 1000) <i class="fas fa-infinity"></i>  @else {{$different_days}} Hari Lagi @endif
                                 </strong> / Terkumpul <strong class="text-color-primary" style="text-align: right;"> @if ($program->donation_collected == 0)Rp 0
                                     @else
@@ -121,19 +127,25 @@
                             $f = 100;
                             $barr = $d * $f / $e;
                             ?>
+                               <?php
+                               $akhir1 = \Carbon\Carbon::parse($newProgram->time_is_up)->format('Y-m-d');
+                               $start_date = \Carbon\Carbon::now('Asia/Jakarta');
+                               $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir1);
+                               $different_days1 = $start_date->diffInDays($end_date);
+                               ?>
+                            @if ($newProgram->donation_target == 9999999999999999 or $different_days1 > 1000)
+                            <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="{{$barr}}" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                            </div>      
+                            @else 
                             <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="{{$barr}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$barr}}%">
                             </div>
+                            @endif
                         </div>
                         <div class="col-lg-12">
                             <p style="text-align: center;"> <strong class="text-color-primary">
-                                    <?php
-                                    $akhir1 = \Carbon\Carbon::parse($newProgram->time_is_up)->format('Y-m-d');
-                                    $start_date = \Carbon\Carbon::now('Asia/Jakarta');
-                                    $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir1);
-                                    $different_days1 = $start_date->diffInDays($end_date);
-                                    ?>
+                                 
 
-                                    @if ($different_days1 == 0) Kurang dari 1 @else {{$different_days1}} @endif </strong> Hari lagi / Terkumpul <strong class="text-color-primary" style="text-align: right;"> @if ($newProgram->donation_collected == 0)
+                                    @if ($different_days1 == 0) Kurang dari 1 @elseif ($different_days1 > 1000) <i class="fas fa-infinity"></i> @else {{$different_days1}} Hari Lagi @endif </strong> / Terkumpul <strong class="text-color-primary" style="text-align: right;"> @if ($newProgram->donation_collected == 0)
                                     Rp. 0
                                     @else
                                     @currency($newProgram->donation_collected)

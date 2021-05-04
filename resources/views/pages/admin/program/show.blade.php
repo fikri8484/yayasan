@@ -45,11 +45,7 @@
                 </tr>
                 <tr>
                     <th>Target Donasi</th>
-                    <td>@if ($item->donation_target == 9999999999999999)
-                        <div class="badge badge-warning" style="font-size: small">Program Terus Digalang</div>
-                    @else
-                    @currency($item->donation_target)
-                @endif</td>
+                    <td>@currency($item->donation_target)</td>
                 </tr>
                 <tr>
                     <th>Donasi Terkumpul</th>

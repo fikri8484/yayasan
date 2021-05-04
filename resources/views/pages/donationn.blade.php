@@ -27,6 +27,14 @@
 
     <div class="container py-1">
         <div class="row">
+            <?php 
+                $cari = $programs->count();
+                if ($cari == 0) {
+                    echo '<div class="col-lg-4 mb-4">';
+                    echo  '<span class="badge badge-primary badge-md">Maaf, Program Donasi yang anda cari tidak ada</span>' ;
+                    echo '</div>';
+                }
+            ?>
             @foreach($programs as $program)
             <div class="col-lg-4 mb-4">
                 <div class="card">
@@ -47,21 +55,26 @@
                             $c = 10;
                             $bar = $a . $c / $b;
                             ?>
+                             <?php
+                             $akhir = \Carbon\Carbon::parse($program->time_is_up)->format('Y-m-d');
+                             $start_date = \Carbon\Carbon::now('Asia/Jakarta');
+                             $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir);
+                             $different_days = $start_date->diffInDays($end_date);
+                             ?>
 
-                            <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$bar}}%">
-
+                            @if ($program->donation_target == 9999999999999999 or $different_days > 1000)
+                            <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="{{$bar}}" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                            </div>    
+                            @else
+                            <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="{{$bar}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$bar}}%">
                             </div>
+                            @endif
                         </div>
                         <div class="col-lg-12">
                             <p style="text-align: center;"> <strong class="text-color-primary">
-                                    <?php
-                                    $akhir = \Carbon\Carbon::parse($program->time_is_up)->format('Y-m-d');
-                                    $start_date = \Carbon\Carbon::now('Asia/Jakarta');
-                                    $end_date = \Carbon\Carbon::createFromFormat('Y-m-d', $akhir);
-                                    $different_days = $start_date->diffInDays($end_date);
-                                    ?>
-                                    @if ($different_days == 0) Kurang dari 1 @else {{$different_days}} @endif
-                                </strong> Hari lagi / Terkumpul <strong class="text-color-primary" style="text-align: right;"> @if ($program->donation_collected == 0)Rp 0
+                                   
+                                    @if ($different_days == 0) Kurang dari 1 @elseif ($different_days > 1000) <i class="fas fa-infinity"></i> @else {{$different_days}} Hari lagi @endif
+                                </strong> / Terkumpul <strong class="text-color-primary" style="text-align: right;"> @if ($program->donation_collected == 0)Rp 0
                                     @else
                                     @currency($program->donation_collected)
                                     @endif</strong> </p>
@@ -76,6 +89,7 @@
 
     </div>
 </div>
+<br><br><br>
 @foreach ($about as $about)
 <footer id="footer" class="mt-4">
     <div class="container">

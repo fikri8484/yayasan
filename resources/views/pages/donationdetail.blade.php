@@ -37,13 +37,13 @@
                                 <strong class="font-weight-extra-bold">{{ $program->title }}</strong>
                             </h2>
                             <h6><i class="text-color-grey">{{ $program->brief_explanation }}</i></h6>
-                            <h4 style="text-align: center;"> <strong class="text-color-primary">{{$different_days}}</strong> Hari lagi /
+                            <h4 style="text-align: center;"> @if ($different_days > 1000)
+                              <i class="fas fa-infinity"></i> 
+                            @else
+                            <strong class="text-color-primary">{{$different_days}}</strong> Hari lagi
+                            @endif /
                                 <strong class="text-color-primary" style="text-align: right;"> @currency($program->donation_collected)</strong> Terkumpul dari @currency($program->donation_target)</h4>
-                            <!-- <div class="d-sm-flex align-items-center justify-content-between px-3">
-                                <h4><strong class="text-color-primary">{{$different_days}}</strong> Hari lagi</h4>
-                                <h4><strong class="text-color-primary"> @currency($program->donation_collected)</strong> Terkumpul <br> dari @currency($program->donation_target)</h4>
-                                </a>
-                            </div> -->
+                     
                         </div>
                     </div>
 
@@ -146,7 +146,11 @@
                                         <li>
                                             <i class="fas fa-caret-right left-10"></i>
                                             <strong class="text-color-primary">Close Donation:</strong>
-                                            {{ $time_is_up }}
+                                            @if ($time_is_up == '01 Jan 2015')
+                                                Donasi terus digalang
+                                            @else
+                                                {{ $time_is_up }}
+                                            @endif
                                         </li>
 
                                     </ul>
@@ -182,6 +186,7 @@
                             <button class="btn btn-modern btn-primary mb-2" data-toggle="modal" data-target="#defaultModal">
                                 Lihat Donasi Barang
                             </button>
+                            <br>
                             <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">

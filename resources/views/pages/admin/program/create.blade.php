@@ -55,10 +55,10 @@
                 <div class="form-group">
                     <label for="donation_target">Target Donasi (Rp)</label>
                     <input type="number" class="form-control" name="donation_target" placeholder="Target Donasi" value="{{ old('donation_target') }}">
-                    <div class="form-check">
+                    {{-- <div class="form-check">
                         <input id="check" type="checkbox" name="donation_target" class="form-check-input" value="9999999999999999">
                         <label for="check" class="form-check-label">Donasi Terus dikumpul</label>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="form-group">
                     <label for="is_selected">Program Donasi Pilihan?</label>

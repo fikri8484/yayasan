@@ -45,7 +45,7 @@ class ActivityTagController extends Controller
     public function store(ActivityTagRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->tag);
+
 
         ActivityTag::create($data);
         return redirect()->route('activity.create');
